@@ -45,6 +45,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="collection"
+        options={{
+          title: 'Collection',
+          tabBarIcon: ({ focused }) => <TabIcon emoji="🗂️" focused={focused} />,
+        }}
+      />
+      <Tabs.Screen
         name="mystery"
         options={{
           title: 'Mystery',
@@ -63,14 +70,6 @@ export default function TabLayout() {
         options={{
           title: 'Missions',
           tabBarIcon: ({ focused }) => <TabIcon emoji="⭐" focused={focused} />,
-        }}
-      />
-      <Tabs.Screen
-        name="collection"
-        options={{
-          title: 'Collection',
-          tabBarIcon: ({ focused }) => <TabIcon emoji="🗂️" focused={focused} />,
-          href: null,
         }}
       />
     </Tabs>

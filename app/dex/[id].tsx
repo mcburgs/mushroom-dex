@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  TextInput,
   Alert,
 } from 'react-native';
 import { useLocalSearchParams, useFocusEffect } from 'expo-router';
@@ -15,6 +14,7 @@ import { MushroomEntry, UserFind } from '../../src/types';
 import { getFind, addUserFind, updateUserFind } from '../../src/storage/userFinds';
 import { addPoints } from '../../src/storage/userProfile';
 import mushroomData from '../../data/mushrooms.json';
+import FindModal from '../../src/components/FindModal';
 
 const RARITY_COLOUR: Record<string, string> = {
   'Common': '#8a8a7a',
@@ -62,19 +62,13 @@ export default function DetailScreen() {
   const entry = (mushroomData as MushroomEntry[]).find((m) => m.id === id);
 
   const [find, setFind] = useState<UserFind | null>(null);
-  const [notes, setNotes] = useState('');
-  const [notesEditing, setNotesEditing] = useState(false);
-  const [justMarked, setJustMarked] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
       if (!id) return;
       let active = true;
-      getFind(id).then((f) => {
-        if (!active) return;
-        setFind(f);
-        setNotes(f?.userNotes ?? '');
-      });
+      getFind(id).then((f) => { if (active) setFind(f); });
       return () => { active = false; };
     }, [id])
   );
@@ -89,40 +83,45 @@ export default function DetailScreen() {
 
   const heroImage = entry.images.find((img) => img.isHero);
 
-  async function handleMarkFound() {
-    const newFind: UserFind = {
-      id: `find-${entry!.id}-${Date.now()}`,
-      mushroomEntryId: entry!.id,
-      dateFound: new Date().toISOString(),
-      locationNote: '',
-      userNotes: '',
-      userPhotoPaths: [],
-      biomeTag: '',
-      confirmedByUser: true,
-    };
-    const updatedFinds = await addUserFind(newFind);
-    const thisFind = updatedFinds.find((f) => f.mushroomEntryId === entry!.id) ?? newFind;
-    await addPoints(entry!.pointsValue);
-    setFind(thisFind);
-    setJustMarked(true);
-    Alert.alert(
-      `+${entry!.pointsValue} points!`,
-      `You found ${entry!.commonName}! Added to your collection.`,
-      [{ text: 'Awesome!' }]
-    );
+  async function handleModalSave(data: {
+    locationNote: string;
+    biomeTag: string;
+    userNotes: string;
+    userPhotoPaths: string[];
+  }) {
+    setModalVisible(false);
+
+    if (find) {
+      // Editing existing find
+      const updated = { ...find, ...data };
+      await updateUserFind(find.id, data);
+      setFind(updated);
+    } else {
+      // New find
+      const newFind: UserFind = {
+        id: `find-${entry!.id}-${Date.now()}`,
+        mushroomEntryId: entry!.id,
+        dateFound: new Date().toISOString(),
+        confirmedByUser: true,
+        ...data,
+      };
+      await addUserFind(newFind);
+      await addPoints(entry!.pointsValue);
+      setFind(newFind);
+      Alert.alert(
+        `+${entry!.pointsValue} points!`,
+        `${entry!.commonName} added to your collection!`,
+        [{ text: 'Awesome!' }]
+      );
+    }
   }
 
-  async function handleSaveNotes() {
-    if (!find) return;
-    await updateUserFind(find.id, { userNotes: notes });
-    setFind({ ...find, userNotes: notes });
-    setNotesEditing(false);
-  }
+  const findPhotos = find?.userPhotoPaths ?? [];
 
   return (
     <SafeAreaView style={styles.safe} edges={['bottom']}>
-      <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
-        {/* Hero image */}
+      <ScrollView style={styles.scroll}>
+        {/* Reference hero image */}
         <View style={styles.heroContainer}>
           {heroImage ? (
             <Image
@@ -137,23 +136,40 @@ export default function DetailScreen() {
           )}
         </View>
 
+        {/* Your find photos */}
+        {findPhotos.length > 0 && (
+          <View style={styles.findPhotosSection}>
+            <Text style={styles.findPhotosLabel}>Your photos</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              {findPhotos.map((uri) => (
+                <Image
+                  key={uri}
+                  source={{ uri }}
+                  style={styles.findPhoto}
+                  resizeMode="cover"
+                />
+              ))}
+            </ScrollView>
+          </View>
+        )}
+
         {/* Names */}
         <View style={styles.namesSection}>
           <Text style={styles.commonName}>{entry.commonName}</Text>
           <Text style={styles.scientificName}>{entry.scientificName}</Text>
           {entry.alternateNames.length > 0 && (
             <Text style={styles.altNames}>
-              Also called: {entry.alternateNames.join(', ')}
+              {'Also called: ' + entry.alternateNames.join(', ')}
             </Text>
           )}
           <View style={styles.metaRow}>
             <View style={styles.typeChip}>
-              <Text style={styles.typeChipText}>{entry.broadType}</Text>
+              <Text style={styles.typeChipText}>{entry.broadType + ' '}</Text>
             </View>
             <Text style={[styles.rarityText, { color: RARITY_COLOUR[entry.rarityTier] ?? '#8a8a7a' }]}>
-              ● {entry.rarityTier}
+              {'● ' + entry.rarityTier + ' '}
             </Text>
-            <Text style={styles.pointsText}>+{entry.pointsValue} pts</Text>
+            <Text style={styles.pointsText}>{'+' + entry.pointsValue + ' pts'}</Text>
           </View>
         </View>
 
@@ -164,7 +180,7 @@ export default function DetailScreen() {
           <TagRow label="🪵  Substrate" tags={entry.substrateTags} />
         </View>
 
-        {/* Description */}
+        {/* About */}
         <View style={styles.card}>
           <SectionHeader title="About" />
           <Text style={styles.descriptionShort}>{entry.descriptionShort}</Text>
@@ -196,76 +212,76 @@ export default function DetailScreen() {
         )}
 
         {/* Attribution */}
-        {heroImage && heroImage.attribution && (
-          <Text style={styles.attribution}>
-            Photo: {heroImage.attribution}
-          </Text>
-        )}
+        {heroImage?.attribution ? (
+          <Text style={styles.attribution}>{'Photo: ' + heroImage.attribution}</Text>
+        ) : null}
 
-        {/* Mark found / notes */}
+        {/* Found card */}
         <View style={styles.card}>
           {!find ? (
             <>
               <SectionHeader title="Found it?" />
               <Text style={styles.findPrompt}>
-                {`Found this one in the wild? Mark it and earn ${entry.pointsValue} points!`}
+                {'Found this one in the wild? Mark it and earn ' + entry.pointsValue + ' points!'}
               </Text>
-              <TouchableOpacity style={styles.markButton} onPress={handleMarkFound}>
+              <TouchableOpacity
+                style={styles.markButton}
+                onPress={() => setModalVisible(true)}
+              >
                 <Text style={styles.markButtonText}>Mark as Found 🍄</Text>
               </TouchableOpacity>
             </>
           ) : (
             <>
               <View style={styles.foundHeader}>
-                <Text style={styles.foundBadgeLabel}>✓ Found!</Text>
+                <Text style={styles.foundBadgeLabel}>✓ Found</Text>
                 <Text style={styles.foundDate}>
                   {new Date(find.dateFound).toLocaleDateString('en-CA', {
-                    month: 'long',
+                    month: 'short',
                     day: 'numeric',
                     year: 'numeric',
                   })}
                 </Text>
               </View>
-              <SectionHeader title="Your Notes" />
-              {notesEditing ? (
-                <>
-                  <TextInput
-                    style={styles.notesInput}
-                    value={notes}
-                    onChangeText={setNotes}
-                    multiline
-                    placeholder="What did you notice? Where did you find it?"
-                    placeholderTextColor="#bbb"
-                    autoFocus
-                  />
-                  <View style={styles.notesActions}>
-                    <TouchableOpacity style={styles.saveButton} onPress={handleSaveNotes}>
-                      <Text style={styles.saveButtonText}>Save Notes</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                      style={styles.cancelButton}
-                      onPress={() => { setNotes(find.userNotes); setNotesEditing(false); }}
-                    >
-                      <Text style={styles.cancelButtonText}>Cancel</Text>
-                    </TouchableOpacity>
-                  </View>
-                </>
-              ) : (
-                <TouchableOpacity
-                  style={styles.notesDisplay}
-                  onPress={() => setNotesEditing(true)}
-                >
-                  <Text style={notes ? styles.notesText : styles.notesPlaceholder}>
-                    {notes || 'Tap to add notes about your find…'}
-                  </Text>
-                </TouchableOpacity>
-              )}
+
+              {(find.biomeTag || find.locationNote) ? (
+                <View style={styles.findDetailRow}>
+                  {find.biomeTag ? (
+                    <Text style={styles.findDetailChip}>{find.biomeTag + ' '}</Text>
+                  ) : null}
+                  {find.locationNote ? (
+                    <Text style={styles.findLocationText} numberOfLines={2}>
+                      {'📍 ' + find.locationNote}
+                    </Text>
+                  ) : null}
+                </View>
+              ) : null}
+
+              {find.userNotes ? (
+                <Text style={styles.findNotes}>{find.userNotes}</Text>
+              ) : null}
+
+              <TouchableOpacity
+                style={styles.editButton}
+                onPress={() => setModalVisible(true)}
+              >
+                <Text style={styles.editButtonText}>Edit Find</Text>
+              </TouchableOpacity>
             </>
           )}
         </View>
 
         <View style={styles.bottomPad} />
       </ScrollView>
+
+      <FindModal
+        visible={modalVisible}
+        mushroomName={entry.commonName}
+        pointsValue={entry.pointsValue}
+        existingFind={find}
+        onSave={handleModalSave}
+        onClose={() => setModalVisible(false)}
+      />
     </SafeAreaView>
   );
 }
@@ -273,27 +289,39 @@ export default function DetailScreen() {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#f9f6f0' },
   scroll: { flex: 1 },
-  content: {},
   notFound: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   notFoundText: { fontSize: 18, color: '#8a8a7a' },
+
+  // Hero
   heroContainer: { width: '100%', height: 240, backgroundColor: '#e8f5d8' },
   heroImage: { width: '100%', height: '100%' },
   heroPlaceholder: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   heroEmoji: { fontSize: 80 },
+
+  // Find photos
+  findPhotosSection: { paddingHorizontal: 16, paddingTop: 12 },
+  findPhotosLabel: { fontSize: 12, fontWeight: '700', color: '#5a7a3a', marginBottom: 8 },
+  findPhoto: { width: 120, height: 90, borderRadius: 10, marginRight: 10 },
+
+  // Names
   namesSection: { padding: 16, paddingBottom: 0 },
   commonName: { fontSize: 26, fontWeight: '800', color: '#2d4a1a', lineHeight: 32 },
   scientificName: { fontSize: 16, fontStyle: 'italic', color: '#5a7a3a', marginTop: 4 },
   altNames: { fontSize: 13, color: '#8a8a7a', marginTop: 4 },
-  metaRow: { flexDirection: 'row', alignItems: 'center', gap: 10, marginTop: 10 },
+  metaRow: { flexDirection: 'row', alignItems: 'center', marginTop: 10, flexWrap: 'wrap' },
   typeChip: {
     backgroundColor: '#e8f5d8',
     borderRadius: 8,
     paddingHorizontal: 10,
     paddingVertical: 4,
+    marginRight: 8,
+    alignSelf: 'flex-start',
   },
   typeChipText: { fontSize: 13, fontWeight: '600', color: '#2d4a1a' },
-  rarityText: { fontSize: 13, fontWeight: '600' },
+  rarityText: { fontSize: 13, fontWeight: '600', marginRight: 8 },
   pointsText: { fontSize: 13, color: '#8b6914', fontWeight: '700' },
+
+  // Tags
   tagsSection: { paddingHorizontal: 16, paddingTop: 12 },
   tagRowContainer: { width: '100%', marginBottom: 10 },
   tagRowLabel: { fontSize: 12, fontWeight: '700', color: '#5a7a3a', marginBottom: 6 },
@@ -310,6 +338,8 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   tagText: { fontSize: 12, color: '#5a7a3a' },
+
+  // Cards
   card: {
     backgroundColor: '#fff',
     borderRadius: 16,
@@ -320,12 +350,7 @@ const styles = StyleSheet.create({
     borderColor: '#e8e8d8',
   },
   warningCard: { borderColor: '#f5c8a0', backgroundColor: '#fff8f0' },
-  sectionHeader: {
-    fontSize: 15,
-    fontWeight: '700',
-    color: '#2d4a1a',
-    marginBottom: 8,
-  },
+  sectionHeader: { fontSize: 15, fontWeight: '700', color: '#2d4a1a', marginBottom: 8 },
   descriptionShort: {
     fontSize: 15,
     fontWeight: '600',
@@ -334,9 +359,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   descriptionLong: { fontSize: 14, color: '#5a5a4a', lineHeight: 21 },
-  traitList: { gap: 8 },
-  traitRow: { flexDirection: 'row', gap: 8 },
-  traitBullet: { color: '#5a7a3a', fontSize: 15, lineHeight: 21 },
+  traitList: {},
+  traitRow: { flexDirection: 'row', marginBottom: 8 },
+  traitBullet: { color: '#5a7a3a', fontSize: 15, marginRight: 8, lineHeight: 21 },
   traitText: { flex: 1, fontSize: 14, color: '#3a3a2a', lineHeight: 21 },
   attribution: {
     fontSize: 11,
@@ -345,6 +370,8 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginHorizontal: 16,
   },
+
+  // Found card
   findPrompt: { fontSize: 14, color: '#8a8a7a', marginBottom: 14 },
   markButton: {
     backgroundColor: '#5a7a3a',
@@ -357,47 +384,44 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 14,
     backgroundColor: '#e8f5d8',
     borderRadius: 10,
     padding: 12,
+    marginBottom: 12,
   },
   foundBadgeLabel: { fontSize: 16, fontWeight: '700', color: '#2d4a1a' },
   foundDate: { fontSize: 13, color: '#5a7a3a' },
-  notesDisplay: {
-    minHeight: 60,
-    backgroundColor: '#f4f4ec',
-    borderRadius: 10,
-    padding: 12,
+  findDetailRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', marginBottom: 10 },
+  findDetailChip: {
+    backgroundColor: '#e8f5d8',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    fontSize: 13,
+    color: '#2d4a1a',
+    fontWeight: '600',
+    marginRight: 8,
+    marginBottom: 4,
+    overflow: 'hidden',
   },
-  notesText: { fontSize: 14, color: '#3a3a2a', lineHeight: 20 },
-  notesPlaceholder: { fontSize: 14, color: '#bbb', fontStyle: 'italic' },
-  notesInput: {
-    minHeight: 80,
-    backgroundColor: '#f4f4ec',
-    borderRadius: 10,
-    padding: 12,
+  findLocationText: { fontSize: 13, color: '#5a5a4a', flex: 1 },
+  findNotes: {
     fontSize: 14,
-    color: '#3a3a2a',
+    color: '#5a5a4a',
+    fontStyle: 'italic',
     lineHeight: 20,
-    textAlignVertical: 'top',
+    marginBottom: 12,
+    backgroundColor: '#f4f4ec',
+    borderRadius: 8,
+    padding: 10,
   },
-  notesActions: { flexDirection: 'row', gap: 10, marginTop: 10 },
-  saveButton: {
-    flex: 1,
-    backgroundColor: '#5a7a3a',
-    borderRadius: 10,
+  editButton: {
+    borderWidth: 1,
+    borderColor: '#5a7a3a',
+    borderRadius: 12,
     paddingVertical: 12,
     alignItems: 'center',
   },
-  saveButtonText: { color: '#fff', fontSize: 14, fontWeight: '700' },
-  cancelButton: {
-    flex: 1,
-    backgroundColor: '#e8e8d8',
-    borderRadius: 10,
-    paddingVertical: 12,
-    alignItems: 'center',
-  },
-  cancelButtonText: { color: '#5a5a4a', fontSize: 14, fontWeight: '600' },
+  editButtonText: { color: '#5a7a3a', fontSize: 15, fontWeight: '700' },
   bottomPad: { height: 32 },
 });
