@@ -4,12 +4,12 @@ import {
   Text,
   ScrollView,
   StyleSheet,
-  Image,
   TouchableOpacity,
   Alert,
   Modal,
   StatusBar,
 } from 'react-native';
+import { Image } from 'expo-image';
 import { useLocalSearchParams, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MushroomEntry, UserFind } from '../../src/types';
@@ -140,15 +140,9 @@ export default function DetailScreen() {
                 </View>
               )}
               <Image
-                source={{
-                  uri: heroImage.urlOrLocalPath,
-                  headers: {
-                    'User-Agent': 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36',
-                    'Referer': 'https://commons.wikimedia.org/',
-                  },
-                }}
+                source={{ uri: heroImage.urlOrLocalPath }}
                 style={[styles.heroImage, !heroLoaded && { position: 'absolute', opacity: 0 }]}
-                resizeMode="cover"
+                contentFit="cover"
                 onLoad={() => setHeroLoaded(true)}
                 onError={() => setHeroError(true)}
               />
@@ -179,15 +173,9 @@ export default function DetailScreen() {
             onPress={() => setLightboxVisible(false)}
           >
             <Image
-              source={{
-                uri: heroImage?.urlOrLocalPath,
-                headers: {
-                  'User-Agent': 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36',
-                  'Referer': 'https://commons.wikimedia.org/',
-                },
-              }}
+              source={{ uri: heroImage?.urlOrLocalPath }}
               style={styles.lightboxImage}
-              resizeMode="contain"
+              contentFit="contain"
             />
             <View style={styles.lightboxClose}>
               <Text style={styles.lightboxCloseText}>✕</Text>
@@ -205,7 +193,7 @@ export default function DetailScreen() {
                   key={uri}
                   source={{ uri }}
                   style={styles.findPhoto}
-                  resizeMode="cover"
+                  contentFit="cover"
                 />
               ))}
             </ScrollView>

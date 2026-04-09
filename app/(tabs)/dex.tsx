@@ -5,10 +5,10 @@ import {
   FlatList,
   StyleSheet,
   TouchableOpacity,
-  Image,
   TextInput,
   ScrollView,
 } from 'react-native';
+import { Image } from 'expo-image';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getUserFinds } from '../../src/storage/userFinds';
@@ -95,15 +95,9 @@ function MushroomCard({
               </View>
             )}
             <Image
-              source={{
-                uri: heroImage.urlOrLocalPath,
-                headers: {
-                  'User-Agent': 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36',
-                  'Referer': 'https://commons.wikimedia.org/',
-                },
-              }}
+              source={{ uri: heroImage.urlOrLocalPath }}
               style={[styles.cardImage, !imgLoaded && { position: 'absolute', opacity: 0 }]}
-              resizeMode="cover"
+              contentFit="cover"
               onLoad={() => setImgLoaded(true)}
               onError={() => setImgError(true)}
             />
