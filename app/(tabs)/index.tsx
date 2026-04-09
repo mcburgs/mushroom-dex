@@ -80,7 +80,7 @@ export default function HomeScreen() {
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.appTitle}>🍄 Mushroom Dex</Text>
+          <Text style={styles.appTitle}>🍄 FungiDex</Text>
           <Text style={styles.appSubtitle}>Southern Ontario</Text>
         </View>
 

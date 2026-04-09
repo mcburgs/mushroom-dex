@@ -315,7 +315,7 @@ export default function DexScreen() {
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
       <View style={styles.header}>
-        <Text style={styles.title}>📖 Mushroom Dex</Text>
+        <Text style={styles.title}>📖 FungiDex</Text>
         <Text style={styles.subtitle}>{finds.length}/{allMushrooms.length} found</Text>
       </View>
 

@@ -1,4 +1,4 @@
-// ─── Mushroom Dex — Core Type Definitions ───────────────────────────────────
+// ─── FungiDex — Core Type Definitions ────────────────────────────────────────
 
 export type BroadType =
   | 'Gilled'

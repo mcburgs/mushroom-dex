@@ -25,7 +25,7 @@ function DisclaimerModal({ onAccept }: { onAccept: () => void }) {
       <SafeAreaView style={styles.disclaimerContainer}>
         <ScrollView contentContainerStyle={styles.disclaimerContent}>
           <Text style={styles.disclaimerEmoji}>🍄</Text>
-          <Text style={styles.disclaimerTitle}>Welcome to Mushroom Dex!</Text>
+          <Text style={styles.disclaimerTitle}>Welcome to FungiDex!</Text>
           <Text style={styles.disclaimerSubtitle}>Before we explore together</Text>
           <View style={styles.disclaimerBox}>
             <Text style={styles.disclaimerText}>
@@ -35,7 +35,7 @@ function DisclaimerModal({ onAccept }: { onAccept: () => void }) {
               Never eat any mushroom based on this app or any app. Always involve a knowledgeable adult before touching or tasting any wild mushroom.
             </Text>
             <Text style={styles.disclaimerText}>
-              Mushroom Dex is about the joy of looking, learning, and discovering — not about foraging.
+              FungiDex is about the joy of looking, learning, and discovering — not about foraging.
             </Text>
           </View>
           <TouchableOpacity style={styles.acceptButton} onPress={onAccept}>

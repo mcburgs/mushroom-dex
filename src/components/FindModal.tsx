@@ -71,7 +71,7 @@ export default function FindModal({
     if (status !== 'granted') {
       Alert.alert(
         'Permission needed',
-        'Allow Mushroom Dex to access your photos to attach them to finds.',
+        'Allow FungiDex to access your photos to attach them to finds.',
         [{ text: 'OK' }]
       );
       return;
@@ -92,7 +92,7 @@ export default function FindModal({
     if (status !== 'granted') {
       Alert.alert(
         'Permission needed',
-        'Allow Mushroom Dex to use your camera to photograph your find.',
+        'Allow FungiDex to use your camera to photograph your find.',
         [{ text: 'OK' }]
       );
       return;

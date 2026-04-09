@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Mushroom Dex",
-    "slug": "mushroom-dex",
+    "name": "FungiDex",
+    "slug": "fungidex",
     "scheme": "mushroomdex",
     "version": "1.0.0",
     "orientation": "portrait",
