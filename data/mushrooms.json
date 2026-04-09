@@ -71,13 +71,13 @@
     ],
     "images": [
       {
-        "id": "cotw-hero",
+        "id": "chicken-of-the-woods-hero",
         "mushroomEntryId": "chicken-of-the-woods",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Laetiporus_sulphureus_JPG1.jpg",
-        "caption": "Chicken of the Woods growing on oak",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Laetiporus_sulphureus_JPG1.jpg",
-        "attribution": "Lebrac, CC BY-SA 3.0",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/42106925/medium.jpg",
+        "caption": "",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/53713",
+        "attribution": "(c) Stephen John Davies, some rights reserved (CC BY-NC), uploaded by Stephen John Davies",
         "notes": "",
         "isHero": true
       }
@@ -151,13 +151,13 @@
     ],
     "images": [
       {
-        "id": "gp-hero",
+        "id": "giant-puffball-hero",
         "mushroomEntryId": "giant-puffball",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Calvatia_gigantea.jpg",
-        "caption": "Giant Puffball in a grassy field",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calvatia_gigantea.jpg",
-        "attribution": "Wikimedia Commons, Public Domain",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/209263726/medium.jpg",
+        "caption": "",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/57692",
+        "attribution": "(c) Krystelle Denis, some rights reserved (CC BY-NC), uploaded by Krystelle Denis",
         "notes": "",
         "isHero": true
       }
@@ -243,13 +243,13 @@
     ],
     "images": [
       {
-        "id": "tt-hero",
+        "id": "turkey-tail-hero",
         "mushroomEntryId": "turkey-tail",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Trametes_versicolor_-_Lindsey.jpg",
-        "caption": "Turkey Tail on a fallen log",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Trametes_versicolor_-_Lindsey.jpg",
-        "attribution": "Stu's Images, CC BY-SA 3.0",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/160331738/medium.jpg",
+        "caption": "",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/54134",
+        "attribution": "(c) Christine Young, some rights reserved (CC BY), uploaded by Christine Young",
         "notes": "",
         "isHero": true
       }
@@ -328,13 +328,13 @@
     ],
     "images": [
       {
-        "id": "chan-hero",
+        "id": "chanterelle-hero",
         "mushroomEntryId": "chanterelle",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/39/Chanterelle.jpg",
-        "caption": "Golden Chanterelles growing in leaf litter",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chanterelle.jpg",
-        "attribution": "Chmee2, CC BY 3.0",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/309948593/medium.jpg",
+        "caption": "",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/47347",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -414,13 +414,13 @@
     ],
     "images": [
       {
-        "id": "oy-hero",
+        "id": "oyster-mushroom-hero",
         "mushroomEntryId": "oyster-mushroom",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Oyster_Mushroom_Pleurotus_ostreatus.jpg",
-        "caption": "Oyster Mushrooms on a dead tree",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oyster_Mushroom_Pleurotus_ostreatus.jpg",
-        "attribution": "Archenzo, CC BY-SA 3.0",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/166311914/medium.jpg",
+        "caption": "",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48494",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -503,13 +503,13 @@
     ],
     "images": [
       {
-        "id": "ac-hero",
+        "id": "artists-conk-hero",
         "mushroomEntryId": "artists-conk",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Ganoderma_applanatum.jpg",
-        "caption": "Artist's Conk on a hardwood stump",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ganoderma_applanatum.jpg",
-        "attribution": "Wikimedia Commons",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/87978650/medium.jpeg",
+        "caption": "",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48473",
+        "attribution": "(c) eventupa, some rights reserved (CC BY-NC), uploaded by eventupa",
         "notes": "",
         "isHero": true
       }
@@ -589,13 +589,13 @@
     ],
     "images": [
       {
-        "id": "gsp-hero",
+        "id": "gem-studded-puffball-hero",
         "mushroomEntryId": "gem-studded-puffball",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Lycoperdon_perlatum_Pers_77.jpg",
-        "caption": "Gem-Studded Puffballs growing in troops",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lycoperdon_perlatum_Pers_77.jpg",
-        "attribution": "Archenzo, CC BY-SA 3.0",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/237728653/medium.jpg",
+        "caption": "",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48443",
+        "attribution": "(c) Stephan Pflume, some rights reserved (CC BY-NC), uploaded by Stephan Pflume",
         "notes": "",
         "isHero": true
       }
@@ -673,13 +673,13 @@
     ],
     "images": [
       {
-        "id": "bt-hero",
+        "id": "black-trumpet-hero",
         "mushroomEntryId": "black-trumpet",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Craterellus_cornucopioides_G1.jpg",
-        "caption": "Black Trumpets growing in leaf litter",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Craterellus_cornucopioides_G1.jpg",
-        "attribution": "George Chernilevsky, Public Domain",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/33343395/medium.jpeg",
+        "caption": "",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48607",
+        "attribution": "(c) Paul George, some rights reserved (CC BY-NC-SA), uploaded by Paul George",
         "notes": "",
         "isHero": true
       }
@@ -764,11 +764,11 @@
       {
         "id": "fly-agaric-hero",
         "mushroomEntryId": "fly-agaric",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/32/Amanita_muscaria_3_vliegenzwammen_op_rij.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/111494893/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amanita_muscaria_3_vliegenzwammen_op_rij.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48715",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -851,11 +851,11 @@
       {
         "id": "destroying-angel-hero",
         "mushroomEntryId": "destroying-angel",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Amanita_bisporigera_17932.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/158303/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amanita_bisporigera_17932.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/125390",
+        "attribution": "(c) Kathie Hodge, some rights reserved (CC BY-NC-SA)",
         "notes": "",
         "isHero": true
       }
@@ -938,11 +938,11 @@
       {
         "id": "death-cap-hero",
         "mushroomEntryId": "death-cap",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/9/99/Amanita_phalloides_1.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/111266235/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amanita_phalloides_1.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/52135",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -1022,11 +1022,11 @@
       {
         "id": "blusher-hero",
         "mushroomEntryId": "blusher",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Amanita_rubescens_2.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/161000598/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amanita_rubescens_2.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/67661",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -1108,11 +1108,11 @@
       {
         "id": "panther-cap-hero",
         "mushroomEntryId": "panther-cap",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Amanita_pantherina_2013_G1.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/112768591/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Amanita_pantherina_2013_G1.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48418",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -1195,11 +1195,11 @@
       {
         "id": "jack-o-lantern-hero",
         "mushroomEntryId": "jack-o-lantern",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/9/93/Jack_o%27_Lantern_Mushroom_Fungus.png",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/64193/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jack_o%27_Lantern_Mushroom_Fungus.png",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/126831",
+        "attribution": "(c) Jason Hollinger, some rights reserved (CC BY)",
         "notes": "",
         "isHero": true
       }
@@ -1284,11 +1284,11 @@
       {
         "id": "shaggy-mane-hero",
         "mushroomEntryId": "shaggy-mane",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/6/66/Coprinus_comatus%2C_the_shaggy_ink_cap%2C_lawyer%27s_wig%2C_or_shaggy_mane_mushroom.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/93399523/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Coprinus_comatus%2C_the_shaggy_ink_cap%2C_lawyer%27s_wig%2C_or_shaggy_mane_mushroom.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/47392",
+        "attribution": "(c) Tom Norton, some rights reserved (CC BY), uploaded by Tom Norton",
         "notes": "",
         "isHero": true
       }
@@ -1374,11 +1374,11 @@
       {
         "id": "honey-mushroom-hero",
         "mushroomEntryId": "honey-mushroom",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/8/84/Armillaria_mellea%2C_Honey_Fungus%2C_UK_1.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/10028/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Armillaria_mellea%2C_Honey_Fungus%2C_UK_1.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/55950",
+        "attribution": "(c) Nathan Wilson, some rights reserved (CC BY-SA)",
         "notes": "",
         "isHero": true
       }
@@ -1465,11 +1465,11 @@
       {
         "id": "velvet-shank-hero",
         "mushroomEntryId": "velvet-shank",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Flammulina_velutipes_04.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/178638291/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flammulina velutipes 04.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/67594",
+        "attribution": "(c) KimberlySteinmann, some rights reserved (CC BY-NC), uploaded by KimberlySteinmann",
         "notes": "",
         "isHero": true
       }
@@ -1557,11 +1557,11 @@
       {
         "id": "inky-cap-hero",
         "mushroomEntryId": "inky-cap",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Coprinellus_micaceus_Glimmer-Tintling.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/200982305/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Coprinellus_micaceus_Glimmer-Tintling.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/56318",
+        "attribution": "(c) Autumn, all rights reserved, uploaded by Autumn",
         "notes": "",
         "isHero": true
       }
@@ -1648,11 +1648,11 @@
       {
         "id": "wine-cap-hero",
         "mushroomEntryId": "wine-cap",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/a/ac/2011-05-19_Stropharia_rugosoannulata_Farl._ex_Murrill_183478.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/282486244/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2011-05-19_Stropharia_rugosoannulata_Farl._ex_Murrill_183478.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/119151",
+        "attribution": "(c) tchitcherine, some rights reserved (CC BY-NC)",
         "notes": "",
         "isHero": true
       }
@@ -1738,11 +1738,11 @@
       {
         "id": "meadow-mushroom-hero",
         "mushroomEntryId": "meadow-mushroom",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Agaricus_campestris.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/457253795/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Agaricus_campestris.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/143563",
+        "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo",
         "notes": "",
         "isHero": true
       }
@@ -1823,11 +1823,11 @@
       {
         "id": "indigo-milk-cap-hero",
         "mushroomEntryId": "indigo-milk-cap",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/8/86/Lactarius_indigo_48568_edit.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/28314678/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lactarius_indigo_48568_edit.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/120951",
+        "attribution": "(c) Dan Molter, some rights reserved (CC BY-SA)",
         "notes": "",
         "isHero": true
       }
@@ -1905,11 +1905,11 @@
       {
         "id": "lobster-mushroom-hero",
         "mushroomEntryId": "lobster-mushroom",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Hypomyces_lactifluorum.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/13394882/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hypomyces_lactifluorum.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48215",
+        "attribution": "(c) tombigelow, some rights reserved (CC BY-NC), uploaded by tombigelow",
         "notes": "",
         "isHero": true
       }
@@ -1996,11 +1996,11 @@
       {
         "id": "blewit-hero",
         "mushroomEntryId": "blewit",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Lepista_nuda_LC0372.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/57891023/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lepista nuda LC0372.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/1525548",
+        "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY), uploaded by Alan Rockefeller",
         "notes": "",
         "isHero": true
       }
@@ -2083,11 +2083,11 @@
       {
         "id": "velvet-roll-rim-hero",
         "mushroomEntryId": "velvet-roll-rim",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Samtfu%C3%9F-Holzkrempling_Tapinella_atrotomentosa.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/84323636/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Samtfu%C3%9F-Holzkrempling_Tapinella_atrotomentosa.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/154450",
+        "attribution": "(c) berkovec, some rights reserved (CC BY-NC)",
         "notes": "",
         "isHero": true
       }
@@ -2170,11 +2170,11 @@
       {
         "id": "orange-mock-oyster-hero",
         "mushroomEntryId": "orange-mock-oyster",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Phyllotopsis_nidulans_60083.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/4692/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Phyllotopsis_nidulans_60083.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/52529",
+        "attribution": "(c) Ken-ichi Ueda, some rights reserved (CC BY-NC-SA)",
         "notes": "",
         "isHero": true
       }
@@ -2258,11 +2258,11 @@
       {
         "id": "bleeding-mycena-hero",
         "mushroomEntryId": "bleeding-mycena",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/4/42/Haematopus-on-oak.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/335243815/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Haematopus-on-oak.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/63460",
+        "attribution": "(c) Jen, some rights reserved (CC BY-NC), uploaded by Jen",
         "notes": "",
         "isHero": true
       }
@@ -2344,11 +2344,11 @@
       {
         "id": "witchs-hat-hero",
         "mushroomEntryId": "witchs-hat",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Hygrocybe_conica_%282005_11_07%29_1.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/27220866/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hygrocybe_conica_%282005_11_07%29_1.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/51872",
+        "attribution": "(c) kmohatt, all rights reserved, uploaded by kmohatt",
         "notes": "",
         "isHero": true
       }
@@ -2431,11 +2431,11 @@
       {
         "id": "wrinkled-peach-hero",
         "mushroomEntryId": "wrinkled-peach",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Rhodotus_palmatus2.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/89947302/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rhodotus palmatus2.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/481482",
+        "attribution": "(c) Kirk Rumple, all rights reserved, uploaded by Kirk Rumple",
         "notes": "",
         "isHero": true
       }
@@ -2523,11 +2523,11 @@
       {
         "id": "king-bolete-hero",
         "mushroomEntryId": "king-bolete",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/34/Boletus_edulis_IT.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/354358918/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boletus_edulis_IT.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48701",
+        "attribution": "(c) MK-fotky, some rights reserved (CC BY-NC-ND)",
         "notes": "",
         "isHero": true
       }
@@ -2607,11 +2607,11 @@
       {
         "id": "bay-bolete-hero",
         "mushroomEntryId": "bay-bolete",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Boletus_badius_JPG1.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/110384969/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boletus_badius_JPG1.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/510854",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -2691,11 +2691,11 @@
       {
         "id": "two-colored-bolete-hero",
         "mushroomEntryId": "two-colored-bolete",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/1/13/Boletus_bicolor_89542.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/6147189/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Boletus_bicolor_89542.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/636546",
+        "attribution": "(c) Fluff Berger, some rights reserved (CC BY-SA), uploaded by Fluff Berger",
         "notes": "",
         "isHero": true
       }
@@ -2777,11 +2777,11 @@
       {
         "id": "painted-suillus-hero",
         "mushroomEntryId": "painted-suillus",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/5/58/Suillus_spraguei_58269.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/154611972/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Suillus spraguei 58269.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/782231",
+        "attribution": "(c) tombigelow, some rights reserved (CC BY-NC), uploaded by tombigelow",
         "notes": "",
         "isHero": true
       }
@@ -2863,11 +2863,11 @@
       {
         "id": "slippery-jack-hero",
         "mushroomEntryId": "slippery-jack",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/34/Suillus_luteus_475376.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/12823339/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Suillus_luteus_475376.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/53488",
+        "attribution": "(c) Davide Puddu, some rights reserved (CC BY), uploaded by Davide Puddu",
         "notes": "",
         "isHero": true
       }
@@ -2951,11 +2951,11 @@
       {
         "id": "old-man-of-the-woods-hero",
         "mushroomEntryId": "old-man-of-the-woods",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/7/73/Strobilomyces_floccopus_89374.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/7027090/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Strobilomyces_floccopus_89374.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/352462",
+        "attribution": "(c) Davide Puddu, some rights reserved (CC BY), uploaded by Davide Puddu",
         "notes": "",
         "isHero": true
       }
@@ -3037,11 +3037,11 @@
       {
         "id": "scarlet-stemmed-bolete-hero",
         "mushroomEntryId": "scarlet-stemmed-bolete",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/8/86/Heimioporus_betula_95300.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/1294323/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Heimioporus betula 95300.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/1125679",
+        "attribution": "(c) anonymous, some rights reserved (CC BY-SA)",
         "notes": "",
         "isHero": true
       }
@@ -3124,11 +3124,11 @@
       {
         "id": "butter-bolete-hero",
         "mushroomEntryId": "butter-bolete",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Anh%C3%A4ngsel-R%C3%B6hrling_Boletus_appendiculatus.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/29239298/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anh%C3%A4ngsel-R%C3%B6hrling_Boletus_appendiculatus.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/372726",
+        "attribution": "(c) Davide Puddu, some rights reserved (CC BY), uploaded by Davide Puddu",
         "notes": "",
         "isHero": true
       }
@@ -3217,11 +3217,11 @@
       {
         "id": "hen-of-the-woods-hero",
         "mushroomEntryId": "hen-of-the-woods",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/2/23/Grifola_frondosa_%2829715305790%29.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/7027079/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grifola_frondosa_%2829715305790%29.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/53714",
+        "attribution": "(c) Davide Puddu, some rights reserved (CC BY), uploaded by Davide Puddu",
         "notes": "",
         "isHero": true
       }
@@ -3308,11 +3308,11 @@
       {
         "id": "dryads-saddle-hero",
         "mushroomEntryId": "dryads-saddle",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/36/Polyporus_squamosus_Molter.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/11463375/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Polyporus_squamosus_Molter.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/940028",
+        "attribution": "(c) Sarah DeLong-Duhon, some rights reserved (CC BY-NC-SA), uploaded by Sarah DeLong-Duhon",
         "notes": "",
         "isHero": true
       }
@@ -3400,11 +3400,11 @@
       {
         "id": "birch-polypore-hero",
         "mushroomEntryId": "birch-polypore",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/5/50/Piptoporus_betulinus_55.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/332872409/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Piptoporus_betulinus_55.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/775410",
+        "attribution": "(c) Bill MacIndewar, some rights reserved (CC BY-NC), uploaded by Bill MacIndewar",
         "notes": "",
         "isHero": true
       }
@@ -3493,11 +3493,11 @@
       {
         "id": "red-belted-polypore-hero",
         "mushroomEntryId": "red-belted-polypore",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Fomitopsis_pinicola_109142.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/4274437/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fomitopsis_pinicola_109142.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/1098280",
+        "attribution": "(c) Kari Pihlaviita, some rights reserved (CC BY-NC), uploaded by Kari Pihlaviita",
         "notes": "",
         "isHero": true
       }
@@ -3584,11 +3584,11 @@
       {
         "id": "reishi-hero",
         "mushroomEntryId": "reishi",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/a/af/Ganoderma_tsugae.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/20032392/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ganoderma_tsugae.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/63274",
+        "attribution": "(c) smoore13, some rights reserved (CC BY-NC)",
         "notes": "",
         "isHero": true
       }
@@ -3672,11 +3672,11 @@
       {
         "id": "cinnabar-polypore-hero",
         "mushroomEntryId": "cinnabar-polypore",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/7/72/Pycnoporus_cinnabarinus_%28Jacq.%29_P._Karst_153.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/161138523/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pycnoporus_cinnabarinus_%28Jacq.%29_P._Karst_153.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/974663",
+        "attribution": "(c) melissahalton, some rights reserved (CC BY-NC)",
         "notes": "",
         "isHero": true
       }
@@ -3758,11 +3758,11 @@
       {
         "id": "skull-shaped-puffball-hero",
         "mushroomEntryId": "skull-shaped-puffball",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/1/19/Calvatia_craniiformis.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/925762/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calvatia craniiformis.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/335466",
+        "attribution": "(c) Sindhu Ramchandran, the mushroom was identified by Mr Marco Della Maggiora, Italy, some rights reserved (CC BY-SA)",
         "notes": "",
         "isHero": true
       }
@@ -3848,11 +3848,11 @@
       {
         "id": "pigskin-poison-puffball-hero",
         "mushroomEntryId": "pigskin-poison-puffball",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/2/25/Restant_van_een_aardappelbovist_%28Scleroderma_citrinum%29._21-01-2023._%28d.j.b%29_01.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/1334660/medium.JPG",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Restant van een aardappelbovist (Scleroderma citrinum). 21-01-2023. (d.j.b) 01.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/55927",
+        "attribution": "(c) Jason M Crockwell, some rights reserved (CC BY-NC-ND), uploaded by Jason M Crockwell",
         "notes": "",
         "isHero": true
       }
@@ -3936,11 +3936,11 @@
       {
         "id": "crowned-coral-hero",
         "mushroomEntryId": "crowned-coral",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/6/64/Artomyces_pyxidatus.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/24343731/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Artomyces_pyxidatus.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/334704",
+        "attribution": "(c) Adam Bryant, some rights reserved (CC BY-NC), uploaded by Adam Bryant",
         "notes": "",
         "isHero": true
       }
@@ -4024,11 +4024,11 @@
       {
         "id": "cauliflower-mushroom-hero",
         "mushroomEntryId": "cauliflower-mushroom",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/4/42/Grote_sponszwam_%28Sparassis_crispa%29._09-11-2023._%28d.j.b%29.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/47362337/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grote sponszwam (Sparassis crispa). 09-11-2023. (d.j.b).jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/546504",
+        "attribution": "(c) Evan M. Raskin, some rights reserved (CC BY), uploaded by Evan M. Raskin",
         "notes": "",
         "isHero": true
       }
@@ -4101,7 +4101,19 @@
       "purple",
       "branched"
     ],
-    "images": [],
+    "images": [
+      {
+        "id": "violet-tipped-coral-hero",
+        "mushroomEntryId": "violet-tipped-coral",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/13064331/medium.jpeg",
+        "caption": "",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/352188",
+        "attribution": "(c) mycowalt, some rights reserved (CC BY-SA), uploaded by mycowalt",
+        "notes": "",
+        "isHero": true
+      }
+    ],
     "sourceNotes": "Ramaria species challenging in Ontario. Violet tips help identify this species. Reference: MushroomExpert.com (Kuo).",
     "inDex": true
   },
@@ -4177,11 +4189,11 @@
       {
         "id": "golden-coral-hero",
         "mushroomEntryId": "golden-coral",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/1/13/2012-09-03_Ramaria_aurea_crop.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/2340696/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2012-09-03_Ramaria_aurea_crop.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/352176",
+        "attribution": "(c) Amadej Trnkoczy, some rights reserved (CC BY-NC-SA)",
         "notes": "",
         "isHero": true
       }
@@ -4267,11 +4279,11 @@
       {
         "id": "witchs-butter-hero",
         "mushroomEntryId": "witchs-butter",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/d/df/Tremella_mesenterica_branch.JPG",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/56108682/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tremella_mesenterica_branch.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48529",
+        "attribution": "(c) wojtest, all rights reserved, uploaded by wojtest",
         "notes": "",
         "isHero": true
       }
@@ -4360,11 +4372,11 @@
       {
         "id": "wood-ear-hero",
         "mushroomEntryId": "wood-ear",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/2/21/Jelly_Ear%2C_Auricularia_auricula-judae%2C_UK_2.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/24568624/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jelly_Ear%2C_Auricularia_auricula-judae%2C_UK_2.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/356394",
+        "attribution": "(c) pinonbistro, some rights reserved (CC BY-SA), uploaded by pinonbistro",
         "notes": "",
         "isHero": true
       }
@@ -4447,11 +4459,11 @@
       {
         "id": "brown-witchs-butter-hero",
         "mushroomEntryId": "brown-witchs-butter",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/2/22/Black_Witches%27_Butter_-_Exidia_glandulosa_%2826170322375%29.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/160018244/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Black_Witches%27_Butter_-_Exidia_glandulosa_%2826170322375%29.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/55568",
+        "attribution": "(c) Denis Ivanov, some rights reserved (CC BY-NC), uploaded by Denis Ivanov",
         "notes": "",
         "isHero": true
       }
@@ -4531,11 +4543,11 @@
       {
         "id": "orange-peel-fungus-hero",
         "mushroomEntryId": "orange-peel-fungus",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/0/01/Aleuria_aurantia_%28Orange_Peel_Fungus%29.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/73851/medium.JPG",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aleuria_aurantia_%28Orange_Peel_Fungus%29.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48716",
+        "attribution": "(c) sea-kangaroo, some rights reserved (CC BY-NC-ND), uploaded by sea-kangaroo",
         "notes": "",
         "isHero": true
       }
@@ -4615,11 +4627,11 @@
       {
         "id": "scarlet-cup-hero",
         "mushroomEntryId": "scarlet-cup",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Sarcoscypha_austriaca_81949.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/353955610/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sarcoscypha_austriaca_81949.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/126913",
+        "attribution": "(c) Björn Sothmann, some rights reserved (CC BY-SA), uploaded by Björn Sothmann",
         "notes": "",
         "isHero": true
       }
@@ -4702,11 +4714,11 @@
       {
         "id": "bay-cup-hero",
         "mushroomEntryId": "bay-cup",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/8/82/Peziza_spec._-_Lindsey_1.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/2340303/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Peziza spec. - Lindsey 1.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/1110763",
+        "attribution": "(c) BiteYourBum.Com Photography, some rights reserved (CC BY-NC-ND)",
         "notes": "",
         "isHero": true
       }
@@ -4790,11 +4802,11 @@
       {
         "id": "lions-mane-hero",
         "mushroomEntryId": "lions-mane",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Lion%27s-mane_mushroom_imported_from_iNaturalist_photo_29576097_on_21_March_2024.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/170247695/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lion%27s-mane_mushroom_imported_from_iNaturalist_photo_29576097_on_21_March_2024.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/49158",
+        "attribution": "(c) rmillerwell, all rights reserved",
         "notes": "",
         "isHero": true
       }
@@ -4874,11 +4886,11 @@
       {
         "id": "bears-head-tooth-hero",
         "mushroomEntryId": "bears-head-tooth",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/4/42/Hericium_americanum_59312.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/576898/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hericium_americanum_59312.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/124335",
+        "attribution": "(c) chockman, all rights reserved",
         "notes": "",
         "isHero": true
       }
@@ -4958,11 +4970,11 @@
       {
         "id": "hedgehog-mushroom-hero",
         "mushroomEntryId": "hedgehog-mushroom",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/31/Semmel-Stoppelpilz_Semmelgelber_Stacheling_Hydnum_repandum.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/102523946/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Semmel-Stoppelpilz Semmelgelber Stacheling Hydnum repandum.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48641",
+        "attribution": "(c) Piotr Lukasik, some rights reserved (CC BY), uploaded by Piotr Lukasik",
         "notes": "",
         "isHero": true
       }
@@ -5046,11 +5058,11 @@
       {
         "id": "yellow-morel-hero",
         "mushroomEntryId": "yellow-morel",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Morchella_americana_closer.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/7237495/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Morchella_americana_closer.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/462132",
+        "attribution": "(c) noah_siegel, some rights reserved (CC BY-NC-SA), uploaded by noah_siegel",
         "notes": "",
         "isHero": true
       }
@@ -5135,11 +5147,11 @@
       {
         "id": "black-morel-hero",
         "mushroomEntryId": "black-morel",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Morchella_importuna_211765.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/270659480/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Morchella_importuna_211765.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/487375",
+        "attribution": "(c) rmwintigard, some rights reserved (CC BY-NC)",
         "notes": "",
         "isHero": true
       }
@@ -5224,11 +5236,11 @@
       {
         "id": "false-morel-hero",
         "mushroomEntryId": "false-morel",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/9/97/Fr%C3%BChjahrslorchel.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/1865611/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fr%C3%BChjahrslorchel.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/85120",
+        "attribution": "(c) Kari Pihlaviita, some rights reserved (CC BY-NC)",
         "notes": "",
         "isHero": true
       }
@@ -5309,11 +5321,11 @@
       {
         "id": "common-stinkhorn-hero",
         "mushroomEntryId": "common-stinkhorn",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Phallus_impudicus_LC0235.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/172151620/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Phallus_impudicus_LC0235.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/54594",
+        "attribution": "(c) Nick Weller, all rights reserved, uploaded by Nick Weller",
         "notes": "",
         "isHero": true
       }
@@ -5394,11 +5406,11 @@
       {
         "id": "dog-stinkhorn-hero",
         "mushroomEntryId": "dog-stinkhorn",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Gemeine_Hundsrute_Mutinus_caninus.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/182832277/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gemeine_Hundsrute_Mutinus_caninus.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/63580",
+        "attribution": "(c) Nicolas Schwab, some rights reserved (CC BY-NC), uploaded by Nicolas Schwab",
         "notes": "",
         "isHero": true
       }
@@ -5485,11 +5497,11 @@
       {
         "id": "hairy-curtain-crust-hero",
         "mushroomEntryId": "hairy-curtain-crust",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/6/66/Striegeliger_Schichtpilz-Stereum_hirsutum-20191216-RM-150832.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/110545420/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Striegeliger_Schichtpilz-Stereum_hirsutum-20191216-RM-150832.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/55501",
+        "attribution": "(c) Natalie Gavidia, all rights reserved, uploaded by Natalie Gavidia",
         "notes": "",
         "isHero": true
       }
@@ -5572,11 +5584,11 @@
       {
         "id": "bleeding-broadleaf-crust-hero",
         "mushroomEntryId": "bleeding-broadleaf-crust",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Byssomerulius_corium_73928.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/196549330/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Byssomerulius corium 73928.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/118073",
+        "attribution": "(c) Cindi Fitzgerald, some rights reserved (CC BY-NC), uploaded by Cindi Fitzgerald",
         "notes": "",
         "isHero": true
       }
@@ -5657,11 +5669,11 @@
       {
         "id": "dead-mans-fingers-hero",
         "mushroomEntryId": "dead-mans-fingers",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/31/Dead_man%27s_fingers_Xylaria_polymorpha.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/240852113/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dead_man%27s_fingers_Xylaria_polymorpha.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/58698",
+        "attribution": "(c) Maria Romanova, all rights reserved, uploaded by Maria Romanova",
         "notes": "",
         "isHero": true
       }
@@ -5744,11 +5756,11 @@
       {
         "id": "candlesnuff-hero",
         "mushroomEntryId": "candlesnuff",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Geweihf%C3%B6rmige_Holzkeule_-_Staghorn_fungus_-_Xylaria_hypoxylon_-_01.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/57292054/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Geweihf%C3%B6rmige_Holzkeule_-_Staghorn_fungus_-_Xylaria_hypoxylon_-_01.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/55267",
+        "attribution": "no rights reserved, uploaded by Stephen James McWilliam",
         "notes": "",
         "isHero": true
       }
@@ -5828,11 +5840,11 @@
       {
         "id": "earthstar-hero",
         "mushroomEntryId": "earthstar",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/0/06/Geastrum_20070721.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/18854/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Geastrum_20070721.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/63557",
+        "attribution": "(c) JJ Harrison, some rights reserved (CC BY-SA)",
         "notes": "",
         "isHero": true
       }
@@ -5919,11 +5931,11 @@
       {
         "id": "splitgill-hero",
         "mushroomEntryId": "splitgill",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Schizophyllum_commune_%28Split_gill%29_%2833389628036%29.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/9681138/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Schizophyllum_commune_%28Split_gill%29_%2833389628036%29.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/54573",
+        "attribution": "(c) Grey Smith, some rights reserved (CC BY), uploaded by Grey Smith",
         "notes": "",
         "isHero": true
       }
@@ -6008,11 +6020,11 @@
       {
         "id": "funnel-chanterelle-hero",
         "mushroomEntryId": "funnel-chanterelle",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/0/08/Craterellus_tubaeformis_LC0374.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/337165669/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Craterellus_tubaeformis_LC0374.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/350511",
+        "attribution": "(c) growbadlands, some rights reserved (CC BY-NC), uploaded by growbadlands",
         "notes": "",
         "isHero": true
       }
@@ -6096,11 +6108,11 @@
       {
         "id": "conifer-tuft-hero",
         "mushroomEntryId": "conifer-tuft",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Hypholoma-capnoides.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/28385753/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hypholoma-capnoides.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/64071",
+        "attribution": "(c) Иван Матершев, some rights reserved (CC BY-NC), uploaded by Иван Матершев",
         "notes": "",
         "isHero": true
       }
@@ -6188,11 +6200,11 @@
       {
         "id": "galerina-marginata-hero",
         "mushroomEntryId": "galerina-marginata",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Galerina_marginata_Point_Reyes.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/188934/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Galerina_marginata_Point_Reyes.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/154735",
+        "attribution": "(c) Fluff Berger, all rights reserved",
         "notes": "",
         "isHero": true
       }
@@ -6280,11 +6292,11 @@
       {
         "id": "sulphur-tuft-hero",
         "mushroomEntryId": "sulphur-tuft",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/6/65/Hypholoma_fasciculare_Queteraro.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/256148291/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hypholoma_fasciculare_Queteraro.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/48767",
+        "attribution": "(c) Nicolas Schwab, some rights reserved (CC BY-NC), uploaded by Nicolas Schwab",
         "notes": "",
         "isHero": true
       }
@@ -6365,11 +6377,11 @@
       {
         "id": "false-chanterelle-hero",
         "mushroomEntryId": "false-chanterelle",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Hygrophoropsis_aurantiaca_241718.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/237942491/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hygrophoropsis_aurantiaca_241718.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/63538",
+        "attribution": "(c) Matthieu Morin, some rights reserved (CC BY-NC), uploaded by Matthieu Morin",
         "notes": "",
         "isHero": true
       }
@@ -6454,11 +6466,11 @@
       {
         "id": "green-spored-parasol-hero",
         "mushroomEntryId": "green-spored-parasol",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Chlorophyllum_molybdites_Guadalajara.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/4133009/medium.",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chlorophyllum_molybdites_Guadalajara.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/117308",
+        "attribution": "(c) Christian Schwarz, some rights reserved (CC BY-NC), uploaded by Christian Schwarz",
         "notes": "",
         "isHero": true
       }
@@ -6540,11 +6552,11 @@
       {
         "id": "shaggy-parasol-hero",
         "mushroomEntryId": "shaggy-parasol",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/1/10/Knolparasolzwammen._09-11-2023._%28d.j.b%29.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/11608138/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Knolparasolzwammen. 09-11-2023. (d.j.b).jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/56535",
+        "attribution": "(c) Kenton Kwok, all rights reserved, uploaded by Kenton Kwok",
         "notes": "",
         "isHero": true
       }
@@ -6627,11 +6639,11 @@
       {
         "id": "yellow-stainer-hero",
         "mushroomEntryId": "yellow-stainer",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/0/08/Agaricus_xanthodermus_section.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/5235305/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Agaricus_xanthodermus_section.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/118394",
+        "attribution": "(c) Damon Tighe, some rights reserved (CC BY-NC), uploaded by Damon Tighe",
         "notes": "",
         "isHero": true
       }
@@ -6712,11 +6724,11 @@
       {
         "id": "horse-mushroom-hero",
         "mushroomEntryId": "horse-mushroom",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/6/62/Gewone_anijschampignon_%28Agaricus_arvensis%29._14-10-2020_%28d.j.b.%29.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/457252694/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gewone anijschampignon (Agaricus arvensis). 14-10-2020 (d.j.b.).jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/58699",
+        "attribution": "(c) Felipe Hidalgo, some rights reserved (CC BY-NC), uploaded by Felipe Hidalgo",
         "notes": "",
         "isHero": true
       }
@@ -6797,11 +6809,11 @@
       {
         "id": "amethyst-deceiver-hero",
         "mushroomEntryId": "amethyst-deceiver",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Laccaria_amethystina_LC0370.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/100850899/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Laccaria_amethystina_LC0370.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/55899",
+        "attribution": "(c) Christian Berg, some rights reserved (CC BY), uploaded by Christian Berg",
         "notes": "",
         "isHero": true
       }
@@ -6885,11 +6897,11 @@
       {
         "id": "common-deceiver-hero",
         "mushroomEntryId": "common-deceiver",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/0/01/Lacc.lacc.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/4135349/medium.",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lacc.lacc.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/63236",
+        "attribution": "(c) Christian Schwarz, some rights reserved (CC BY-NC), uploaded by Christian Schwarz",
         "notes": "",
         "isHero": true
       }
@@ -6973,11 +6985,11 @@
       {
         "id": "sickener-hero",
         "mushroomEntryId": "sickener",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Russula_emetica_in_Poland.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/109349419/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Russula_emetica_in_Poland.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/49449",
+        "attribution": "(c) noah_siegel, some rights reserved (CC BY-NC-SA), uploaded by noah_siegel",
         "notes": "",
         "isHero": true
       }
@@ -7059,11 +7071,11 @@
       {
         "id": "green-cracking-russula-hero",
         "mushroomEntryId": "green-cracking-russula",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/7/79/Russula_virescens3.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/498772868/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Russula_virescens3.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/125720",
+        "attribution": "(c) Ján Červenka, some rights reserved (CC BY-NC), uploaded by Ján Červenka",
         "notes": "",
         "isHero": true
       }
@@ -7145,11 +7157,11 @@
       {
         "id": "crab-brittlegill-hero",
         "mushroomEntryId": "crab-brittlegill",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/b/b3/2011-11-08_Russula_xerampelina_%28Schaeff.%29_Fr_180998_mod.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/329463336/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2011-11-08_Russula_xerampelina_%28Schaeff.%29_Fr_180998_mod.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/154875",
+        "attribution": "(c) Uwe Winkler, some rights reserved (CC BY-NC), uploaded by Uwe Winkler",
         "notes": "",
         "isHero": true
       }
@@ -7231,11 +7243,11 @@
       {
         "id": "saffron-milk-cap-hero",
         "mushroomEntryId": "saffron-milk-cap",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/7/71/Lactarius_deliciosus_%28il%C2%B7lustraci%C3%B3_cient%C3%ADfica%29.png",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/235753421/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lactarius deliciosus (il·lustració científica).png",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/155197",
+        "attribution": "(c) timendez, some rights reserved (CC BY-NC), uploaded by timendez",
         "notes": "",
         "isHero": true
       }
@@ -7318,11 +7330,11 @@
       {
         "id": "birch-milk-cap-hero",
         "mushroomEntryId": "birch-milk-cap",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Lactarius_tabidus_G2.3.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/39927832/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lactarius tabidus G2.3.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/382886",
+        "attribution": "(c) Christian Schwarz, some rights reserved (CC BY-NC), uploaded by Christian Schwarz",
         "notes": "",
         "isHero": true
       }
@@ -7407,11 +7419,11 @@
       {
         "id": "scaly-pholiota-hero",
         "mushroomEntryId": "scaly-pholiota",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/34/Sparrige-Sch%C3%BCppling_%28Pholiota_squarrosa%29.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/97453612/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sparrige-Sch%C3%BCppling_%28Pholiota_squarrosa%29.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/153445",
+        "attribution": "(c) Алексей Эбель, some rights reserved (CC BY-NC), uploaded by Алексей Эбель",
         "notes": "",
         "isHero": true
       }
@@ -7494,11 +7506,11 @@
       {
         "id": "deadly-webcap-hero",
         "mushroomEntryId": "deadly-webcap",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/7/76/Cortinarius_rubellus_01.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/106833656/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cortinarius rubellus 01.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/500053",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -7580,11 +7592,11 @@
       {
         "id": "violet-webcap-hero",
         "mushroomEntryId": "violet-webcap",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/a/a7/2008-08-22_Cortinarius_violaceus_%28L.%29_Gray_18241.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/119988828/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2008-08-22_Cortinarius_violaceus_%28L.%29_Gray_18241.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/124344",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -7671,11 +7683,11 @@
       {
         "id": "dapperling-hero",
         "mushroomEntryId": "dapperling",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/1/19/Lepiota_cristata_20070819w.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/318056797/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lepiota cristata 20070819w.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/58694",
+        "attribution": "(c) Antonio Ezquerro Antoñana, all rights reserved, uploaded by Antonio Ezquerro Antoñana",
         "notes": "",
         "isHero": true
       }
@@ -7759,11 +7771,11 @@
       {
         "id": "birch-bolete-hero",
         "mushroomEntryId": "birch-bolete",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/39/Leccinum_scabrum_Birkenpilz.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/107147543/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Leccinum scabrum Birkenpilz.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/63232",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -7847,11 +7859,11 @@
       {
         "id": "orange-birch-bolete-hero",
         "mushroomEntryId": "orange-birch-bolete",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/0/05/Leccinum_versipelle_LC0366.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/106010710/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Leccinum_versipelle_LC0366.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/343661",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -7935,11 +7947,11 @@
       {
         "id": "bitter-bolete-hero",
         "mushroomEntryId": "bitter-bolete",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/e/e3/2006-09-14_Tylopilus_felleus_crop.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/307742277/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:2006-09-14_Tylopilus_felleus_crop.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/63489",
+        "attribution": "(c) Federico Calledda, some rights reserved (CC BY-NC), uploaded by Federico Calledda",
         "notes": "",
         "isHero": true
       }
@@ -8023,11 +8035,11 @@
       {
         "id": "beefsteak-fungus-hero",
         "mushroomEntryId": "beefsteak-fungus",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/2/28/Fistulina_hepatica.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/13074462/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fistulina_hepatica.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/123897",
+        "attribution": "(c) mycowalt, some rights reserved (CC BY-SA), uploaded by mycowalt",
         "notes": "",
         "isHero": true
       }
@@ -8118,11 +8130,11 @@
       {
         "id": "tinder-polypore-hero",
         "mushroomEntryId": "tinder-polypore",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Fomes_fomentarius_2010_G2.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/11787994/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fomes_fomentarius_2010_G2.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/127510",
+        "attribution": "(c) Vladimir Travkin, some rights reserved (CC BY-NC), uploaded by Vladimir Travkin",
         "notes": "",
         "isHero": true
       }
@@ -8210,11 +8222,11 @@
       {
         "id": "chaga-hero",
         "mushroomEntryId": "chaga",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/8/80/Inonotus_obliquus.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/96195428/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Inonotus obliquus.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/127021",
+        "attribution": "(c) Chris Wetherbee, all rights reserved, uploaded by Chris Wetherbee",
         "notes": "",
         "isHero": true
       }
@@ -8296,11 +8308,11 @@
       {
         "id": "pear-shaped-puffball-hero",
         "mushroomEntryId": "pear-shaped-puffball",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/5/55/Lycoperdon_pyriforme_Sasata_scale.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/39899941/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lycoperdon pyriforme Sasata scale.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/972793",
+        "attribution": "(c) Lauren Hallden, some rights reserved (CC BY-NC), uploaded by Lauren Hallden",
         "notes": "",
         "isHero": true
       }
@@ -8381,11 +8393,11 @@
       {
         "id": "pigs-ear-hero",
         "mushroomEntryId": "pigs-ear",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/5/51/Gomphus_clavatus_II_Totes_Gebirge.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/243950443/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gomphus_clavatus_II_Totes_Gebirge.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/54121",
+        "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY), uploaded by Alan Rockefeller",
         "notes": "",
         "isHero": true
       }
@@ -8468,11 +8480,11 @@
       {
         "id": "purple-fairy-club-hero",
         "mushroomEntryId": "purple-fairy-club",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Clavaria_zollingeri_90973.jpg",
+        "urlOrLocalPath": "https://static.inaturalist.org/photos/633459823/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Clavaria_zollingeri_90973.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/1672084",
+        "attribution": "(c) Mia Acker, all rights reserved, uploaded by Mia Acker",
         "notes": "",
         "isHero": true
       }
@@ -8557,11 +8569,11 @@
       {
         "id": "jelly-baby-hero",
         "mushroomEntryId": "jelly-baby",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Gr%C3%BCngelbes_Gallertk%C3%A4ppchen_Leotia_lubrica.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/254164000/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gr%C3%BCngelbes_Gallertk%C3%A4ppchen_Leotia_lubrica.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/58669",
+        "attribution": "(c) Alan Rockefeller, some rights reserved (CC BY-SA)",
         "notes": "",
         "isHero": true
       }
@@ -8645,11 +8657,11 @@
       {
         "id": "birds-nest-fungus-hero",
         "mushroomEntryId": "birds-nest-fungus",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/6/65/Crucibulum_spinosum_01.JPG",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/2324355/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Crucibulum spinosum 01.JPG",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/120242",
+        "attribution": "(c) Rob Curtis, some rights reserved (CC BY-NC-SA), uploaded by Rob Curtis",
         "notes": "",
         "isHero": true
       }
@@ -8732,11 +8744,11 @@
       {
         "id": "elf-saddle-hero",
         "mushroomEntryId": "elf-saddle",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/9/96/Helvella_lacunosa_%28south_BC%29.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/109187405/medium.jpeg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Helvella_lacunosa_%28south_BC%29.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/475619",
+        "attribution": "(c) Ramunė Vakarė, some rights reserved (CC BY-NC-SA), uploaded by Ramunė Vakarė",
         "notes": "",
         "isHero": true
       }
@@ -8821,11 +8833,11 @@
       {
         "id": "devils-urn-hero",
         "mushroomEntryId": "devils-urn",
-        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Urnula_craterium_mature.jpg",
+        "urlOrLocalPath": "https://inaturalist-open-data.s3.amazonaws.com/photos/94798/medium.jpg",
         "caption": "",
-        "sourceName": "Wikimedia Commons",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Urnula_craterium_mature.jpg",
-        "attribution": "Wikimedia Commons / CC BY-SA",
+        "sourceName": "iNaturalist",
+        "sourceUrl": "https://www.inaturalist.org/taxa/58709",
+        "attribution": "(c) Anthony Zukoff, some rights reserved (CC BY-NC-SA)",
         "notes": "",
         "isHero": true
       }
