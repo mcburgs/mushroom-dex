@@ -38,7 +38,7 @@
     "title": "Field Safety Rules",
     "topic": "Stay Safe",
     "unlockTier": "Explorer",
-    "body": "Mushrooms are incredible to observe, but some wild mushrooms are extremely dangerous. A few of the most deadly mushrooms in the world look almost identical to edible ones. Even expert mycologists with decades of experience never rely on just one identification feature.\n\nThe golden rule: never eat any wild mushroom unless a professional mycologist has confirmed the exact species in person. No app, book, or photo can make a safe eating identification on its own — including this one. Mushroom Dex is a learning and observation tool, not a foraging guide.\n\nWhen you are out observing, always wash your hands thoroughly after touching mushrooms. Some species can cause skin irritation or are toxic if absorbed through the skin. Never rub your eyes while handling mushrooms.\n\nLeave mushrooms where you find them when possible — they are doing important ecological work. If you want to look more closely, you can gently tip one over to see the underside, then leave it in place. Observing with curiosity and respect is the best way to explore.",
+    "body": "Mushrooms are incredible to observe, but some wild mushrooms are extremely dangerous. A few of the most deadly mushrooms in the world look almost identical to edible ones. Even expert mycologists with decades of experience never rely on just one identification feature.\n\nThe golden rule: never eat any wild mushroom unless a professional mycologist has confirmed the exact species in person. No app, book, or photo can make a safe eating identification on its own — including this one. FungiDex is a learning and observation tool, not a foraging guide.\n\nWhen you are out observing, always wash your hands thoroughly after touching mushrooms. Some species can cause skin irritation or are toxic if absorbed through the skin. Never rub your eyes while handling mushrooms.\n\nLeave mushrooms where you find them when possible — they are doing important ecological work. If you want to look more closely, you can gently tip one over to see the underside, then leave it in place. Observing with curiosity and respect is the best way to explore.",
     "images": [],
     "quizQuestions": [
       {
@@ -57,7 +57,7 @@
         "question": "Can an app give you a 100% safe mushroom eating identification?",
         "options": ["Yes, always", "Yes, if you take a clear photo", "No — apps cannot make safe eating IDs", "Only if the app is well-reviewed"],
         "correctIndex": 2,
-        "explanation": "No app can make a safe eating identification. Mushroom Dex is a learning tool, not a foraging guide."
+        "explanation": "No app can make a safe eating identification. FungiDex is a learning tool, not a foraging guide."
       },
       {
         "question": "What does the word \"look-alike\" mean in mushroom identification?",
