@@ -7,6 +7,8 @@ import {
   Image,
   TouchableOpacity,
   Alert,
+  Modal,
+  StatusBar,
 } from 'react-native';
 import { useLocalSearchParams, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -63,6 +65,9 @@ export default function DetailScreen() {
 
   const [find, setFind] = useState<UserFind | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [heroError, setHeroError] = useState(false);
+  const [heroLoaded, setHeroLoaded] = useState(false);
+  const [lightboxVisible, setLightboxVisible] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
@@ -122,19 +127,61 @@ export default function DetailScreen() {
     <SafeAreaView style={styles.safe} edges={['bottom']}>
       <ScrollView style={styles.scroll}>
         {/* Reference hero image */}
-        <View style={styles.heroContainer}>
-          {heroImage ? (
-            <Image
-              source={{ uri: heroImage.urlOrLocalPath }}
-              style={styles.heroImage}
-              resizeMode="cover"
-            />
+        <TouchableOpacity
+          activeOpacity={heroImage && !heroError ? 0.85 : 1}
+          onPress={() => { if (heroImage && !heroError) setLightboxVisible(true); }}
+          style={styles.heroContainer}
+        >
+          {heroImage && !heroError ? (
+            <>
+              {!heroLoaded && (
+                <View style={styles.heroPlaceholder}>
+                  <Text style={styles.heroEmoji}>🍄</Text>
+                </View>
+              )}
+              <Image
+                source={{ uri: heroImage.urlOrLocalPath }}
+                style={[styles.heroImage, !heroLoaded && { position: 'absolute', opacity: 0 }]}
+                resizeMode="cover"
+                onLoad={() => setHeroLoaded(true)}
+                onError={() => setHeroError(true)}
+              />
+              {heroLoaded && (
+                <View style={styles.expandBadge}>
+                  <Text style={styles.expandBadgeText}>⤢</Text>
+                </View>
+              )}
+            </>
           ) : (
             <View style={styles.heroPlaceholder}>
               <Text style={styles.heroEmoji}>🍄</Text>
             </View>
           )}
-        </View>
+        </TouchableOpacity>
+
+        {/* Fullscreen lightbox */}
+        <Modal
+          visible={lightboxVisible}
+          transparent
+          animationType="fade"
+          onRequestClose={() => setLightboxVisible(false)}
+        >
+          <StatusBar hidden />
+          <TouchableOpacity
+            style={styles.lightboxBackdrop}
+            activeOpacity={1}
+            onPress={() => setLightboxVisible(false)}
+          >
+            <Image
+              source={{ uri: heroImage?.urlOrLocalPath }}
+              style={styles.lightboxImage}
+              resizeMode="contain"
+            />
+            <View style={styles.lightboxClose}>
+              <Text style={styles.lightboxCloseText}>✕</Text>
+            </View>
+          </TouchableOpacity>
+        </Modal>
 
         {/* Your find photos */}
         {findPhotos.length > 0 && (
@@ -297,6 +344,37 @@ const styles = StyleSheet.create({
   heroImage: { width: '100%', height: '100%' },
   heroPlaceholder: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   heroEmoji: { fontSize: 80 },
+  expandBadge: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    backgroundColor: 'rgba(0,0,0,0.45)',
+    borderRadius: 8,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+  expandBadgeText: { color: '#fff', fontSize: 14 },
+
+  // Lightbox
+  lightboxBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.95)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  lightboxImage: { width: '100%', height: '100%' },
+  lightboxClose: {
+    position: 'absolute',
+    top: 48,
+    right: 20,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    borderRadius: 20,
+    width: 36,
+    height: 36,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  lightboxCloseText: { color: '#fff', fontSize: 18, fontWeight: '700' },
 
   // Find photos
   findPhotosSection: { paddingHorizontal: 16, paddingTop: 12 },

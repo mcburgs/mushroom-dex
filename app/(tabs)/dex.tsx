@@ -80,21 +80,31 @@ function MushroomCard({
   onPress: () => void;
 }) {
   const heroImage = entry.images.find((img) => img.isHero);
+  const [imgError, setImgError] = React.useState(false);
+  const [imgLoaded, setImgLoaded] = React.useState(false);
+  const fallbackEmoji = BROAD_TYPE_EMOJI[entry.broadType] ?? '🍄';
 
   return (
     <TouchableOpacity style={[styles.card, found && styles.cardFound]} onPress={onPress}>
       <View style={styles.cardImageContainer}>
-        {heroImage ? (
-          <Image
-            source={{ uri: heroImage.urlOrLocalPath }}
-            style={styles.cardImage}
-            resizeMode="cover"
-          />
+        {heroImage && !imgError ? (
+          <>
+            {!imgLoaded && (
+              <View style={styles.cardImagePlaceholder}>
+                <Text style={styles.cardImageEmoji}>{fallbackEmoji}</Text>
+              </View>
+            )}
+            <Image
+              source={{ uri: heroImage.urlOrLocalPath }}
+              style={[styles.cardImage, !imgLoaded && { position: 'absolute', opacity: 0 }]}
+              resizeMode="cover"
+              onLoad={() => setImgLoaded(true)}
+              onError={() => setImgError(true)}
+            />
+          </>
         ) : (
           <View style={styles.cardImagePlaceholder}>
-            <Text style={styles.cardImageEmoji}>
-              {BROAD_TYPE_EMOJI[entry.broadType] ?? '🍄'}
-            </Text>
+            <Text style={styles.cardImageEmoji}>{fallbackEmoji}</Text>
           </View>
         )}
         {found && (
