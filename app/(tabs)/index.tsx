@@ -122,7 +122,7 @@ export default function HomeScreen() {
             <Text style={styles.statNumber}>
               {totalDex > 0 ? Math.round((foundCount / totalDex) * 100) : 0}%
             </Text>
-            <Text style={styles.statLabel}>Complete</Text>
+            <Text style={styles.statLabel}>Done</Text>
           </View>
         </View>
 
@@ -201,9 +201,9 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#f9f6f0' },
   scroll: { flex: 1 },
   content: { paddingHorizontal: 16 },
-  header: { paddingTop: 20, paddingBottom: 12, alignItems: 'center' },
-  appTitle: { fontSize: 28, fontWeight: '800', color: '#2d4a1a' },
-  appSubtitle: { fontSize: 14, color: '#5a7a3a', marginTop: 2 },
+  header: { paddingTop: 20, paddingBottom: 12 },
+  appTitle: { fontSize: 28, fontWeight: '800', color: '#2d4a1a', textAlign: 'center' },
+  appSubtitle: { fontSize: 14, color: '#5a7a3a', marginTop: 2, textAlign: 'center' },
   stageCard: {
     backgroundColor: '#fff',
     borderRadius: 16,
@@ -240,8 +240,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   statBox: { alignItems: 'center', flex: 1 },
-  statNumber: { fontSize: 28, fontWeight: '800', color: '#2d4a1a' },
-  statLabel: { fontSize: 12, color: '#8a8a7a', marginTop: 2 },
+  statNumber: { fontSize: 24, fontWeight: '800', color: '#2d4a1a' },
+  statLabel: { fontSize: 11, color: '#8a8a7a', marginTop: 2, textAlign: 'center' },
   statDivider: { width: 1, height: 40, backgroundColor: '#e8f5d8' },
   quickNav: {
     flexDirection: 'row',

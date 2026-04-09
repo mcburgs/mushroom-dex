@@ -41,14 +41,18 @@ function TraitList({ items }: { items: string[] }) {
   );
 }
 
-function TagRow({ tags }: { tags: string[] }) {
+function TagRow({ label, tags }: { label: string; tags: string[] }) {
+  if (!tags.length) return null;
   return (
-    <View style={styles.tagRow}>
-      {tags.map((tag, i) => (
-        <View key={i} style={styles.tag}>
-          <Text style={styles.tagText}>{tag}</Text>
-        </View>
-      ))}
+    <View style={styles.tagRowContainer}>
+      <Text style={styles.tagRowLabel}>{label}</Text>
+      <View style={styles.tagRow}>
+        {tags.map((tag, i) => (
+          <View key={i} style={styles.tag}>
+            <Text style={styles.tagText}>{tag + ' '}</Text>
+          </View>
+        ))}
+      </View>
     </View>
   );
 }
@@ -155,9 +159,9 @@ export default function DetailScreen() {
 
         {/* Tags */}
         <View style={styles.tagsSection}>
-          <TagRow tags={entry.seasonTags.map((t) => `🗓️ ${t}`)} />
-          <TagRow tags={entry.habitatTags.map((t) => `🌲 ${t}`)} />
-          <TagRow tags={entry.substrateTags.map((t) => `🪵 ${t}`)} />
+          <TagRow label="🗓️  Season" tags={entry.seasonTags} />
+          <TagRow label="🌲  Habitat" tags={entry.habitatTags} />
+          <TagRow label="🪵  Substrate" tags={entry.substrateTags} />
         </View>
 
         {/* Description */}
@@ -204,7 +208,7 @@ export default function DetailScreen() {
             <>
               <SectionHeader title="Found it?" />
               <Text style={styles.findPrompt}>
-                Mark this mushroom when you've spotted it in the wild!
+                {`Found this one in the wild? Mark it and earn ${entry.pointsValue} points!`}
               </Text>
               <TouchableOpacity style={styles.markButton} onPress={handleMarkFound}>
                 <Text style={styles.markButtonText}>Mark as Found 🍄</Text>
@@ -290,8 +294,10 @@ const styles = StyleSheet.create({
   typeChipText: { fontSize: 13, fontWeight: '600', color: '#2d4a1a' },
   rarityText: { fontSize: 13, fontWeight: '600' },
   pointsText: { fontSize: 13, color: '#8b6914', fontWeight: '700' },
-  tagsSection: { paddingHorizontal: 16, paddingTop: 12, gap: 6 },
-  tagRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
+  tagsSection: { paddingHorizontal: 16, paddingTop: 12 },
+  tagRowContainer: { width: '100%', marginBottom: 10 },
+  tagRowLabel: { fontSize: 12, fontWeight: '700', color: '#5a7a3a', marginBottom: 6 },
+  tagRow: { flexDirection: 'row', flexWrap: 'wrap', width: '100%' },
   tag: {
     backgroundColor: '#fff',
     borderRadius: 8,
@@ -299,6 +305,9 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     borderWidth: 1,
     borderColor: '#d4e8b8',
+    marginRight: 6,
+    marginBottom: 6,
+    alignSelf: 'flex-start',
   },
   tagText: { fontSize: 12, color: '#5a7a3a' },
   card: {
@@ -336,7 +345,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
     marginHorizontal: 16,
   },
-  findPrompt: { fontSize: 14, color: '#8a8a7a', marginBottom: 14, lineHeight: 20 },
+  findPrompt: { fontSize: 14, color: '#8a8a7a', marginBottom: 14 },
   markButton: {
     backgroundColor: '#5a7a3a',
     borderRadius: 12,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function LearnScreen() {
@@ -9,7 +9,7 @@ export default function LearnScreen() {
         <Text style={styles.title}>🌿 Learn</Text>
         <Text style={styles.subtitle}>Lessons and visual glossary</Text>
       </View>
-      <View style={styles.body}>
+      <ScrollView contentContainerStyle={styles.body}>
         <Text style={styles.comingEmoji}>📚</Text>
         <Text style={styles.comingTitle}>Coming in Phase 5</Text>
         <Text style={styles.comingText}>
@@ -18,7 +18,7 @@ export default function LearnScreen() {
         <Text style={styles.comingText}>
           A visual glossary, simple quizzes, and lessons that unlock as you progress through Explorer → Observer → Naturalist → Junior Expert.
         </Text>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -35,10 +35,9 @@ const styles = StyleSheet.create({
   title: { fontSize: 24, fontWeight: '800', color: '#2d4a1a' },
   subtitle: { fontSize: 13, color: '#5a7a3a', marginTop: 2 },
   body: {
-    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     padding: 32,
+    paddingBottom: 48,
   },
   comingEmoji: { fontSize: 64, marginBottom: 20 },
   comingTitle: { fontSize: 22, fontWeight: '700', color: '#2d4a1a', marginBottom: 16 },

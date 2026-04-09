@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const UPCOMING_MISSIONS = [
@@ -17,7 +17,7 @@ export default function MissionsScreen() {
         <Text style={styles.title}>⭐ Missions</Text>
         <Text style={styles.subtitle}>Challenges and badges</Text>
       </View>
-      <View style={styles.body}>
+      <ScrollView contentContainerStyle={styles.body}>
         <Text style={styles.comingEmoji}>🗺️</Text>
         <Text style={styles.comingTitle}>Coming in Phase 6</Text>
         <Text style={styles.comingText}>
@@ -30,7 +30,7 @@ export default function MissionsScreen() {
             <Text style={styles.previewText}>{m.label}</Text>
           </View>
         ))}
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -47,10 +47,9 @@ const styles = StyleSheet.create({
   title: { fontSize: 24, fontWeight: '800', color: '#2d4a1a' },
   subtitle: { fontSize: 13, color: '#5a7a3a', marginTop: 2 },
   body: {
-    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
     padding: 32,
+    paddingBottom: 48,
   },
   comingEmoji: { fontSize: 64, marginBottom: 20 },
   comingTitle: { fontSize: 22, fontWeight: '700', color: '#2d4a1a', marginBottom: 16 },
@@ -81,6 +80,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#e8e8d8',
   },
-  previewEmoji: { fontSize: 22 },
-  previewText: { fontSize: 14, color: '#3a3a2a' },
+  previewEmoji: { fontSize: 22, flexShrink: 0 },
+  previewText: { fontSize: 14, color: '#3a3a2a', flex: 1, flexWrap: 'wrap' },
 });
