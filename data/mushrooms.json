@@ -1,0 +1,419 @@
+[
+  {
+    "id": "chicken-of-the-woods",
+    "commonName": "Chicken of the Woods",
+    "scientificName": "Laetiporus sulphureus / cincinnatus",
+    "alternateNames": ["Sulphur Shelf"],
+    "taxonLevel": "species-group",
+    "descriptionShort": "A bold, bright orange-and-yellow shelf fungus that grows in big layered clusters on trees. Hard to miss.",
+    "descriptionLong": "Chicken of the Woods grows in overlapping fan-shaped shelves directly on wood. The top surface is vivid orange, fading to yellow at the edges. The underside is bright lemon yellow with tiny pores — no gills. Young specimens are soft and juicy; older ones become tough and dry. It can be massive, sometimes weighing several kilograms. Found on both living and dead trees, especially oaks and cherries in Ontario.",
+    "broadType": "Bracket/Polypore",
+    "habitatTags": ["forest", "parks", "trail-sides"],
+    "substrateTags": ["wood", "living-tree", "dead-tree", "oak", "cherry"],
+    "seasonTags": ["summer", "fall"],
+    "colorTags": ["orange", "yellow"],
+    "shapeTags": ["shelf", "fan", "overlapping"],
+    "textureTags": ["smooth-top", "pored-underside", "soft-when-young"],
+    "keyTraits": [
+      "Bright orange top, yellow edges",
+      "Lemon-yellow pored underside — no gills",
+      "Grows in overlapping shelves on wood",
+      "Can be very large — sometimes the size of a dinner plate"
+    ],
+    "expertClues": [
+      "L. sulphureus grows on hardwoods; L. cincinnatus grows at the base of oaks from roots",
+      "Texture changes dramatically with age — young is soft, old is chalky",
+      "No stem; attached directly to wood"
+    ],
+    "confusionWarnings": [
+      "Not easily confused when young — the colour is unmistakable",
+      "Old dry specimens lose colour and could confuse a beginner"
+    ],
+    "compareWithIds": ["turkey-tail", "artists-conk"],
+    "rarityTier": "Uncommon",
+    "encounterRarity": "Patches appear reliably on the same tree year after year once established",
+    "idDifficulty": "Easy",
+    "pointsValue": 20,
+    "missionTags": ["bracket", "wood-grower", "bright-colour", "large"],
+    "images": [
+      {
+        "id": "cotw-hero",
+        "mushroomEntryId": "chicken-of-the-woods",
+        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Laetiporus_sulphureus_JPG1.jpg/800px-Laetiporus_sulphureus_JPG1.jpg",
+        "caption": "Chicken of the Woods growing on oak",
+        "sourceName": "Wikimedia Commons",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Laetiporus_sulphureus_JPG1.jpg",
+        "attribution": "Lebrac, CC BY-SA 3.0",
+        "notes": "",
+        "isHero": true
+      }
+    ],
+    "sourceNotes": "Common southern Ontario species. Appears reliably summer through fall on hardwoods.",
+    "inDex": true
+  },
+  {
+    "id": "giant-puffball",
+    "commonName": "Giant Puffball",
+    "scientificName": "Calvatia gigantea",
+    "alternateNames": [],
+    "taxonLevel": "species",
+    "descriptionShort": "A huge white ball that can grow to the size of a volleyball or bigger. Grows in fields, parks, and forest edges.",
+    "descriptionLong": "Giant Puffballs are unmistakable: large, round to oval, pure white on the outside, with smooth leathery skin. When young and fresh, the inside is completely white and firm. As they age the interior yellows, then turns olive-brown as the spores mature. They grow singly or in small groups in grassy areas, meadows, parks, and forest edges. One of the few mushrooms where the identifying feature — totally white solid interior — also means it's safe to confirm what you have.",
+    "broadType": "Puffball",
+    "habitatTags": ["parks", "meadows", "forest-edge", "grassy-areas", "backyards"],
+    "substrateTags": ["ground", "grass", "soil"],
+    "seasonTags": ["summer", "fall"],
+    "colorTags": ["white"],
+    "shapeTags": ["round", "oval", "ball"],
+    "textureTags": ["smooth", "leathery"],
+    "keyTraits": [
+      "Large white ball — can be volleyball-sized or bigger",
+      "No cap, no stem, no gills — just a white ball",
+      "Interior pure white and firm when young"
+    ],
+    "expertClues": [
+      "A cross-section check is important: interior must be pure white all the way through — no outline of a figure inside (which would indicate a dangerous Amanita egg)",
+      "Skin smooth, not warty",
+      "Grows from ground, not from wood"
+    ],
+    "confusionWarnings": [
+      "Very young Amanita eggs (buttons) can look like small puffballs — always cross-section to check for a figure inside",
+      "Smaller puffballs in the same area may be a different species"
+    ],
+    "compareWithIds": ["gem-studded-puffball"],
+    "rarityTier": "Uncommon",
+    "encounterRarity": "Can appear in the same spot in parks or fields year after year",
+    "idDifficulty": "Easy",
+    "pointsValue": 25,
+    "missionTags": ["puffball", "grassy", "large", "parks"],
+    "images": [
+      {
+        "id": "gp-hero",
+        "mushroomEntryId": "giant-puffball",
+        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Calvatia_gigantea.jpg/800px-Calvatia_gigantea.jpg",
+        "caption": "Giant Puffball in a grassy field",
+        "sourceName": "Wikimedia Commons",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Calvatia_gigantea.jpg",
+        "attribution": "Wikimedia Commons, Public Domain",
+        "notes": "",
+        "isHero": true
+      }
+    ],
+    "sourceNotes": "Reliable summer and fall find in southern Ontario parks, meadows, and trail edges.",
+    "inDex": true
+  },
+  {
+    "id": "turkey-tail",
+    "commonName": "Turkey Tail",
+    "scientificName": "Trametes versicolor",
+    "alternateNames": ["Many-zoned Polypore"],
+    "taxonLevel": "species",
+    "descriptionShort": "Thin, fan-shaped brackets in overlapping rows on logs and stumps, with concentric bands of brown, tan, grey, and cream. One of the most common wood fungi in Ontario.",
+    "descriptionLong": "Turkey Tail covers fallen logs and stumps in overlapping, fan-shaped shelves barely a few millimetres thick. The top has distinct concentric zones of colour — browns, greys, tans, creams, sometimes blue-green near the base. The edge is wavy and often paler. The underside is white or cream with fine pores, not gills. It's flexible, not brittle. One of the most reliably common mushrooms in Ontario forests year-round.",
+    "broadType": "Bracket/Polypore",
+    "habitatTags": ["forest", "trail-sides", "parks"],
+    "substrateTags": ["wood", "dead-log", "stump", "fallen-branch"],
+    "seasonTags": ["spring", "summer", "fall", "winter"],
+    "colorTags": ["brown", "tan", "grey", "cream", "multi-zoned"],
+    "shapeTags": ["fan", "shelf", "thin", "overlapping"],
+    "textureTags": ["velvety-top", "pored-underside", "flexible", "leathery"],
+    "keyTraits": [
+      "Concentric colour bands on top — no two are the same pattern",
+      "White or cream pored underside — fine pores, not gills",
+      "Thin and flexible, not thick and rigid",
+      "Always on wood — logs, stumps, fallen branches"
+    ],
+    "expertClues": [
+      "Pores are very fine — around 3–5 per millimetre",
+      "Top surface is velvety/hairy, not smooth",
+      "Several lookalikes exist — check the pore surface carefully"
+    ],
+    "confusionWarnings": [
+      "Stereum species look similar but have a smooth, non-pored underside",
+      "False Turkey Tail (Stereum ostrea) has a smooth orange-brown underside — no pores"
+    ],
+    "compareWithIds": ["chicken-of-the-woods", "artists-conk"],
+    "rarityTier": "Common",
+    "encounterRarity": "Found year-round; one of the most abundant woodland fungi in the region",
+    "idDifficulty": "Moderate",
+    "pointsValue": 10,
+    "missionTags": ["bracket", "wood-grower", "year-round", "common"],
+    "images": [
+      {
+        "id": "tt-hero",
+        "mushroomEntryId": "turkey-tail",
+        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Trametes_versicolor_-_Lindsey.jpg/800px-Trametes_versicolor_-_Lindsey.jpg",
+        "caption": "Turkey Tail on a fallen log",
+        "sourceName": "Wikimedia Commons",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Trametes_versicolor_-_Lindsey.jpg",
+        "attribution": "Stu's Images, CC BY-SA 3.0",
+        "notes": "",
+        "isHero": true
+      }
+    ],
+    "sourceNotes": "Ubiquitous across southern Ontario. Year-round presence makes it a reliable beginner find.",
+    "inDex": true
+  },
+  {
+    "id": "chanterelle",
+    "commonName": "Chanterelle",
+    "scientificName": "Cantharellus cibarius group",
+    "alternateNames": ["Golden Chanterelle"],
+    "taxonLevel": "species-group",
+    "descriptionShort": "Golden-yellow, vase-shaped mushrooms with wavy caps and forking ridges (not gills) on the underside. Found in summer and fall in mixed forest.",
+    "descriptionLong": "Chanterelles are golden to egg-yolk yellow, with a cap that starts rounded and becomes wavy and irregular as it matures. The most important feature: the underside has forked ridges that run partway down the stem — they are blunt, not sharp, and are part of the mushroom flesh, not separate blade-like gills. The stem is solid and the same colour as the cap. They grow from soil in mixed or deciduous forest, often near oaks and beeches.",
+    "broadType": "Gilled",
+    "habitatTags": ["forest", "mixed-forest", "deciduous-forest"],
+    "substrateTags": ["ground", "soil", "leaf-litter"],
+    "seasonTags": ["summer", "fall"],
+    "colorTags": ["yellow", "golden", "orange-yellow"],
+    "shapeTags": ["vase", "funnel", "wavy-cap"],
+    "textureTags": ["smooth-cap", "forked-ridges", "solid-stem"],
+    "keyTraits": [
+      "Golden yellow colour throughout — cap, ridges, and stem",
+      "Forking blunt ridges on underside — not true gills",
+      "Cap edge is wavy and irregular when mature",
+      "Fruity, apricot-like smell"
+    ],
+    "expertClues": [
+      "Ridges fork repeatedly and run down the stem (decurrent)",
+      "Flesh is white or pale yellow when cut — doesn't change colour",
+      "No ring on stem",
+      "Grows from soil, never from wood"
+    ],
+    "confusionWarnings": [
+      "Jack-o-lantern mushroom (Omphalotus) looks similar but has true sharp gills, grows in clusters on wood or buried roots, and glows faintly in total darkness",
+      "False chanterelle (Hygrophoropsis aurantiaca) has thin, crowded true gills"
+    ],
+    "compareWithIds": ["black-trumpet"],
+    "rarityTier": "Uncommon",
+    "encounterRarity": "Reliable summer and fall find in good mixed forest habitat; appears in the same spots year after year",
+    "idDifficulty": "Moderate",
+    "pointsValue": 25,
+    "missionTags": ["gilled", "forest-floor", "summer", "golden"],
+    "images": [
+      {
+        "id": "chan-hero",
+        "mushroomEntryId": "chanterelle",
+        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Chanterelle.jpg/800px-Chanterelle.jpg",
+        "caption": "Golden Chanterelles growing in leaf litter",
+        "sourceName": "Wikimedia Commons",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chanterelle.jpg",
+        "attribution": "Chmee2, CC BY 3.0",
+        "notes": "",
+        "isHero": true
+      }
+    ],
+    "sourceNotes": "Classic summer-fall find in southern Ontario mixed forest. One of the most prized and distinctive finds for a young naturalist.",
+    "inDex": true
+  },
+  {
+    "id": "oyster-mushroom",
+    "commonName": "Oyster Mushroom",
+    "scientificName": "Pleurotus ostreatus group",
+    "alternateNames": ["Tree Oyster"],
+    "taxonLevel": "species-group",
+    "descriptionShort": "Fan-shaped, white to grey-brown caps in overlapping clusters on dead or dying trees. Gills run down a short off-centre stem or no stem at all.",
+    "descriptionLong": "Oyster Mushrooms grow in overlapping clusters on dead or dying hardwood trees. The cap is fan-shaped or oyster-shaped, smooth, white to grey or pale brown, with the edge often rolled under when young. The gills are white, close together, and run down toward the attachment point (the stem, if there is one, is short and off-centre). They can grow high up on trees or at the base of stumps. The late-season variety can appear even in cold weather.",
+    "broadType": "Gilled",
+    "habitatTags": ["forest", "parks", "trail-sides"],
+    "substrateTags": ["wood", "dead-tree", "stump", "fallen-log"],
+    "seasonTags": ["fall", "spring"],
+    "colorTags": ["white", "grey", "pale-brown"],
+    "shapeTags": ["fan", "shelf", "oyster-shaped"],
+    "textureTags": ["smooth-cap", "white-gills", "clustered"],
+    "keyTraits": [
+      "Fan-shaped white to grey-brown cap",
+      "White gills that run toward the stem",
+      "Grows in clusters on dead wood",
+      "Little or no stem — attached directly or with a short side stem"
+    ],
+    "expertClues": [
+      "Cap surface is smooth, not scaly",
+      "Gills are white and close; they run down the stem (decurrent)",
+      "Grows strictly on wood — never from soil",
+      "Spore print is white to lilac-grey"
+    ],
+    "confusionWarnings": [
+      "Angel wings (Pleurocybella porrigens) are thinner, smaller, pure white — on conifer wood",
+      "Mock oyster (Phyllotopsis nidulans) is bright orange-yellow with a strong foul smell"
+    ],
+    "compareWithIds": ["chicken-of-the-woods"],
+    "rarityTier": "Common",
+    "encounterRarity": "Regular fall and spring find on dead hardwood; sometimes fruits after cool rains in late summer",
+    "idDifficulty": "Easy",
+    "pointsValue": 15,
+    "missionTags": ["gilled", "wood-grower", "clustered", "fall"],
+    "images": [
+      {
+        "id": "oy-hero",
+        "mushroomEntryId": "oyster-mushroom",
+        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Oyster_Mushroom_Pleurotus_ostreatus.jpg/800px-Oyster_Mushroom_Pleurotus_ostreatus.jpg",
+        "caption": "Oyster Mushrooms on a dead tree",
+        "sourceName": "Wikimedia Commons",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oyster_Mushroom_Pleurotus_ostreatus.jpg",
+        "attribution": "Archenzo, CC BY-SA 3.0",
+        "notes": "",
+        "isHero": true
+      }
+    ],
+    "sourceNotes": "Common and reliably found on dead Ontario hardwoods — especially beech and elm.",
+    "inDex": true
+  },
+  {
+    "id": "artists-conk",
+    "commonName": "Artist's Conk",
+    "scientificName": "Ganoderma applanatum",
+    "alternateNames": ["Artist's Bracket"],
+    "taxonLevel": "species",
+    "descriptionShort": "A large, hard, flat shelf bracket with a brown-grey top and white underside that bruises brown when scratched. Found on hardwood stumps and trunks.",
+    "descriptionLong": "Artist's Conk is one of the largest and most durable bracket fungi in Ontario. The top is hard, grey-brown, often layered and dusty with brown spores. The underside is brilliant white with very fine pores — and it permanently bruises dark brown when marked, which is why artists use it as a natural canvas. It's perennial, adding new growth each year, and can grow for decades. Old specimens can be enormous. Found on dead or dying hardwoods, especially maples and beeches.",
+    "broadType": "Bracket/Polypore",
+    "habitatTags": ["forest", "parks", "trail-sides"],
+    "substrateTags": ["wood", "dead-tree", "stump", "hardwood"],
+    "seasonTags": ["spring", "summer", "fall", "winter"],
+    "colorTags": ["grey-brown", "white-underside"],
+    "shapeTags": ["shelf", "flat", "large", "hard"],
+    "textureTags": ["hard", "woody", "pored-underside", "dusty-top"],
+    "keyTraits": [
+      "Hard, woody shelf — does not flex",
+      "White pored underside that bruises brown when scratched",
+      "Grey-brown layered top, often dusty with spores",
+      "Perennial — grows bigger each year"
+    ],
+    "expertClues": [
+      "Brown bruising on white underside is the signature feature",
+      "Brown spore dust often visible around the base on old specimens",
+      "Grows on hardwoods — not conifers",
+      "Flesh is hard, corky, not soft"
+    ],
+    "confusionWarnings": [
+      "Ganoderma tsugae (Hemlock Varnish Shelf) is similar but has a shiny lacquered top and grows on conifers"
+    ],
+    "compareWithIds": ["turkey-tail", "chicken-of-the-woods"],
+    "rarityTier": "Common",
+    "encounterRarity": "Perennial and stable — will be in the same place year after year",
+    "idDifficulty": "Easy",
+    "pointsValue": 10,
+    "missionTags": ["bracket", "wood-grower", "year-round", "large"],
+    "images": [
+      {
+        "id": "ac-hero",
+        "mushroomEntryId": "artists-conk",
+        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ganoderma_applanatum.jpg/800px-Ganoderma_applanatum.jpg",
+        "caption": "Artist's Conk on a hardwood stump",
+        "sourceName": "Wikimedia Commons",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ganoderma_applanatum.jpg",
+        "attribution": "Wikimedia Commons",
+        "notes": "",
+        "isHero": true
+      }
+    ],
+    "sourceNotes": "One of the most permanent fixtures in Ontario forests. Easy anchor find for young naturalists.",
+    "inDex": true
+  },
+  {
+    "id": "gem-studded-puffball",
+    "commonName": "Gem-Studded Puffball",
+    "scientificName": "Lycoperdon perlatum",
+    "alternateNames": ["Common Puffball", "Devil's Snuffbox"],
+    "taxonLevel": "species",
+    "descriptionShort": "Small white puffballs covered in tiny pyramid-shaped spines that rub off, leaving a net-like pattern. Found in clusters on forest floors and wood chips.",
+    "descriptionLong": "Gem-Studded Puffballs are small — usually between golf-ball and tennis-ball sized — white to cream, with a distinctive surface covered in cone-shaped spines or warts that rub off, leaving a pitted or net-like pattern behind. They have a short stem-like base. Interior is white and firm when young, then turns olive-brown as spores develop. Found in troops on forest soil, wood chips, and decaying wood.",
+    "broadType": "Puffball",
+    "habitatTags": ["forest", "trail-sides", "mulch-beds", "parks"],
+    "substrateTags": ["ground", "wood-chips", "soil", "decaying-wood"],
+    "seasonTags": ["summer", "fall"],
+    "colorTags": ["white", "cream"],
+    "shapeTags": ["round", "pear-shaped", "small"],
+    "textureTags": ["spiny", "warty", "textured"],
+    "keyTraits": [
+      "Small white puffball with spiny or warty surface",
+      "Spines rub off and leave a net-like scar pattern",
+      "Grows in groups — rarely alone",
+      "Short stem-like base"
+    ],
+    "expertClues": [
+      "Interior must be pure white (not yellow or showing internal structure) in young edible stage",
+      "Needle or stick poked in will show white interior vs. yellowing spore mass",
+      "Often found in big troops — look for many together"
+    ],
+    "confusionWarnings": [
+      "Like all puffballs: must cross-section to confirm pure white interior — rules out dangerous Amanita buttons",
+      "Earth-balls (Scleroderma) are similar but have a thick purplish-black interior and are toxic"
+    ],
+    "compareWithIds": ["giant-puffball"],
+    "rarityTier": "Common",
+    "encounterRarity": "Very common in summer and fall; troops appear in mulch beds and forest edges",
+    "idDifficulty": "Easy",
+    "pointsValue": 10,
+    "missionTags": ["puffball", "forest-floor", "clustered", "common"],
+    "images": [
+      {
+        "id": "gsp-hero",
+        "mushroomEntryId": "gem-studded-puffball",
+        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Lycoperdon_perlatum_Pers_77.jpg/800px-Lycoperdon_perlatum_Pers_77.jpg",
+        "caption": "Gem-Studded Puffballs growing in troops",
+        "sourceName": "Wikimedia Commons",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lycoperdon_perlatum_Pers_77.jpg",
+        "attribution": "Archenzo, CC BY-SA 3.0",
+        "notes": "",
+        "isHero": true
+      }
+    ],
+    "sourceNotes": "Very common Ontario find. Good entry-level puffball for young naturalists.",
+    "inDex": true
+  },
+  {
+    "id": "black-trumpet",
+    "commonName": "Black Trumpet",
+    "scientificName": "Craterellus cornucopioides group",
+    "alternateNames": ["Horn of Plenty", "Trumpet of Death"],
+    "taxonLevel": "species-group",
+    "descriptionShort": "Dark grey to black, trumpet-shaped, hollow mushrooms that grow in clusters on forest floors. Easy to miss despite their unusual shape.",
+    "descriptionLong": "Black Trumpets are hollow, funnel or trumpet-shaped mushrooms, dark grey to black, with a wavy, ragged cap edge. The outer surface (which is where spores form) is grey-black and slightly wrinkled or ridged — no true gills or pores. The inside of the trumpet is hollow all the way to the ground. Despite their striking shape and name, they are surprisingly difficult to spot because their dark colour blends perfectly with leaf litter in dim forest light. They grow in clusters on soil in deciduous and mixed forest.",
+    "broadType": "Gilled",
+    "habitatTags": ["forest", "mixed-forest", "deciduous-forest"],
+    "substrateTags": ["ground", "soil", "leaf-litter"],
+    "seasonTags": ["summer", "fall"],
+    "colorTags": ["black", "dark-grey"],
+    "shapeTags": ["trumpet", "funnel", "hollow"],
+    "textureTags": ["smooth-outer", "wrinkled", "hollow"],
+    "keyTraits": [
+      "Dark grey to black trumpet or funnel shape",
+      "Hollow all the way through",
+      "Wavy, ragged cap edge",
+      "No gills — outer surface is smooth to slightly wrinkled"
+    ],
+    "expertClues": [
+      "Outer surface is the spore-producing surface — look for slight ridges",
+      "Grows in clusters on soil, never on wood",
+      "Very camouflaged in leaf litter — look carefully in hardwood forest"
+    ],
+    "confusionWarnings": [
+      "No dangerous lookalikes in Ontario",
+      "Easy to miss because they blend into leaf litter — train your eye"
+    ],
+    "compareWithIds": ["chanterelle"],
+    "rarityTier": "Special Find",
+    "encounterRarity": "Locally abundant where found, but habitat-specific and easy to overlook",
+    "idDifficulty": "Moderate",
+    "pointsValue": 35,
+    "missionTags": ["gilled", "forest-floor", "camouflaged", "special"],
+    "images": [
+      {
+        "id": "bt-hero",
+        "mushroomEntryId": "black-trumpet",
+        "urlOrLocalPath": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Craterellus_cornucopioides_G1.jpg/800px-Craterellus_cornucopioides_G1.jpg",
+        "caption": "Black Trumpets growing in leaf litter",
+        "sourceName": "Wikimedia Commons",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Craterellus_cornucopioides_G1.jpg",
+        "attribution": "George Chernilevsky, Public Domain",
+        "notes": "",
+        "isHero": true
+      }
+    ],
+    "sourceNotes": "A special find worth real points. Teaches attention and careful looking.",
+    "inDex": true
+  }
+]
