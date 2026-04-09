@@ -95,7 +95,13 @@ function MushroomCard({
               </View>
             )}
             <Image
-              source={{ uri: heroImage.urlOrLocalPath }}
+              source={{
+                uri: heroImage.urlOrLocalPath,
+                headers: {
+                  'User-Agent': 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36',
+                  'Referer': 'https://commons.wikimedia.org/',
+                },
+              }}
               style={[styles.cardImage, !imgLoaded && { position: 'absolute', opacity: 0 }]}
               resizeMode="cover"
               onLoad={() => setImgLoaded(true)}

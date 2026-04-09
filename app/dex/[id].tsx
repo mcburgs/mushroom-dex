@@ -140,7 +140,13 @@ export default function DetailScreen() {
                 </View>
               )}
               <Image
-                source={{ uri: heroImage.urlOrLocalPath }}
+                source={{
+                  uri: heroImage.urlOrLocalPath,
+                  headers: {
+                    'User-Agent': 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36',
+                    'Referer': 'https://commons.wikimedia.org/',
+                  },
+                }}
                 style={[styles.heroImage, !heroLoaded && { position: 'absolute', opacity: 0 }]}
                 resizeMode="cover"
                 onLoad={() => setHeroLoaded(true)}
@@ -173,7 +179,13 @@ export default function DetailScreen() {
             onPress={() => setLightboxVisible(false)}
           >
             <Image
-              source={{ uri: heroImage?.urlOrLocalPath }}
+              source={{
+                uri: heroImage?.urlOrLocalPath,
+                headers: {
+                  'User-Agent': 'Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36',
+                  'Referer': 'https://commons.wikimedia.org/',
+                },
+              }}
               style={styles.lightboxImage}
               resizeMode="contain"
             />
