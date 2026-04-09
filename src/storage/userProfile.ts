@@ -34,3 +34,12 @@ export async function addPoints(points: number): Promise<UserProfile> {
   await saveUserProfile(profile);
   return profile;
 }
+
+export async function markLessonComplete(lessonId: string): Promise<UserProfile> {
+  const profile = await getUserProfile();
+  if (!profile.completedLessons.includes(lessonId)) {
+    profile.completedLessons = [...profile.completedLessons, lessonId];
+    await saveUserProfile(profile);
+  }
+  return profile;
+}

@@ -82,6 +82,16 @@ export default function RootLayout() {
               headerTintColor: '#5a7a3a',
             }}
           />
+          <Stack.Screen
+            name="learn/[id]"
+            options={{
+              headerShown: true,
+              headerTitle: '',
+              headerBackTitle: 'Learn',
+              headerStyle: { backgroundColor: '#f9f6f0' },
+              headerTintColor: '#5a7a3a',
+            }}
+          />
         </Stack>
       </PaperProvider>
     </SafeAreaProvider>

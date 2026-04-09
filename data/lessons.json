@@ -1,0 +1,274 @@
+[
+  {
+    "id": "lesson-001",
+    "title": "What Is a Mushroom?",
+    "topic": "Fungi Basics",
+    "unlockTier": "Explorer",
+    "body": "Mushrooms belong to the fungi kingdom — they are not plants and not animals. They are something entirely their own! The mushroom you see above the ground is called the fruiting body. Think of it like an apple on a tree: the main organism is hidden, and the mushroom is just the part that spreads its seeds.\n\nMost of the fungus lives underground (or inside wood) as a web of microscopic threads called mycelium. This network can spread across huge areas — some are among the largest living things on Earth. When conditions are right, the mycelium sends up a fruiting body to release spores.\n\nSpores are the fungi version of seeds. A single mushroom can release billions of spores into the air. Each spore is so tiny you cannot see one on its own, but when they collect on a surface you can see their colour.\n\nFungi are the great recyclers of the forest. They break down dead wood, fallen leaves, and other organic matter, turning it back into soil nutrients that feed plants and trees. Without fungi, forests would be buried in dead material.",
+    "images": [],
+    "quizQuestions": [
+      {
+        "question": "What kingdom do mushrooms belong to?",
+        "options": ["Plants", "Animals", "Fungi", "Bacteria"],
+        "correctIndex": 2,
+        "explanation": "Mushrooms are fungi — their own separate kingdom, different from both plants and animals."
+      },
+      {
+        "question": "What are the underground threads of a fungus called?",
+        "options": ["Roots", "Mycelium", "Stems", "Fibres"],
+        "correctIndex": 1,
+        "explanation": "The underground (or in-wood) network is called mycelium. It can spread across enormous areas and is the main body of the fungus."
+      },
+      {
+        "question": "What are mushroom \"seeds\" called?",
+        "options": ["Seeds", "Pollen", "Spores", "Cones"],
+        "correctIndex": 2,
+        "explanation": "Fungi reproduce using spores, not seeds. A single mushroom can release billions of them into the air."
+      },
+      {
+        "question": "What important role do fungi play in a forest?",
+        "options": ["They produce oxygen", "They break down dead material", "They scare away insects", "They collect rainwater"],
+        "correctIndex": 1,
+        "explanation": "Fungi are the forest's recyclers — they decompose dead wood and leaves, turning them into soil nutrients that feed the whole ecosystem."
+      }
+    ]
+  },
+  {
+    "id": "lesson-002",
+    "title": "Field Safety Rules",
+    "topic": "Stay Safe",
+    "unlockTier": "Explorer",
+    "body": "Mushrooms are incredible to observe, but some wild mushrooms are extremely dangerous. A few of the most deadly mushrooms in the world look almost identical to edible ones. Even expert mycologists with decades of experience never rely on just one identification feature.\n\nThe golden rule: never eat any wild mushroom unless a professional mycologist has confirmed the exact species in person. No app, book, or photo can make a safe eating identification on its own — including this one. Mushroom Dex is a learning and observation tool, not a foraging guide.\n\nWhen you are out observing, always wash your hands thoroughly after touching mushrooms. Some species can cause skin irritation or are toxic if absorbed through the skin. Never rub your eyes while handling mushrooms.\n\nLeave mushrooms where you find them when possible — they are doing important ecological work. If you want to look more closely, you can gently tip one over to see the underside, then leave it in place. Observing with curiosity and respect is the best way to explore.",
+    "images": [],
+    "quizQuestions": [
+      {
+        "question": "What is the most important rule about wild mushrooms?",
+        "options": ["Smell it to check if it is safe", "Never eat one without expert confirmation", "If it looks like a store mushroom it is fine", "Check a book and it should be safe"],
+        "correctIndex": 1,
+        "explanation": "Never eat any wild mushroom unless a professional mycologist has confirmed it in person. Many deadly species look identical to safe ones."
+      },
+      {
+        "question": "What should you do after touching a wild mushroom?",
+        "options": ["Taste a small piece", "Wash your hands thoroughly", "Smell your fingers to check", "Nothing is needed"],
+        "correctIndex": 1,
+        "explanation": "Always wash your hands after handling wild mushrooms — some are toxic through skin contact or can irritate eyes."
+      },
+      {
+        "question": "Can an app give you a 100% safe mushroom eating identification?",
+        "options": ["Yes, always", "Yes, if you take a clear photo", "No — apps cannot make safe eating IDs", "Only if the app is well-reviewed"],
+        "correctIndex": 2,
+        "explanation": "No app can make a safe eating identification. Mushroom Dex is a learning tool, not a foraging guide."
+      },
+      {
+        "question": "What does the word \"look-alike\" mean in mushroom identification?",
+        "options": ["Two mushrooms that smell the same", "A species that looks similar to another, sometimes a dangerous one", "A very common mushroom", "A mushroom without any distinctive features"],
+        "correctIndex": 1,
+        "explanation": "A look-alike is a species that closely resembles another — sometimes a deadly mushroom looks almost identical to a harmless one."
+      }
+    ]
+  },
+  {
+    "id": "lesson-003",
+    "title": "Mushroom Shapes",
+    "topic": "Broad Types",
+    "unlockTier": "Explorer",
+    "body": "Before you can identify a specific mushroom, it helps to figure out what broad group it belongs to. Mycologists sort mushrooms by their overall shape — and getting this right is the first big step.\n\nThe most familiar shape is a cap on a stem with gills, pores, or ridges underneath — this is the classic mushroom silhouette. Bracket or shelf fungi grow flat against wood like shelves on a bookcase. Puffballs are round and smooth, like little white balls. Coral fungi are branched and look like underwater coral or tiny broccoli.\n\nJelly fungi are wobbly and translucent — they almost look like colourful gelatin. Cup fungi are bowl or bird-bath shaped. Tooth fungi have small hanging spines instead of gills. Trumpet or chanterelle-shaped fungi are vase-shaped, wider at the top and narrow at the base.\n\nRecognising the broad shape narrows your options dramatically. If you can say \"this is a bracket fungus,\" you have already eliminated hundreds of other species from consideration. Shape is always your first clue.",
+    "images": [],
+    "quizQuestions": [
+      {
+        "question": "What broad type grows in a shelf or bracket shape on wood?",
+        "options": ["Gilled", "Puffball", "Bracket / Polypore", "Coral"],
+        "correctIndex": 2,
+        "explanation": "Bracket or polypore fungi grow flat against wood like shelves — Turkey Tail and Artist's Conk are common examples."
+      },
+      {
+        "question": "What type has little hanging spines or teeth underneath?",
+        "options": ["Gilled", "Tooth / Hedgehog", "Jelly", "Cup"],
+        "correctIndex": 1,
+        "explanation": "Tooth fungi (like the hedgehog mushroom) have tiny hanging spines instead of gills or pores."
+      },
+      {
+        "question": "Puffballs are named for their shape. What shape are they?",
+        "options": ["Trumpet-shaped", "Round and ball-like", "Cup-shaped", "Branched"],
+        "correctIndex": 1,
+        "explanation": "Puffballs are round and ball-shaped. When mature they \"puff\" out clouds of spores when touched."
+      },
+      {
+        "question": "Why is identifying the broad shape group your first step?",
+        "options": ["It tells you if it is edible", "It narrows down your options dramatically", "It is the only clue you need", "It is the easiest step, so start there"],
+        "correctIndex": 1,
+        "explanation": "Getting the broad shape right eliminates hundreds of species at once — it is the foundation of any mushroom identification."
+      }
+    ]
+  },
+  {
+    "id": "lesson-004",
+    "title": "Cap Shapes",
+    "topic": "Morphology",
+    "unlockTier": "Observer",
+    "body": "When a mushroom has a cap and a stem, the shape of the cap is one of your most useful identification clues. Mycologists use specific words to describe cap shapes precisely.\n\nA convex cap is rounded and dome-shaped — like the top of a ball. This is very common in young mushrooms. As many species age, the cap flattens out into a plane shape. Some flatten further and curve upward at the edges, becoming wavy.\n\nSome caps have a central bump called an umbo — like a gentle mountain peak in the middle of a flat cap. This is a useful distinguishing feature for certain species. Conical caps are pointy, like a witch's hat — common in some gilled species.\n\nA funnel-shaped (or infundibuliform — try saying that ten times fast!) cap is wider at the outside and dips down toward the centre, like a funnel or vase. Keep in mind that the same species can look quite different when young versus old — a convex young cap may become completely flat or even wavy as it matures.",
+    "images": [],
+    "quizQuestions": [
+      {
+        "question": "What does \"convex\" mean when describing a mushroom cap?",
+        "options": ["Flat and plate-like", "Wavy at the edges", "Rounded and dome-shaped", "Pointy like a hat"],
+        "correctIndex": 2,
+        "explanation": "A convex cap is rounded and dome-shaped — this is the most common cap shape in young mushrooms."
+      },
+      {
+        "question": "What is an \"umbo\" on a mushroom cap?",
+        "options": ["A flat rim at the edge", "A central raised bump", "A type of gill", "A ring around the stem"],
+        "correctIndex": 1,
+        "explanation": "An umbo is a central bump or raised point on an otherwise flat cap — a distinctive feature that helps identify certain species."
+      },
+      {
+        "question": "Why can cap shape be tricky to rely on alone?",
+        "options": ["Caps are all the same shape", "Cap shape changes as the mushroom ages", "You can never see the cap clearly", "Only experts can see cap shapes"],
+        "correctIndex": 1,
+        "explanation": "The same species can have a convex cap when young that flattens or becomes wavy as it matures — always consider age."
+      },
+      {
+        "question": "A funnel or vase-shaped cap that dips toward the centre is described as what?",
+        "options": ["Convex", "Umbonate", "Infundibuliform (funnel-shaped)", "Conical"],
+        "correctIndex": 2,
+        "explanation": "A cap that dips down in the centre like a funnel or vase is described as infundibuliform — chanterelles and some other species have this shape."
+      }
+    ]
+  },
+  {
+    "id": "lesson-005",
+    "title": "Under the Cap",
+    "topic": "Morphology",
+    "unlockTier": "Observer",
+    "body": "Gently turn a mushroom cap over (or peek at a bracket from below) and you will find one of the most reliable identification features: the underside texture.\n\nGilled mushrooms have thin, blade-like structures radiating from the stem to the edge of the cap — like the spokes of a wheel. The arrangement, spacing, and colour of gills are all useful clues. Some gills run down the stem (decurrent), others are free and don't touch it.\n\nBoletes and polypores have pores — tiny holes that open into a spongy layer. On boletes, you can often peel this sponge layer right off the cap. On polypore brackets, the pores are usually very tiny and tightly packed.\n\nChanterelles and Black Trumpets have ridges or forked wrinkles rather than true gills. They feel different when you run your finger along them — blunt and forked, not sharp blades. This is an important distinction for identification.\n\nTooth fungi have hanging spines. Smooth undersides appear on some jelly and cup fungi. Always look at the underside — it is one of the most diagnostic features you have.",
+    "images": [],
+    "quizQuestions": [
+      {
+        "question": "What do boletes have on their underside?",
+        "options": ["Gills", "Pores", "Teeth", "Ridges"],
+        "correctIndex": 1,
+        "explanation": "Boletes have a spongy pore layer on their underside instead of gills — you can often peel this layer off the cap."
+      },
+      {
+        "question": "What makes chanterelle ridges different from true gills?",
+        "options": ["They are black", "They are on top of the cap", "They are blunt, forked wrinkles — not sharp blades", "They smell different"],
+        "correctIndex": 2,
+        "explanation": "Chanterelle \"gills\" are actually forked ridges — blunt and wrinkled, not sharp thin blades like true gills. Running your finger along them feels different."
+      },
+      {
+        "question": "What do tooth fungi have on their underside?",
+        "options": ["Gills", "Pores", "Hanging spines or teeth", "Nothing"],
+        "correctIndex": 2,
+        "explanation": "Tooth fungi (like the hedgehog mushroom) have hanging spines or teeth on their underside instead of gills or pores."
+      },
+      {
+        "question": "Why is the underside of a cap an important identification feature?",
+        "options": ["It tells you if it is edible", "It is one of the most reliable ID clues", "It always shows the mushroom's age", "It is easier to see than the cap"],
+        "correctIndex": 1,
+        "explanation": "The type of underside structure — gills, pores, ridges, or teeth — is one of the most diagnostic features a mycologist uses."
+      }
+    ]
+  },
+  {
+    "id": "lesson-006",
+    "title": "Reading Substrate",
+    "topic": "Habitat",
+    "unlockTier": "Naturalist",
+    "body": "Where a mushroom is growing gives you an enormous amount of information. Substrate — what the mushroom is growing on — is one of your best field clues.\n\nWood-rotting fungi grow on dead logs, stumps, or living trees. There are two main types: white rot fungi (like Turkey Tail) break down both lignin and cellulose, leaving the wood white and stringy. Brown rot fungi break down only the cellulose, leaving the wood crumbly and brown-red. This difference can help you identify the fungus even from a distance.\n\nMycorrhizal fungi grow from soil near tree roots. They form a partnership with the roots — trading mineral nutrients from the soil for sugars the tree makes from sunlight. Many chanterelles, boletes, and amanitas are mycorrhizal. If you find a possible chanterelle, look for nearby trees — they are almost always close.\n\nSaprotrophic fungi break down dead organic matter in soil, leaf litter, or dung. They are nature's composters. Always note the substrate when you observe a mushroom — it immediately narrows down your possibilities.",
+    "images": [],
+    "quizQuestions": [
+      {
+        "question": "What does \"substrate\" mean in mushroom identification?",
+        "options": ["The colour of the mushroom", "What the mushroom is growing on or from", "The shape of the cap", "The time of year it appears"],
+        "correctIndex": 1,
+        "explanation": "Substrate is what the mushroom is growing on — dead wood, living trees, soil, leaf litter, or dung. It is a key identification clue."
+      },
+      {
+        "question": "What kind of relationship do mycorrhizal fungi have with trees?",
+        "options": ["They kill the tree", "They ignore the tree", "They form a mutual partnership — trading nutrients for sugars", "They grow on fallen leaves only"],
+        "correctIndex": 2,
+        "explanation": "Mycorrhizal fungi attach to tree roots and trade mineral nutrients from the soil for sugars the tree produces. Both organisms benefit."
+      },
+      {
+        "question": "Turkey Tail is an example of what type of fungus?",
+        "options": ["Mycorrhizal", "White rot wood-rotter", "Saprotrophic (dung)", "Cup fungus"],
+        "correctIndex": 1,
+        "explanation": "Turkey Tail is a white rot fungus — it breaks down both lignin and cellulose in dead wood, leaving it white and stringy."
+      },
+      {
+        "question": "If you find a possible chanterelle growing from soil, what should you look for nearby?",
+        "options": ["Dung or compost", "Water or a stream", "Trees — chanterelles are mycorrhizal", "Other puffballs"],
+        "correctIndex": 2,
+        "explanation": "Chanterelles are mycorrhizal — they always grow in association with tree roots. Finding nearby trees supports a chanterelle identification."
+      }
+    ]
+  },
+  {
+    "id": "lesson-007",
+    "title": "Colours and Patterns",
+    "topic": "Field Observation",
+    "unlockTier": "Naturalist",
+    "body": "Colour is often the first thing we notice about a mushroom — and one of the least reliable features to use alone. That might seem strange, but here is why: the same species can look dramatically different depending on age, moisture, sunlight, and season.\n\nA fresh yellow cap may fade to tan or off-white as it dries out. Heavy rain can wash colour away entirely. Sun bleaches caps over days. A species that looks bright orange when freshly emerged may look pale cream when old. This is why experienced observers note the conditions: was the weather dry or wet? Is this mushroom young or old?\n\nThat said, some colours are so distinctive that they are genuinely useful. The vivid orange-yellow of Chicken of the Woods, the dark grey-black of Black Trumpet, or the banded zones of colour on Turkey Tail — these stand out. Very unusual colours are worth noting carefully.\n\nPatterns also matter: concentric colour zones (Turkey Tail), a slimy or shiny cap surface, speckles or scales on a cap, or a velvety texture all provide extra information when combined with other features. Never use colour alone — but always write it down.",
+    "images": [],
+    "quizQuestions": [
+      {
+        "question": "Why is colour alone an unreliable identification feature?",
+        "options": ["Mushrooms have no colour", "Colours change with age, moisture, and weather", "Colours are always the same", "Colour is too difficult to describe accurately"],
+        "correctIndex": 1,
+        "explanation": "The same species can look dramatically different depending on age, rain, sun, and dryness — colour shifts constantly."
+      },
+      {
+        "question": "What happens to mushroom colour in very dry, sunny conditions over several days?",
+        "options": ["It becomes more vivid", "It stays exactly the same", "It may bleach or fade significantly", "It always turns brown"],
+        "correctIndex": 2,
+        "explanation": "Sun and dry conditions bleach and fade mushroom colours — a bright cap when fresh may look pale and washed-out when old."
+      },
+      {
+        "question": "Which of these colours is a genuinely distinctive clue worth noting carefully?",
+        "options": ["Pale brown, because most mushrooms are brown", "Vivid orange-yellow on a large shelf fungus", "White, because white mushrooms are always safe", "Any colour if the mushroom is wet"],
+        "correctIndex": 1,
+        "explanation": "Vivid or unusual colours — like the bright orange-yellow of Chicken of the Woods — are genuinely distinctive and stand out even at a distance."
+      },
+      {
+        "question": "What should you combine with colour notes for better identification?",
+        "options": ["Nothing — colour is enough", "Tasting a small piece", "Other features: shape, substrate, underside, age, and conditions", "Only the size of the mushroom"],
+        "correctIndex": 2,
+        "explanation": "Colour is just one data point — combine it with shape, substrate, underside type, and conditions for a more reliable identification attempt."
+      }
+    ]
+  },
+  {
+    "id": "lesson-008",
+    "title": "Spores and Spore Prints",
+    "topic": "Advanced ID",
+    "unlockTier": "Junior Expert",
+    "body": "Spores are the microscopic reproductive units of a fungus — equivalent to seeds, but far, far smaller. A single mushroom cap can release billions of spores into the air. Each spore is invisible to the naked eye, but when millions collect together on a surface you can see their colour — and that colour is an incredibly useful identification tool.\n\nA spore print is made by placing a fresh cap (gill or pore side down) on a piece of paper and covering it with a bowl or jar for several hours. The spores fall and leave a ghost-like print showing their exact colour. White spore prints are invisible on white paper, so always use one white and one black sheet of paper together.\n\nSpore print colours range from white, cream, and tan to brown, rust, pink, lilac, and black. These colours are consistent within a species and can separate species that look identical in every other way. Many poisonous Amanita species have white spore prints, while some similar-looking safe species have brown or pink prints — which is why spore prints are taken so seriously by mycologists.\n\nTaking a spore print requires patience — but it is a real field skill that separates casual observers from serious naturalists.",
+    "images": [],
+    "quizQuestions": [
+      {
+        "question": "What is a spore print?",
+        "options": ["A drawing of a mushroom cap", "The colour pattern left by fallen spores on paper", "The smell a mushroom leaves behind", "A photograph of the underside"],
+        "correctIndex": 1,
+        "explanation": "A spore print is made by letting a cap drop its spores onto paper — the collected spores leave a coloured pattern that reveals the spore colour."
+      },
+      {
+        "question": "Why should you use both white and black paper when making a spore print?",
+        "options": ["To make it look more scientific", "White spore prints are invisible on white paper — black paper shows them clearly", "Black paper makes all prints easier to see", "It does not matter what colour you use"],
+        "correctIndex": 1,
+        "explanation": "White spore prints will not show up on white paper. Using both colours ensures you can see any spore print colour."
+      },
+      {
+        "question": "How long does it typically take to get a good spore print?",
+        "options": ["About 5 minutes", "Several hours under a bowl or jar", "Exactly one week", "It happens instantly"],
+        "correctIndex": 1,
+        "explanation": "A good spore print takes several hours — place the cap on paper, cover with a bowl, and leave it undisturbed."
+      },
+      {
+        "question": "Why do mycologists take spore prints so seriously?",
+        "options": ["They look decorative", "Spore colour can separate species that look identical in every other way", "To count exactly how many spores a mushroom has", "Spore prints tell you if a mushroom is edible"],
+        "correctIndex": 1,
+        "explanation": "Spore colour is consistent within a species and can distinguish between look-alikes that appear identical — including some dangerous and some safe species."
+      }
+    ]
+  }
+]
