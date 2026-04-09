@@ -11,8 +11,11 @@ import { useFocusEffect, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { getUserProfile } from '../../src/storage/userProfile';
 import { getUserFinds } from '../../src/storage/userFinds';
-import { UserProfile, UserFind, STAGE_THRESHOLDS, ProgressionStage } from '../../src/types';
+import { getMysteryLogs } from '../../src/storage/mysteryLogs';
+import { evaluateMission, getMissionProgress } from '../../src/utils/missionEngine';
+import { UserProfile, UserFind, MysteryObservation, Mission, STAGE_THRESHOLDS, ProgressionStage } from '../../src/types';
 import mushroomData from '../../data/mushrooms.json';
+import missionsData from '../../data/missions.json';
 
 const STAGE_EMOJI: Record<string, string> = {
   Explorer: '🌱',
@@ -32,12 +35,17 @@ export default function HomeScreen() {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [finds, setFinds] = useState<UserFind[]>([]);
+  const [mysteries, setMysteries] = useState<MysteryObservation[]>([]);
 
   useFocusEffect(
     useCallback(() => {
       let active = true;
-      getUserProfile().then((p) => { if (active) setProfile(p); });
-      getUserFinds().then((f) => { if (active) setFinds(f); });
+      Promise.all([getUserProfile(), getUserFinds(), getMysteryLogs()]).then(([p, f, m]) => {
+        if (!active) return;
+        setProfile(p);
+        setFinds(f);
+        setMysteries(m);
+      });
       return () => { active = false; };
     }, [])
   );
@@ -182,14 +190,60 @@ export default function HomeScreen() {
           ))
         )}
 
-        {/* Missions placeholder */}
+        {/* Active Missions */}
         <Text style={styles.sectionTitle}>Active Missions</Text>
-        <View style={styles.emptyBox}>
-          <Text style={styles.emptyEmoji}>🗺️</Text>
-          <Text style={styles.emptyText}>
-            Missions unlock as you explore. Check the Missions tab!
-          </Text>
-        </View>
+        {(() => {
+          if (!profile) return null;
+          const missions = missionsData as (Mission & { emoji: string })[];
+          const completedIds = new Set(profile.completedMissions);
+          const active = missions
+            .filter((m) => !completedIds.has(m.id))
+            .map((m) => ({
+              mission: m,
+              progress: getMissionProgress(m as unknown as Mission, finds, profile, mysteries),
+              claimable: evaluateMission(m as unknown as Mission, finds, profile, mysteries),
+            }))
+            .slice(0, 3);
+
+          if (active.length === 0) {
+            return (
+              <View style={styles.emptyBox}>
+                <Text style={styles.emptyEmoji}>🏆</Text>
+                <Text style={styles.emptyText}>All missions completed! Check the Missions tab.</Text>
+              </View>
+            );
+          }
+          return (
+            <>
+              {active.map(({ mission, progress, claimable }) => {
+                const pct = Math.min((progress.current / progress.target) * 100, 100);
+                return (
+                  <TouchableOpacity
+                    key={mission.id}
+                    style={[styles.missionCard, claimable && styles.missionCardClaimable]}
+                    onPress={() => router.push('/(tabs)/missions')}
+                  >
+                    <Text style={styles.missionEmoji}>{mission.emoji}</Text>
+                    <View style={styles.missionInfo}>
+                      <Text style={styles.missionTitle}>{mission.title}</Text>
+                      <View style={styles.missionBarRow}>
+                        <View style={styles.missionBar}>
+                          <View style={[styles.missionFill, { width: `${Math.round(pct)}%` }]} />
+                        </View>
+                        <Text style={styles.missionCount}>{progress.current + '/' + progress.target + ' '}</Text>
+                      </View>
+                      {claimable && <Text style={styles.missionClaim}>Ready to claim! →</Text>}
+                    </View>
+                    <Text style={styles.missionPts}>{'+' + mission.rewardPoints + ' '}</Text>
+                  </TouchableOpacity>
+                );
+              })}
+              <TouchableOpacity onPress={() => router.push('/(tabs)/missions')}>
+                <Text style={styles.viewAllMissions}>View all missions →</Text>
+              </TouchableOpacity>
+            </>
+          );
+        })()}
 
         <View style={styles.bottomPad} />
       </ScrollView>
@@ -290,5 +344,42 @@ const styles = StyleSheet.create({
   findInfo: {},
   findName: { fontSize: 16, fontWeight: '600', color: '#2d4a1a' },
   findDate: { fontSize: 13, color: '#8a8a7a', marginTop: 2 },
+
+  // Mission cards on home
+  missionCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    padding: 12,
+    marginBottom: 8,
+    borderWidth: 1,
+    borderColor: '#d4e8b8',
+  },
+  missionCardClaimable: { borderColor: '#8b6914', borderWidth: 2, backgroundColor: '#fffaf0' },
+  missionEmoji: { fontSize: 24, marginRight: 12 },
+  missionInfo: { flex: 1 },
+  missionTitle: { fontSize: 14, fontWeight: '700', color: '#2d4a1a', marginBottom: 4 },
+  missionBarRow: { flexDirection: 'row', alignItems: 'center' },
+  missionBar: {
+    flex: 1,
+    height: 5,
+    backgroundColor: '#e8f5d8',
+    borderRadius: 3,
+    overflow: 'hidden',
+    marginRight: 6,
+  },
+  missionFill: { height: '100%', backgroundColor: '#5a7a3a', borderRadius: 3 },
+  missionCount: { fontSize: 11, color: '#5a7a3a', fontWeight: '600' },
+  missionClaim: { fontSize: 11, color: '#8b6914', fontWeight: '700', marginTop: 3 },
+  missionPts: { fontSize: 13, color: '#8b6914', fontWeight: '700', marginLeft: 8 },
+  viewAllMissions: {
+    fontSize: 13,
+    color: '#5a7a3a',
+    fontWeight: '700',
+    textAlign: 'right',
+    marginBottom: 8,
+  },
+
   bottomPad: { height: 24 },
 });

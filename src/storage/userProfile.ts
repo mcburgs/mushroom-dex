@@ -35,6 +35,23 @@ export async function addPoints(points: number): Promise<UserProfile> {
   return profile;
 }
 
+export async function completeMission(
+  missionId: string,
+  rewardPoints: number,
+  badgeId: string | null,
+): Promise<UserProfile> {
+  const profile = await getUserProfile();
+  if (profile.completedMissions.includes(missionId)) return profile;
+  profile.completedMissions = [...profile.completedMissions, missionId];
+  profile.totalPoints += rewardPoints;
+  profile.level = getStageForPoints(profile.totalPoints);
+  if (badgeId && !profile.unlockedBadges.includes(badgeId)) {
+    profile.unlockedBadges = [...profile.unlockedBadges, badgeId];
+  }
+  await saveUserProfile(profile);
+  return profile;
+}
+
 export async function markLessonComplete(lessonId: string): Promise<UserProfile> {
   const profile = await getUserProfile();
   if (!profile.completedLessons.includes(lessonId)) {

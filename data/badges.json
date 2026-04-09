@@ -1,0 +1,58 @@
+[
+  {
+    "id": "badge-001",
+    "title": "First Fungus",
+    "description": "You logged your very first mushroom find.",
+    "icon": "🍄",
+    "unlockCriteria": { "missionId": "mission-001" },
+    "pointsBonus": 0
+  },
+  {
+    "id": "badge-002",
+    "title": "Mystery Seeker",
+    "description": "You completed your first guided mystery observation.",
+    "icon": "🔍",
+    "unlockCriteria": { "missionId": "mission-004" },
+    "pointsBonus": 0
+  },
+  {
+    "id": "badge-003",
+    "title": "Eager Learner",
+    "description": "You completed your first lesson in the Learn tab.",
+    "icon": "📚",
+    "unlockCriteria": { "missionId": "mission-006" },
+    "pointsBonus": 0
+  },
+  {
+    "id": "badge-004",
+    "title": "Field Photographer",
+    "description": "You attached your own photo to a mushroom find.",
+    "icon": "📷",
+    "unlockCriteria": { "missionId": "mission-007" },
+    "pointsBonus": 0
+  },
+  {
+    "id": "badge-005",
+    "title": "Wood Watcher",
+    "description": "You found 3 different bracket and polypore fungi.",
+    "icon": "🪵",
+    "unlockCriteria": { "missionId": "mission-012" },
+    "pointsBonus": 0
+  },
+  {
+    "id": "badge-006",
+    "title": "Mushroom Scholar",
+    "description": "You logged 7 different mushroom species — incredible!",
+    "icon": "🏆",
+    "unlockCriteria": { "missionId": "mission-015" },
+    "pointsBonus": 0
+  },
+  {
+    "id": "badge-007",
+    "title": "Devoted Naturalist",
+    "description": "You completed 5 lessons and deepened your knowledge.",
+    "icon": "🎓",
+    "unlockCriteria": { "missionId": "mission-016" },
+    "pointsBonus": 0
+  }
+]
