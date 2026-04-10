@@ -1,7 +1,6 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { UserProfile, ProgressionStage, getStageForPoints } from '../types';
-
-const KEY = 'user_profile';
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { auth, db } from '../firebase';
+import { UserProfile, getStageForPoints } from '../types';
 
 const DEFAULT_PROFILE: UserProfile = {
   name: 'Explorer',
@@ -13,18 +12,30 @@ const DEFAULT_PROFILE: UserProfile = {
   preferences: {},
 };
 
+function uid(): string | null {
+  return auth.currentUser?.uid ?? null;
+}
+
+function profileDoc(userId: string) {
+  return doc(db, 'users', userId, 'profile', 'data');
+}
+
 export async function getUserProfile(): Promise<UserProfile> {
+  const userId = uid();
+  if (!userId) return { ...DEFAULT_PROFILE };
   try {
-    const raw = await AsyncStorage.getItem(KEY);
-    if (!raw) return { ...DEFAULT_PROFILE };
-    return JSON.parse(raw) as UserProfile;
+    const snap = await getDoc(profileDoc(userId));
+    if (!snap.exists()) return { ...DEFAULT_PROFILE };
+    return snap.data() as UserProfile;
   } catch {
     return { ...DEFAULT_PROFILE };
   }
 }
 
 export async function saveUserProfile(profile: UserProfile): Promise<void> {
-  await AsyncStorage.setItem(KEY, JSON.stringify(profile));
+  const userId = uid();
+  if (!userId) return;
+  await setDoc(profileDoc(userId), profile);
 }
 
 export async function addPoints(points: number): Promise<UserProfile> {

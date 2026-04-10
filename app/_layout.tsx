@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Modal, View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { Stack } from 'expo-router';
+import { Modal, View, Text, StyleSheet, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import { Stack, useRouter, useSegments } from 'expo-router';
 import { PaperProvider, MD3LightTheme } from 'react-native-paper';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { hasAcceptedDisclaimer, acceptDisclaimer } from '../src/storage/disclaimerAccepted';
+import { AuthProvider, useAuth } from '../src/auth/AuthContext';
 
 const theme = {
   ...MD3LightTheme,
@@ -47,6 +48,34 @@ function DisclaimerModal({ onAccept }: { onAccept: () => void }) {
   );
 }
 
+// Handles auth-based routing: redirects to /sign-in if not signed in
+function AuthGate({ children }: { children: React.ReactNode }) {
+  const { user, loading } = useAuth();
+  const router = useRouter();
+  const segments = useSegments();
+
+  useEffect(() => {
+    if (loading) return;
+    const onSignIn = segments[0] === 'sign-in';
+    if (!user && !onSignIn) {
+      router.replace('/sign-in');
+    } else if (user && onSignIn) {
+      router.replace('/');
+    }
+  }, [user, loading, segments]);
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f9f6f0' }}>
+        <Text style={{ fontSize: 48, marginBottom: 16 }}>🍄</Text>
+        <ActivityIndicator color="#5a7a3a" />
+      </View>
+    );
+  }
+
+  return <>{children}</>;
+}
+
 export default function RootLayout() {
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [ready, setReady] = useState(false);
@@ -69,30 +98,35 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <PaperProvider theme={theme}>
         <StatusBar style="dark" />
-        {showDisclaimer && <DisclaimerModal onAccept={handleAccept} />}
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen
-            name="dex/[id]"
-            options={{
-              headerShown: true,
-              headerTitle: '',
-              headerBackTitle: 'Dex',
-              headerStyle: { backgroundColor: '#f9f6f0' },
-              headerTintColor: '#5a7a3a',
-            }}
-          />
-          <Stack.Screen
-            name="learn/[id]"
-            options={{
-              headerShown: true,
-              headerTitle: '',
-              headerBackTitle: 'Learn',
-              headerStyle: { backgroundColor: '#f9f6f0' },
-              headerTintColor: '#5a7a3a',
-            }}
-          />
-        </Stack>
+        <AuthProvider>
+          <AuthGate>
+            {showDisclaimer && <DisclaimerModal onAccept={handleAccept} />}
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(tabs)" />
+              <Stack.Screen name="sign-in" />
+              <Stack.Screen
+                name="dex/[id]"
+                options={{
+                  headerShown: true,
+                  headerTitle: '',
+                  headerBackTitle: 'Dex',
+                  headerStyle: { backgroundColor: '#f9f6f0' },
+                  headerTintColor: '#5a7a3a',
+                }}
+              />
+              <Stack.Screen
+                name="learn/[id]"
+                options={{
+                  headerShown: true,
+                  headerTitle: '',
+                  headerBackTitle: 'Learn',
+                  headerStyle: { backgroundColor: '#f9f6f0' },
+                  headerTintColor: '#5a7a3a',
+                }}
+              />
+            </Stack>
+          </AuthGate>
+        </AuthProvider>
       </PaperProvider>
     </SafeAreaProvider>
   );
