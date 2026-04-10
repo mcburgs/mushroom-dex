@@ -20,7 +20,7 @@ WebBrowser.maybeCompleteAuthSession();
 // 4. In Google Cloud Console → APIs & Services → Credentials → your Web client →
 //    add the redirect URI printed in the console when you first open the sign-in screen
 // ─────────────────────────────────────────────────────────────────────────────
-const GOOGLE_WEB_CLIENT_ID = 'REPLACE_WITH_WEB_CLIENT_ID';
+const GOOGLE_WEB_CLIENT_ID = '330876802972-rvr506ut1u82gg3k764o05s27da438hk.apps.googleusercontent.com';
 
 type AuthContextValue = {
   user: User | null;
