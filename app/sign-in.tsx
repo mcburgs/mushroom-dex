@@ -38,15 +38,20 @@ export default function SignInScreen() {
         await signUp(email, password, displayName);
       }
     } catch (e: any) {
+      console.log('[FungiDex] Auth error code:', e.code, e.message);
       const msg: Record<string, string> = {
-        'auth/invalid-email':        'That email address isn\'t valid.',
-        'auth/user-not-found':       'No account found for that email.',
-        'auth/wrong-password':       'Incorrect password.',
-        'auth/email-already-in-use': 'An account with that email already exists.',
-        'auth/weak-password':        'Password must be at least 6 characters.',
-        'auth/invalid-credential':   'Email or password is incorrect.',
+        'auth/invalid-email':           'That email address isn\'t valid.',
+        'auth/user-not-found':          'No account found for that email.',
+        'auth/wrong-password':          'Incorrect password.',
+        'auth/email-already-in-use':    'An account with that email already exists.',
+        'auth/weak-password':           'Password must be at least 6 characters.',
+        'auth/invalid-credential':      'Email or password is incorrect.',
+        'auth/operation-not-allowed':   'Email/password sign-in is not enabled. Enable it in Firebase Console → Authentication → Sign-in method.',
+        'auth/network-request-failed':  'Network error. Check your connection.',
+        'auth/too-many-requests':       'Too many attempts. Try again later.',
       };
-      setError(msg[e.code] ?? 'Something went wrong. Try again.');
+      setError(msg[e.code] ?? `Error: ${e.code ?? 'unknown'}`);
+
     } finally {
       setLoading(false);
     }
@@ -143,7 +148,7 @@ const styles = StyleSheet.create({
   },
   emoji: { fontSize: 72, marginBottom: 4 },
   title: { fontSize: 34, fontWeight: '800', color: '#2d4a1a' },
-  subtitle: { fontSize: 16, color: '#5a7a3a', marginBottom: 8 },
+  subtitle: { fontSize: 16, color: '#5a7a3a', marginBottom: 8, textAlign: 'center', width: '100%' },
   input: {
     width: '100%',
     backgroundColor: '#fff',
