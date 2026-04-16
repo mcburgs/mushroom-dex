@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {
   View,
   Text,
@@ -10,10 +10,12 @@ import {
 } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getUserFinds } from '../../src/storage/userFinds';
-import { getUserProfile } from '../../src/storage/userProfile';
+import { getUserFinds, getCachedFinds } from '../../src/storage/userFinds';
+import { getUserProfile, getCachedProfile } from '../../src/storage/userProfile';
 import { UserFind, UserProfile, MushroomEntry, BroadType } from '../../src/types';
 import mushroomData from '../../data/mushrooms.json';
+import FindsMap from '../../src/components/FindsMap';
+
 
 const BROAD_TYPE_EMOJI: Record<string, string> = {
   'Gilled': '🍄',
@@ -31,10 +33,13 @@ const BROAD_TYPE_EMOJI: Record<string, string> = {
 };
 
 const STAGE_EMOJI: Record<string, string> = {
-  Explorer: '🌱',
-  Observer: '👁️',
-  Naturalist: '🌿',
-  'Junior Expert': '🍄',
+  'Explorer': '🌱',
+  'Tracker': '👣',
+  'Observer': '👁️',
+  'Naturalist': '🌿',
+  'Field Expert': '🍄',
+  'Mycologist': '🔬',
+  'Master Mycologist': '🏆',
 };
 
 function CategoryProgress({
@@ -118,7 +123,7 @@ function FindCard({
   );
 }
 
-type Tab = 'finds' | 'notes';
+type Tab = 'finds' | 'notes' | 'map';
 
 export default function CollectionScreen() {
   const router = useRouter();
@@ -129,37 +134,47 @@ export default function CollectionScreen() {
   useFocusEffect(
     useCallback(() => {
       let active = true;
-      getUserFinds().then((f) => { if (active) setFinds(f); });
-      getUserProfile().then((p) => { if (active) setProfile(p); });
+      const cf = getCachedFinds(); const cp = getCachedProfile();
+      if (cf) setFinds(cf);
+      if (cp) setProfile(cp);
+      getUserFinds({ force: true }).then((f) => {
+        if (active) setFinds(f);
+      });
+      getUserProfile({ force: true }).then((p) => {
+        if (active) setProfile(p);
+      });
       return () => { active = false; };
     }, [])
   );
 
   const mushrooms = mushroomData as MushroomEntry[];
 
-  const sortedFinds = [...finds].sort(
-    (a, b) => new Date(b.dateFound).getTime() - new Date(a.dateFound).getTime()
+  const sortedFinds = useMemo(
+    () => [...finds].sort((a, b) => new Date(b.dateFound).getTime() - new Date(a.dateFound).getTime()),
+    [finds]
   );
 
-  function getEntry(id: string) {
+  const getEntry = useCallback((id: string) => {
     return mushrooms.find((m) => m.id === id);
-  }
+  }, [mushrooms]);
 
   // Category progress
-  const typeGroups: Record<string, { total: number; found: number }> = {};
-  for (const m of mushrooms) {
-    if (!typeGroups[m.broadType]) typeGroups[m.broadType] = { total: 0, found: 0 };
-    typeGroups[m.broadType].total++;
-    if (finds.some((f) => f.mushroomEntryId === m.id)) {
-      typeGroups[m.broadType].found++;
+  const categories = useMemo(() => {
+    const typeGroups: Record<string, { total: number; found: number }> = {};
+    for (const m of mushrooms) {
+      if (!typeGroups[m.broadType]) typeGroups[m.broadType] = { total: 0, found: 0 };
+      typeGroups[m.broadType].total++;
+      if (finds.some((f) => f.mushroomEntryId === m.id)) {
+        typeGroups[m.broadType].found++;
+      }
     }
-  }
-  const categories = Object.entries(typeGroups)
-    .filter(([, g]) => g.total > 0)
-    .sort((a, b) => b[1].found - a[1].found) as [BroadType, { total: number; found: number }][];
+    return Object.entries(typeGroups)
+      .filter(([, g]) => g.total > 0)
+      .sort((a, b) => b[1].found - a[1].found) as [BroadType, { total: number; found: number }][];
+  }, [mushrooms, finds]);
 
   // Notes timeline — finds with notes, newest first
-  const findsWithNotes = sortedFinds.filter((f) => f.userNotes?.trim());
+  const findsWithNotes = useMemo(() => sortedFinds.filter((f) => f.userNotes?.trim()), [sortedFinds]);
 
   const ListHeader = (
     <View>
@@ -209,6 +224,14 @@ export default function CollectionScreen() {
         >
           <Text style={[styles.tabBtnText, tab === 'notes' && styles.tabBtnTextActive]}>
             Notes
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.tabBtn, tab === 'map' && styles.tabBtnActive]}
+          onPress={() => setTab('map')}
+        >
+          <Text style={[styles.tabBtnText, tab === 'map' && styles.tabBtnTextActive]}>
+            Map
           </Text>
         </TouchableOpacity>
       </View>
@@ -261,6 +284,19 @@ export default function CollectionScreen() {
           )}
           <View style={{ height: 32 }} />
         </ScrollView>
+      </SafeAreaView>
+    );
+  }
+
+  // Map view
+  if (tab === 'map') {
+    return (
+      <SafeAreaView style={styles.safe} edges={['top']}>
+        <View style={styles.header}>
+          <Text style={styles.title}>🗺️ Find Map</Text>
+          <Text style={styles.subtitle}>{finds.filter(f => f.lat != null && f.lng != null).length} pinned locations</Text>
+        </View>
+        <FindsMap finds={finds} entries={mushrooms} />
       </SafeAreaView>
     );
   }

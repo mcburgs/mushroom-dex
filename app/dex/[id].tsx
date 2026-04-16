@@ -13,8 +13,7 @@ import { Image } from 'expo-image';
 import { useLocalSearchParams, useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MushroomEntry, UserFind } from '../../src/types';
-import { getFind, addUserFind, updateUserFind } from '../../src/storage/userFinds';
-import { addPoints } from '../../src/storage/userProfile';
+import { getFind, getCachedFinds, addUserFindWithPoints, updateUserFind, removeUserFind } from '../../src/storage/userFinds';
 import mushroomData from '../../data/mushrooms.json';
 import FindModal from '../../src/components/FindModal';
 
@@ -68,11 +67,16 @@ export default function DetailScreen() {
   const [heroError, setHeroError] = useState(false);
   const [heroLoaded, setHeroLoaded] = useState(false);
   const [lightboxVisible, setLightboxVisible] = useState(false);
+  const [savingFind, setSavingFind] = useState(false);
+  const [removingFind, setRemovingFind] = useState(false);
 
   useFocusEffect(
     useCallback(() => {
       if (!id) return;
       let active = true;
+      // Sync cache lookup — avoids Firestore round-trip on every dex entry open
+      const cached = getCachedFinds();
+      if (cached) setFind(cached.find((f) => f.mushroomEntryId === id) ?? null);
       getFind(id).then((f) => { if (active) setFind(f); });
       return () => { active = false; };
     }, [id])
@@ -88,37 +92,99 @@ export default function DetailScreen() {
 
   const heroImage = entry.images.find((img) => img.isHero);
 
+  function getSeason(d: Date): string {
+    const m = d.getMonth();
+    if (m >= 2 && m <= 4) return 'spring';
+    if (m >= 5 && m <= 7) return 'summer';
+    if (m >= 8 && m <= 10) return 'fall';
+    return 'winter';
+  }
+
   async function handleModalSave(data: {
     locationNote: string;
     biomeTag: string;
     userNotes: string;
     userPhotoPaths: string[];
-  }) {
-    setModalVisible(false);
+    lat?: number;
+    lng?: number;
+  }): Promise<void> {
+    if (savingFind) return;
+    setSavingFind(true);
+    try {
+      if (find) {
+        const updated = { ...find, ...data };
+        await updateUserFind(find.id, data);
+        setFind(updated);
+      } else {
+        const newFind: UserFind = {
+          id: `find-${entry!.id}-${Date.now()}`,
+          mushroomEntryId: entry!.id,
+          dateFound: new Date().toISOString(),
+          confirmedByUser: true,
+          ...data,
+        };
 
-    if (find) {
-      // Editing existing find
-      const updated = { ...find, ...data };
-      await updateUserFind(find.id, data);
-      setFind(updated);
-    } else {
-      // New find
-      const newFind: UserFind = {
-        id: `find-${entry!.id}-${Date.now()}`,
-        mushroomEntryId: entry!.id,
-        dateFound: new Date().toISOString(),
-        confirmedByUser: true,
-        ...data,
-      };
-      await addUserFind(newFind);
-      await addPoints(entry!.pointsValue);
-      setFind(newFind);
-      Alert.alert(
-        `+${entry!.pointsValue} points!`,
-        `${entry!.commonName} added to your collection!`,
-        [{ text: 'Awesome!' }]
-      );
+        let bonus = 0;
+        if (data.userPhotoPaths?.length > 0) bonus += 5;
+        if (data.userNotes?.trim().length > 0) bonus += 3;
+        const season = getSeason(new Date());
+        if ((entry!.seasonTags as string[]).includes(season)) bonus += 10;
+        const total = entry!.pointsValue + bonus;
+
+        const { awarded } = await addUserFindWithPoints(newFind, total);
+        setFind(newFind);
+
+        const bonusParts: string[] = [];
+        if (data.userPhotoPaths?.length > 0) bonusParts.push('📷 +5');
+        if (data.userNotes?.trim().length > 0) bonusParts.push('✏️ +3');
+        if ((entry!.seasonTags as string[]).includes(season)) bonusParts.push('🌿 +10 seasonal');
+        const bonusLine = bonusParts.length > 0 ? `\n${bonusParts.join('  ')}` : '';
+
+        Alert.alert(
+          awarded ? `+${total} points!` : 'Find updated',
+          awarded 
+            ? `${entry!.commonName} added to your collection!${bonusLine}`
+            : `${entry!.commonName} is back in your collection. Points were already earned for this species.`,
+          [{ text: 'Awesome!' }]
+        );
+      }
+      setModalVisible(false);
+    } catch (error) {
+      console.warn('[Dex] Failed to save find:', error);
+      Alert.alert('Could not save find', 'Please try again.');
+      throw error;
+    } finally {
+      setSavingFind(false);
     }
+  }
+  function handleRemoveFind() {
+    if (!find || !entry) return;
+    const findToRemove = find; // capture before state change
+    Alert.alert(
+      'Remove from collection?',
+      `This will unmark ${entry.commonName} as found and remove it from your collection log. Points already earned will stay as-is.`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Remove',
+          style: 'destructive',
+          onPress: () => {
+            if (removingFind) return;
+            setRemovingFind(true);
+            setFind(null);
+            removeUserFind(findToRemove.id)
+              .catch((e) => {
+                console.warn('[FungiDex] removeUserFind failed:', e);
+                setFind(findToRemove); // restore on failure
+                Alert.alert('Could not remove find', 'Please try again.');
+              })
+              .finally(() => {
+                setRemovingFind(false);
+              });
+          },
+        },
+      ]
+    );
   }
 
   const findPhotos = find?.userPhotoPaths ?? [];
@@ -273,6 +339,7 @@ export default function DetailScreen() {
               </Text>
               <TouchableOpacity
                 style={styles.markButton}
+                disabled={savingFind || removingFind}
                 onPress={() => setModalVisible(true)}
               >
                 <Text style={styles.markButtonText}>Mark as Found 🍄</Text>
@@ -284,7 +351,7 @@ export default function DetailScreen() {
                 <Text style={styles.foundBadgeLabel}>✓ Found</Text>
                 <Text style={styles.foundDate}>
                   {new Date(find.dateFound).toLocaleDateString('en-CA', {
-                    month: 'short',
+                    month: 'long',
                     day: 'numeric',
                     year: 'numeric',
                   })}
@@ -310,9 +377,18 @@ export default function DetailScreen() {
 
               <TouchableOpacity
                 style={styles.editButton}
+                disabled={savingFind || removingFind}
                 onPress={() => setModalVisible(true)}
               >
                 <Text style={styles.editButtonText}>Edit Find</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[styles.removeButton, (savingFind || removingFind) && styles.buttonDisabled]}
+                disabled={savingFind || removingFind}
+                onPress={handleRemoveFind}
+              >
+                <Text style={styles.removeButtonText}>Remove from Collection</Text>
               </TouchableOpacity>
             </>
           )}
@@ -327,6 +403,7 @@ export default function DetailScreen() {
         pointsValue={entry.pointsValue}
         existingFind={find}
         onSave={handleModalSave}
+        saving={savingFind}
         onClose={() => setModalVisible(false)}
       />
     </SafeAreaView>
@@ -459,15 +536,13 @@ const styles = StyleSheet.create({
   },
   markButtonText: { color: '#fff', fontSize: 16, fontWeight: '700' },
   foundHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
     backgroundColor: '#e8f5d8',
     borderRadius: 10,
     padding: 12,
     marginBottom: 12,
   },
-  foundBadgeLabel: { fontSize: 16, fontWeight: '700', color: '#2d4a1a' },
+  foundBadgeLabel: { fontSize: 16, fontWeight: '700', color: '#2d4a1a', marginBottom: 2 },
   foundDate: { fontSize: 13, color: '#5a7a3a' },
   findDetailRow: { flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', marginBottom: 10 },
   findDetailChip: {
@@ -501,5 +576,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   editButtonText: { color: '#5a7a3a', fontSize: 15, fontWeight: '700' },
+  removeButton: {
+    borderWidth: 1,
+    borderColor: '#8b1a1a',
+    borderRadius: 12,
+    paddingVertical: 12,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  removeButtonText: { color: '#8b1a1a', fontSize: 15, fontWeight: '700' },
+  buttonDisabled: { opacity: 0.65 },
   bottomPad: { height: 32 },
 });
+

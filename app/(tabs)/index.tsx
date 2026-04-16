@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {
   View,
   Text,
@@ -9,71 +9,147 @@ import {
 } from 'react-native';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getUserProfile } from '../../src/storage/userProfile';
-import { getUserFinds } from '../../src/storage/userFinds';
-import { getMysteryLogs } from '../../src/storage/mysteryLogs';
-import { evaluateMission, getMissionProgress } from '../../src/utils/missionEngine';
+import { getUserProfile, getCachedProfile } from '../../src/storage/userProfile';
+import { getUserFinds, getCachedFinds } from '../../src/storage/userFinds';
+import { getMysteryLogs, getCachedMysteryLogs } from '../../src/storage/mysteryLogs';
+import { getMissionEvaluation } from '../../src/utils/missionEngine';
 import { UserProfile, UserFind, MysteryObservation, Mission, STAGE_THRESHOLDS, ProgressionStage } from '../../src/types';
 import mushroomData from '../../data/mushrooms.json';
 import missionsData from '../../data/missions.json';
+import ActivityFeed from '../../src/components/ActivityFeed';
+import {
+  getAllFriendsFindsIndex,
+  getCachedFriendsFindsIndex,
+  FriendFindEntry,
+} from '../../src/storage/friendData';
 
 const STAGE_EMOJI: Record<string, string> = {
-  Explorer: '🌱',
-  Observer: '👁️',
-  Naturalist: '🌿',
-  'Junior Expert': '🍄',
+  'Explorer':           '🌱',
+  'Tracker':            '👣',
+  'Observer':           '👁️',
+  'Naturalist':         '🌿',
+  'Field Expert':       '🍄',
+  'Mycologist':         '🔬',
+  'Master Mycologist':  '🏆',
 };
 
 const STAGE_NEXT: Record<string, ProgressionStage | null> = {
-  Explorer: 'Observer',
-  Observer: 'Naturalist',
-  Naturalist: 'Junior Expert',
-  'Junior Expert': null,
+  'Explorer':          'Tracker',
+  'Tracker':           'Observer',
+  'Observer':          'Naturalist',
+  'Naturalist':        'Field Expert',
+  'Field Expert':      'Mycologist',
+  'Mycologist':        'Master Mycologist',
+  'Master Mycologist': null,
 };
+
+type MissionData = Mission & { emoji: string };
+
+const TOTAL_DEX = mushroomData.length;
+const MISSIONS = missionsData as MissionData[];
+const MUSHROOM_NAME_BY_ID = (mushroomData as any[]).reduce((acc, entry) => {
+  if (entry?.id) {
+    acc[entry.id] = entry.commonName ?? entry.id;
+  }
+  return acc;
+}, {} as Record<string, string>);
 
 export default function HomeScreen() {
   const router = useRouter();
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [finds, setFinds] = useState<UserFind[]>([]);
   const [mysteries, setMysteries] = useState<MysteryObservation[]>([]);
+  const [friendActivity, setFriendActivity] = useState<FriendFindEntry[]>([]);
 
   useFocusEffect(
     useCallback(() => {
       let active = true;
-      Promise.all([getUserProfile(), getUserFinds(), getMysteryLogs()]).then(([p, f, m]) => {
+
+      // Synchronous cache reads — populate state immediately with no network wait.
+      // On first launch caches are empty so this is a no-op; subsequent navigations
+      // back to the home tab render the correct data before the first paint.
+      const cachedProfile = getCachedProfile();
+      const cachedFinds   = getCachedFinds();
+      const cachedLogs    = getCachedMysteryLogs();
+      if (cachedProfile) setProfile(cachedProfile);
+      if (cachedFinds)   setFinds(cachedFinds);
+      if (cachedLogs)    setMysteries(cachedLogs);
+
+      // Background async refresh — keeps data in sync with Firestore / AsyncStorage.
+      Promise.all([
+        getUserProfile({ force: true }),
+        getUserFinds({ force: true }),
+        getMysteryLogs({ force: true }),
+      ]).then(([p, f, m]) => {
         if (!active) return;
         setProfile(p);
         setFinds(f);
         setMysteries(m);
       });
+
+      // Load friend activity feed
+      const cachedIdx = getCachedFriendsFindsIndex();
+      if (cachedIdx) setFriendActivity(cachedIdx.allFinds);
+      getAllFriendsFindsIndex().then((idx) => {
+        if (active) setFriendActivity(idx.allFinds);
+      });
+
       return () => { active = false; };
     }, [])
   );
 
-  const recentFinds = [...finds]
-    .sort((a, b) => new Date(b.dateFound).getTime() - new Date(a.dateFound).getTime())
-    .slice(0, 3);
+  const recentFinds = useMemo(
+    () =>
+      [...finds]
+        .sort((a, b) => new Date(b.dateFound).getTime() - new Date(a.dateFound).getTime())
+        .slice(0, 3),
+    [finds],
+  );
 
-  const totalDex = mushroomData.length;
+  const totalDex = TOTAL_DEX;
   const foundCount = finds.length;
 
-  const nextStage = profile ? STAGE_NEXT[profile.level] : null;
-  const nextThreshold = nextStage ? STAGE_THRESHOLDS[nextStage] : null;
-  const currentThreshold = profile ? STAGE_THRESHOLDS[profile.level] : 0;
-  const progressPercent =
-    nextThreshold && profile
-      ? Math.min(
-          ((profile.totalPoints - currentThreshold) /
-            (nextThreshold - currentThreshold)) *
-            100,
-          100
-        )
-      : 100;
+  const stageProgress = useMemo(() => {
+    const nextStage = profile ? STAGE_NEXT[profile.level] : null;
+    const nextThreshold = nextStage ? STAGE_THRESHOLDS[nextStage] : null;
+    const currentThreshold = profile ? STAGE_THRESHOLDS[profile.level] : 0;
+    const progressPercent =
+      nextThreshold && profile
+        ? Math.min(
+            ((profile.totalPoints - currentThreshold) /
+              (nextThreshold - currentThreshold)) *
+              100,
+            100
+          )
+        : 100;
+    return { nextStage, nextThreshold, progressPercent };
+  }, [profile]);
 
-  function getMushroomName(id: string) {
-    const m = (mushroomData as any[]).find((e) => e.id === id);
-    return m?.commonName ?? id;
-  }
+  const [activeMissionPreview, setActiveMissionPreview] = useState<any[]>([]);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (!profile) return;
+      const completedIds = new Set(profile.completedMissions);
+      const runPreview = async () => {
+        const preview = await Promise.all(
+          MISSIONS
+            .filter((mission) => !completedIds.has(mission.id))
+            .slice(0, 3)
+            .map(async (mission) => {
+              const evaluation = await getMissionEvaluation(mission, finds, profile, mysteries);
+              return {
+                mission,
+                progress: evaluation.progress,
+                claimable: evaluation.claimable,
+              };
+            })
+        );
+        setActiveMissionPreview(preview);
+      };
+      runPreview();
+    }, [profile, finds, mysteries])
+  );
 
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
@@ -96,19 +172,19 @@ export default function HomeScreen() {
             </View>
 
             {/* Progress bar */}
-            {nextStage && (
+            {stageProgress.nextStage && (
               <View style={styles.progressSection}>
                 <View style={styles.progressBar}>
                   <View
-                    style={[styles.progressFill, { width: `${progressPercent}%` }]}
+                    style={[styles.progressFill, { width: `${stageProgress.progressPercent}%` }]}
                   />
                 </View>
                 <Text style={styles.progressLabel}>
-                  {nextThreshold! - profile.totalPoints} pts to {nextStage}
+                  {stageProgress.nextThreshold! - profile.totalPoints} pts to {stageProgress.nextStage}
                 </Text>
               </View>
             )}
-            {!nextStage && (
+            {!stageProgress.nextStage && (
               <Text style={styles.maxStageLabel}>Maximum stage reached!</Text>
             )}
           </View>
@@ -177,7 +253,7 @@ export default function HomeScreen() {
             >
               <Text style={styles.findEmoji}>🍄</Text>
               <View style={styles.findInfo}>
-                <Text style={styles.findName}>{getMushroomName(find.mushroomEntryId)}</Text>
+                <Text style={styles.findName}>{MUSHROOM_NAME_BY_ID[find.mushroomEntryId] ?? find.mushroomEntryId}</Text>
                 <Text style={styles.findDate}>
                   {new Date(find.dateFound).toLocaleDateString('en-CA', {
                     month: 'short',
@@ -192,58 +268,49 @@ export default function HomeScreen() {
 
         {/* Active Missions */}
         <Text style={styles.sectionTitle}>Active Missions</Text>
-        {(() => {
-          if (!profile) return null;
-          const missions = missionsData as (Mission & { emoji: string })[];
-          const completedIds = new Set(profile.completedMissions);
-          const active = missions
-            .filter((m) => !completedIds.has(m.id))
-            .map((m) => ({
-              mission: m,
-              progress: getMissionProgress(m as unknown as Mission, finds, profile, mysteries),
-              claimable: evaluateMission(m as unknown as Mission, finds, profile, mysteries),
-            }))
-            .slice(0, 3);
-
-          if (active.length === 0) {
-            return (
+        {profile && (
+          <>
+            {(activeMissionPreview ?? []).length === 0 ? (
               <View style={styles.emptyBox}>
                 <Text style={styles.emptyEmoji}>🏆</Text>
                 <Text style={styles.emptyText}>All missions completed! Check the Missions tab.</Text>
               </View>
-            );
-          }
-          return (
-            <>
-              {active.map(({ mission, progress, claimable }) => {
-                const pct = Math.min((progress.current / progress.target) * 100, 100);
-                return (
-                  <TouchableOpacity
-                    key={mission.id}
-                    style={[styles.missionCard, claimable && styles.missionCardClaimable]}
-                    onPress={() => router.push('/(tabs)/missions')}
-                  >
-                    <Text style={styles.missionEmoji}>{mission.emoji}</Text>
-                    <View style={styles.missionInfo}>
-                      <Text style={styles.missionTitle}>{mission.title}</Text>
-                      <View style={styles.missionBarRow}>
-                        <View style={styles.missionBar}>
-                          <View style={[styles.missionFill, { width: `${Math.round(pct)}%` }]} />
+            ) : (
+              <>
+                {(activeMissionPreview ?? []).map(({ mission, progress, claimable }) => {
+                  const pct = Math.min((progress.current / progress.target) * 100, 100);
+                  return (
+                    <TouchableOpacity
+                      key={mission.id}
+                      style={[styles.missionCard, claimable && styles.missionCardClaimable]}
+                      onPress={() => router.push('/(tabs)/missions')}
+                    >
+                      <Text style={styles.missionEmoji}>{mission.emoji}</Text>
+                      <View style={styles.missionInfo}>
+                        <Text style={styles.missionTitle}>{mission.title}</Text>
+                        <View style={styles.missionBarRow}>
+                          <View style={styles.missionBar}>
+                            <View style={[styles.missionFill, { width: `${Math.round(pct)}%` }]} />
+                          </View>
+                          <Text style={styles.missionCount}>{progress.current + '/' + progress.target + ' '}</Text>
                         </View>
-                        <Text style={styles.missionCount}>{progress.current + '/' + progress.target + ' '}</Text>
+                        {claimable && <Text style={styles.missionClaim}>Ready to claim! →</Text>}
                       </View>
-                      {claimable && <Text style={styles.missionClaim}>Ready to claim! →</Text>}
-                    </View>
-                    <Text style={styles.missionPts}>{'+' + mission.rewardPoints + ' '}</Text>
-                  </TouchableOpacity>
-                );
-              })}
-              <TouchableOpacity onPress={() => router.push('/(tabs)/missions')}>
-                <Text style={styles.viewAllMissions}>View all missions →</Text>
-              </TouchableOpacity>
-            </>
-          );
-        })()}
+                      <Text style={styles.missionPts}>{'+' + mission.rewardPoints + ' '}</Text>
+                    </TouchableOpacity>
+                  );
+                })}
+                <TouchableOpacity onPress={() => router.push('/(tabs)/missions')}>
+                  <Text style={styles.viewAllMissions}>View all missions →</Text>
+                </TouchableOpacity>
+              </>
+            )}
+          </>
+        )}
+
+        {/* Friend Activity */}
+        <Text style={styles.sectionTitle}>Friend Activity</Text>
+        <ActivityFeed entries={friendActivity} maxItems={10} />
 
         <View style={styles.bottomPad} />
       </ScrollView>
@@ -383,3 +450,4 @@ const styles = StyleSheet.create({
 
   bottomPad: { height: 24 },
 });
+

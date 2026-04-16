@@ -54,5 +54,45 @@
     "icon": "🎓",
     "unlockCriteria": { "missionId": "mission-016" },
     "pointsBonus": 0
+  },
+  {
+    "id": "badge-008",
+    "title": "Ten Species",
+    "description": "You logged 10 different mushroom species.",
+    "icon": "🔟",
+    "unlockCriteria": { "missionId": "mission-024" },
+    "pointsBonus": 0
+  },
+  {
+    "id": "badge-009",
+    "title": "Morel Hunter",
+    "description": "You found your first morel in the field.",
+    "icon": "🌸",
+    "unlockCriteria": { "missionId": "mission-025" },
+    "pointsBonus": 0
+  },
+  {
+    "id": "badge-010",
+    "title": "Fifteen Species",
+    "description": "You logged 15 different mushroom species.",
+    "icon": "🌟",
+    "unlockCriteria": { "missionId": "mission-027" },
+    "pointsBonus": 0
+  },
+  {
+    "id": "badge-011",
+    "title": "Seasoned Forager",
+    "description": "You logged finds across all four seasons.",
+    "icon": "🌀",
+    "unlockCriteria": { "missionId": "mission-028" },
+    "pointsBonus": 0
+  },
+  {
+    "id": "badge-012",
+    "title": "Lesson Milestone",
+    "description": "You completed 8 lessons in the Learn tab.",
+    "icon": "📗",
+    "unlockCriteria": { "missionId": "mission-029" },
+    "pointsBonus": 0
   }
 ]

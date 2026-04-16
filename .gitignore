@@ -39,3 +39,26 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Cloud Functions build output
+functions/lib/
+functions/node_modules/
+
+# Build exports
+dist-export/
+
+# Local zip archives
+*.zip
+
+# Dev/audit scripts
+audit-images.js
+verify-images.js
+
+# Planning/refactor docs
+REFACTOR/
+TIER1_IMAGE_AUDIT.md
+fungidex_social_spec_handshake.md
+junior_mycology_curriculum.html
+
+# Claude local settings
+.claude/settings.local.json

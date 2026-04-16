@@ -1,0 +1,50 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: returns true if either user has the other in their friends subcollection.
+    function isFriend(ownerUid, requestingUid) {
+      return exists(/databases/$(database)/documents/users/$(ownerUid)/friends/$(requestingUid))
+          || exists(/databases/$(database)/documents/users/$(requestingUid)/friends/$(ownerUid));
+    }
+
+    // ─── Per-user data ────────────────────────────────────────────────
+    match /users/{uid} {
+      // Default: owner can read and write all their own documents
+      match /{document=**} {
+        allow read, write: if request.auth != null && request.auth.uid == uid;
+      }
+
+      // Profile: readable by owner + confirmed friends
+      match /profile/data {
+        allow read: if request.auth != null
+          && (request.auth.uid == uid || isFriend(uid, request.auth.uid));
+      }
+
+      // Finds: readable by owner + confirmed friends
+      match /finds/{find} {
+        allow read: if request.auth != null
+          && (request.auth.uid == uid || isFriend(uid, request.auth.uid));
+      }
+    }
+
+    // ─── Public friend-code lookup ────────────────────────────────────
+    match /userCodes/{code} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+
+    // ─── Challenges ──────────────────────────────────────────────────
+    match /challenges/{challengeId} {
+      allow read: if request.auth != null
+        && (request.auth.uid == resource.data.initiatorUid
+         || request.auth.uid == resource.data.inviteeUid);
+      allow create: if request.auth != null
+        && request.auth.uid == request.resource.data.initiatorUid;
+      allow update: if request.auth != null
+        && (request.auth.uid == resource.data.initiatorUid
+         || request.auth.uid == resource.data.inviteeUid);
+    }
+  }
+}

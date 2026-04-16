@@ -6,6 +6,7 @@ import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { hasAcceptedDisclaimer, acceptDisclaimer } from '../src/storage/disclaimerAccepted';
 import { AuthProvider, useAuth } from '../src/auth/AuthContext';
+import { ProfileProvider } from '../src/context/ProfileContext';
 
 const theme = {
   ...MD3LightTheme,
@@ -99,6 +100,7 @@ export default function RootLayout() {
       <PaperProvider theme={theme}>
         <StatusBar style="dark" />
         <AuthProvider>
+          <ProfileProvider>
           <AuthGate>
             {showDisclaimer && <DisclaimerModal onAccept={handleAccept} />}
             <Stack screenOptions={{ headerShown: false }}>
@@ -124,8 +126,29 @@ export default function RootLayout() {
                   headerTintColor: '#5a7a3a',
                 }}
               />
+              <Stack.Screen
+                name="trail/field-id"
+                options={{
+                  headerShown: true,
+                  headerTitle: '',
+                  headerBackTitle: 'Trail',
+                  headerStyle: { backgroundColor: '#f9f6f0' },
+                  headerTintColor: '#5a7a3a',
+                }}
+              />
+              <Stack.Screen
+                name="friend/[uid]/collection"
+                options={{
+                  headerShown: true,
+                  headerTitle: 'Collection',
+                  headerBackTitle: 'Back',
+                  headerStyle: { backgroundColor: '#f9f6f0' },
+                  headerTintColor: '#5a7a3a',
+                }}
+              />
             </Stack>
           </AuthGate>
+          </ProfileProvider>
         </AuthProvider>
       </PaperProvider>
     </SafeAreaProvider>

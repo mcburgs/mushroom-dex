@@ -11,9 +11,15 @@ import {
 import { Image } from 'expo-image';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getUserFinds } from '../../src/storage/userFinds';
+import { getUserFinds, getCachedFinds } from '../../src/storage/userFinds';
 import { MushroomEntry, UserFind, BroadType } from '../../src/types';
 import mushroomData from '../../data/mushrooms.json';
+import {
+  getAllFriendsFindsIndex,
+  getCachedFriendsFindsIndex,
+  FriendsFindsIndex,
+} from '../../src/storage/friendData';
+import { FriendSummary } from '../../src/storage/friends';
 
 const BROAD_TYPE_EMOJI: Record<string, string> = {
   'Gilled': '🍄',
@@ -74,10 +80,12 @@ function MushroomCard({
   entry,
   found,
   onPress,
+  friendFoundBy,
 }: {
   entry: MushroomEntry;
   found: boolean;
   onPress: () => void;
+  friendFoundBy?: FriendSummary[];
 }) {
   const heroImage = entry.images.find((img) => img.isHero);
   const [imgError, setImgError] = React.useState(false);
@@ -129,6 +137,13 @@ function MushroomCard({
             {'● ' + entry.rarityTier + ' '}
           </Text>
         </View>
+        {friendFoundBy && friendFoundBy.length > 0 && (
+          <Text style={styles.friendTag} numberOfLines={1}>
+            {friendFoundBy.length === 1
+              ? `Found by ${friendFoundBy[0].displayName}`
+              : `Found by ${friendFoundBy[0].displayName} +${friendFoundBy.length - 1}`}
+          </Text>
+        )}
       </View>
     </TouchableOpacity>
   );
@@ -141,17 +156,28 @@ export default function DexScreen() {
   const [activeType, setActiveType] = useState<BroadType | null>(null);
   const [foundFilter, setFoundFilter] = useState<FoundFilter>('all');
   const [sortOrder, setSortOrder] = useState<SortOrder>('default');
+  const [friendsIndex, setFriendsIndex] = useState<FriendsFindsIndex | null>(null);
 
   useFocusEffect(
     useCallback(() => {
       let active = true;
-      getUserFinds().then((f) => { if (active) setFinds(f); });
+      const cf = getCachedFinds();
+      if (cf) setFinds(cf);
+      getUserFinds({ force: true }).then((f) => {
+        if (active) setFinds(f);
+      });
+      // Load friends finds index for "found by friends" tags
+      const cachedIdx = getCachedFriendsFindsIndex();
+      if (cachedIdx) setFriendsIndex(cachedIdx);
+      getAllFriendsFindsIndex().then((idx) => {
+        if (active) setFriendsIndex(idx);
+      });
       return () => { active = false; };
     }, [])
   );
 
-  const foundIds = new Set(finds.map((f) => f.mushroomEntryId));
   const allMushrooms = mushroomData as MushroomEntry[];
+  const foundIds = useMemo(() => new Set(finds.map((f) => f.mushroomEntryId)), [finds]);
 
   // Types that actually exist in the dex
   const presentTypes = useMemo(
@@ -341,6 +367,7 @@ export default function DexScreen() {
             entry={item}
             found={foundIds.has(item.id)}
             onPress={() => router.push(`/dex/${item.id}`)}
+            friendFoundBy={friendsIndex?.bySpecies.get(item.id)}
           />
         )}
       />
@@ -451,6 +478,12 @@ const styles = StyleSheet.create({
   },
   typeChipText: { fontSize: 11, color: '#2d4a1a', fontWeight: '600' },
   rarityDot: { fontSize: 11, fontWeight: '600' },
+  friendTag: {
+    fontSize: 11,
+    color: '#5a7a3a',
+    fontStyle: 'italic',
+    marginTop: 4,
+  },
 
   // Empty state
   emptyBox: { alignItems: 'center', paddingTop: 48, paddingHorizontal: 32 },

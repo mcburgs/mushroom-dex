@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {
   View,
   Text,
@@ -9,13 +9,26 @@ import {
 } from 'react-native';
 import { useFocusEffect } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getUserProfile, completeMission } from '../../src/storage/userProfile';
-import { getUserFinds } from '../../src/storage/userFinds';
-import { getMysteryLogs } from '../../src/storage/mysteryLogs';
-import { evaluateMission, getMissionProgress } from '../../src/utils/missionEngine';
-import { UserProfile, UserFind, MysteryObservation, Mission } from '../../src/types';
-import missionsData from '../../data/missions.json';
+import { addPoints, completeMission, getUserProfile, getCachedProfile } from '../../src/storage/userProfile';
+import { getUserFinds, getCachedFinds } from '../../src/storage/userFinds';
+import { getMysteryLogs, getCachedMysteryLogs } from '../../src/storage/mysteryLogs';
+import {
+  getWeekKey,
+  getWeekStartDate,
+  getWeeklyChallenges,
+  getWeeklyCompleted,
+  claimWeeklyChallengeWithPoints,
+} from '../../src/storage/weeklyMissions';
+import { getMissionEvaluation } from '../../src/utils/missionEngine';
+import {
+  Mission,
+  MysteryObservation,
+  UserFind,
+  UserProfile,
+  WeeklyChallenge,
+} from '../../src/types';
 import badgesData from '../../data/badges.json';
+import missionsData from '../../data/missions.json';
 
 type TabType = 'active' | 'completed';
 
@@ -38,73 +51,262 @@ interface BadgeData {
   pointsBonus: number;
 }
 
+const MISSIONS = missionsData as MissionData[];
+const BADGES = badgesData as BadgeData[];
+const BADGE_BY_ID = BADGES.reduce((acc, badge) => {
+  acc[badge.id] = badge;
+  return acc;
+}, {} as Record<string, BadgeData>);
+
+function MissionCard({
+  mission,
+  progress,
+  claimable,
+  done,
+  pending,
+  onClaim,
+  badgeHint,
+}: {
+  mission: MissionData | WeeklyChallenge;
+  progress: { current: number; target: number };
+  claimable: boolean;
+  done: boolean;
+  pending?: boolean;
+  onClaim: () => void;
+  badgeHint?: string | null;
+}) {
+  const pct = Math.min((progress.current / progress.target) * 100, 100);
+  const diffColour = DIFFICULTY_COLOUR[mission.difficultyTier] ?? '#5a7a3a';
+
+  return (
+    <View
+      style={[
+        styles.missionCard,
+        claimable && styles.missionCardClaimable,
+        done && styles.missionCardDone,
+      ]}
+    >
+      <View style={styles.missionTop}>
+        <View style={[styles.missionIconBox, { backgroundColor: `${diffColour}22` }]}>
+          <Text style={styles.missionIcon}>{mission.emoji}</Text>
+        </View>
+        <View style={styles.missionMeta}>
+          <Text style={styles.missionTitle}>{mission.title}</Text>
+          <Text style={styles.missionDesc}>{mission.description}</Text>
+        </View>
+        <View style={styles.missionPtsBox}>
+          <Text style={styles.missionPts}>{`+${mission.rewardPoints}`}</Text>
+          <Text style={styles.missionPtsLabel}>pts</Text>
+        </View>
+      </View>
+
+      <View style={styles.missionTagRow}>
+        <Text style={[styles.diffChip, { color: diffColour }]}>{mission.difficultyTier}</Text>
+        {badgeHint ? <Text style={styles.badgeHint}>{badgeHint}</Text> : null}
+        {mission.repeatable ? <Text style={styles.repeatableHint}>Weekly</Text> : null}
+      </View>
+
+      {!done && (
+        <View style={styles.progressSection}>
+          <View style={styles.progressBar}>
+            <View style={[styles.progressFill, { width: `${Math.round(pct)}%` }]} />
+          </View>
+          <Text style={styles.progressLabel}>{`${progress.current} / ${progress.target}`}</Text>
+        </View>
+      )}
+
+      {claimable || pending ? (
+        <TouchableOpacity
+          style={[styles.claimButton, pending && styles.claimButtonDisabled]}
+          onPress={onClaim}
+          disabled={pending}
+        >
+          <Text style={styles.claimButtonText}>
+            {pending ? 'Claiming...' : `Claim +${mission.rewardPoints} pts`}
+          </Text>
+        </TouchableOpacity>
+      ) : null}
+
+      {done ? (
+        <View style={styles.completedRow}>
+          <Text style={styles.completedLabel}>Completed</Text>
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
 export default function MissionsScreen() {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [finds, setFinds] = useState<UserFind[]>([]);
   const [mysteries, setMysteries] = useState<MysteryObservation[]>([]);
+  const [weeklyCompleted, setWeeklyCompleted] = useState<string[]>([]);
   const [tab, setTab] = useState<TabType>('active');
+  const [claimingMissionIds, setClaimingMissionIds] = useState<string[]>([]);
+  const [claimingWeeklyIds, setClaimingWeeklyIds] = useState<string[]>([]);
+
+  const weekStart = useMemo(() => getWeekStartDate(), []);
+  const weeklyChallenges = useMemo(() => getWeeklyChallenges(), []);
 
   useFocusEffect(
     useCallback(() => {
       let active = true;
-      Promise.all([getUserProfile(), getUserFinds(), getMysteryLogs()]).then(
-        ([p, f, m]) => {
-          if (!active) return;
-          setProfile(p);
-          setFinds(f);
-          setMysteries(m);
-        }
-      );
-      return () => { active = false; };
-    }, [])
+
+      // Sync cache reads — instant render on navigation
+      const cp = getCachedProfile(); const cf = getCachedFinds(); const cm = getCachedMysteryLogs();
+      if (cp) setProfile(cp);
+      if (cf) setFinds(cf);
+      if (cm) setMysteries(cm);
+
+      // Background refresh from network
+      Promise.all([
+        getUserProfile({ force: true }),
+        getUserFinds({ force: true }),
+        getMysteryLogs({ force: true }),
+        getWeeklyCompleted(),
+      ]).then(([p, f, m, wc]) => {
+        if (!active) return;
+        setProfile(p);
+        setFinds(f);
+        setMysteries(m);
+        setWeeklyCompleted(wc);
+      });
+      return () => {
+        active = false;
+      };
+    }, []),
   );
 
-  const missions = missionsData as MissionData[];
-  const badges = badgesData as BadgeData[];
-  const completedIds = new Set(profile?.completedMissions ?? []);
-  const unlockedBadgeIds = new Set(profile?.unlockedBadges ?? []);
+  const completedIds = useMemo(() => new Set(profile?.completedMissions ?? []), [profile]);
+  const unlockedBadgeIds = useMemo(() => new Set(profile?.unlockedBadges ?? []), [profile]);
+  const weeklyDoneIds = useMemo(() => new Set(weeklyCompleted), [weeklyCompleted]);
 
-  // Evaluate each mission
-  const evaluations = missions.map((m) => ({
-    mission: m,
-    done: completedIds.has(m.id),
-    claimable: !completedIds.has(m.id) && profile
-      ? evaluateMission(m as unknown as Mission, finds, profile, mysteries)
-      : false,
-    progress: profile
-      ? getMissionProgress(m as unknown as Mission, finds, profile, mysteries)
-      : { current: 0, target: 1 },
-  }));
+  const [evaluations, setEvaluations] = useState<any[]>([]);
+  const [weeklyEvaluations, setWeeklyEvaluations] = useState<any[]>([]);
 
-  const active = evaluations.filter((e) => !e.done);
-  const completed = evaluations.filter((e) => e.done);
-  const claimableCount = active.filter((e) => e.claimable).length;
+  useFocusEffect(
+    useCallback(() => {
+      if (!profile) return;
 
-  async function handleClaim(mission: MissionData) {
-    if (!profile) return;
-    const updated = await completeMission(mission.id, mission.rewardPoints, mission.rewardBadge);
-    setProfile(updated);
-    const badge = mission.rewardBadge ? badges.find((b) => b.id === mission.rewardBadge) : null;
-    const msg = badge
-      ? `+${mission.rewardPoints} points and the "${badge.title}" badge!`
-      : `+${mission.rewardPoints} points!`;
-    Alert.alert('Mission Complete! 🎉', msg, [{ text: 'Awesome!' }]);
+      const runEvals = async () => {
+        const evals = await Promise.all(
+          MISSIONS.map(async (mission) => {
+            const done = completedIds.has(mission.id);
+            const evaluation = await getMissionEvaluation(mission, finds, profile, mysteries);
+            return {
+              mission,
+              done,
+              claimable: !done && evaluation.claimable,
+              progress: evaluation.progress,
+            };
+          })
+        );
+        setEvaluations(evals);
+
+        const wEvals = await Promise.all(
+          weeklyChallenges.map(async (challenge) => {
+            const done = weeklyDoneIds.has(challenge.id);
+            const evaluation = await getMissionEvaluation(challenge, finds, profile, mysteries, weekStart);
+            return {
+              challenge,
+              done,
+              claimable: !done && evaluation.claimable,
+              progress: evaluation.progress,
+            };
+          })
+        );
+        setWeeklyEvaluations(wEvals);
+      };
+
+      runEvals();
+    }, [profile, finds, mysteries, completedIds, weeklyDoneIds, weekStart, weeklyChallenges])
+  );
+
+  const active = useMemo(() => evaluations.filter((item) => !item.done), [evaluations]);
+  const completed = useMemo(() => evaluations.filter((item) => item.done), [evaluations]);
+  const claimableCount = useMemo(
+    () =>
+      active.filter((item) => item.claimable).length +
+      weeklyEvaluations.filter((item) => item.claimable).length,
+    [active, weeklyEvaluations],
+  );
+  const shown = useMemo(
+    () => (tab === 'active' ? active : completed),
+    [active, completed, tab],
+  );
+
+async function handleClaim(mission: MissionData) {
+    if (!profile || claimingMissionIds.includes(mission.id)) return;
+    setClaimingMissionIds((current) => [...current, mission.id]);
+    try {
+      const updated = await completeMission(mission.id, mission.rewardPoints, mission.rewardBadge);
+      setProfile(updated);
+      const badge = mission.rewardBadge ? BADGE_BY_ID[mission.rewardBadge] : null;
+      const message = badge
+        ? `+${mission.rewardPoints} points and the "${badge.title}" badge!`
+        : `+${mission.rewardPoints} points added to your profile.`;
+      Alert.alert('Mission Complete!', message, [{ text: 'Nice' }]);
+    } catch (error) {
+      console.warn('[Missions] Mission claim failed:', error);
+      Alert.alert('Could not claim mission', 'Please try again in a moment.');
+    } finally {
+      setClaimingMissionIds((current) => current.filter((id) => id !== mission.id));
+    }
   }
 
-  const shown = tab === 'active' ? active : completed;
+  async function handleWeeklyClaim(challenge: WeeklyChallenge) {
+    if (!profile || weeklyDoneIds.has(challenge.id) || claimingWeeklyIds.includes(challenge.id)) return;
+    setClaimingWeeklyIds((current) => [...current, challenge.id]);
+    try {
+      const { awarded } = await claimWeeklyChallengeWithPoints(challenge.id, challenge.rewardPoints, getWeekKey());
+      if (awarded) {
+        // Refresh local state
+        const updatedProfile = await getUserProfile();
+        setProfile(updatedProfile);
+        const updatedWeekly = await getWeeklyCompleted();
+        setWeeklyCompleted(updatedWeekly);
+        Alert.alert('Weekly Challenge Complete!', `+${challenge.rewardPoints} points added.`);
+      }
+    } catch (error) {
+      console.warn('[Missions] Weekly claim failed:', error);
+      Alert.alert('Could not claim weekly challenge', 'Please try again in a moment.');
+    } finally {
+      setClaimingWeeklyIds((current) => current.filter((id) => id !== challenge.id));
+    }
+  }
 
   return (
     <SafeAreaView style={styles.safe} edges={['top']}>
       <View style={styles.header}>
-        <Text style={styles.title}>⭐ Missions</Text>
+        <Text style={styles.title}>Missions</Text>
         <Text style={styles.subtitle}>
-          {completed.length + ' / ' + missions.length + ' completed'}
-          {claimableCount > 0 ? ' · ' + claimableCount + ' ready to claim!' : ''}
+          {`${completed.length} / ${MISSIONS.length} permanent missions completed`}
+          {claimableCount > 0 ? ` � ${claimableCount} ready to claim` : ''}
         </Text>
       </View>
 
       <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
-        {/* Badges */}
+        <View style={styles.weeklySection}>
+          <View style={styles.sectionHeadingRow}>
+            <Text style={styles.sectionTitle}>Weekly Challenges</Text>
+            <Text style={styles.sectionSubtle}>Refreshes every Sunday</Text>
+          </View>
+          <Text style={styles.weeklyIntro}>
+            Three rotating goals keep progress moving between your bigger milestones.
+          </Text>
+          {weeklyEvaluations.map(({ challenge, done, claimable, progress }) => (
+            <MissionCard
+              key={challenge.id}
+              mission={challenge}
+              progress={progress}
+              claimable={claimable}
+              done={done}
+              pending={claimingWeeklyIds.includes(challenge.id)}
+              onClaim={() => handleWeeklyClaim(challenge)}
+            />
+          ))}
+        </View>
+
         <Text style={styles.sectionLabel}>Badges</Text>
         <ScrollView
           horizontal
@@ -112,29 +314,33 @@ export default function MissionsScreen() {
           style={styles.badgeScroll}
           contentContainerStyle={styles.badgeScrollContent}
         >
-          {badges.map((badge) => {
+          {BADGES.map((badge) => {
             const earned = unlockedBadgeIds.has(badge.id);
             return (
               <View key={badge.id} style={[styles.badgeCard, !earned && styles.badgeCardLocked]}>
                 <Text style={[styles.badgeIcon, !earned && styles.badgeIconLocked]}>
-                  {earned ? badge.icon : '🔒'}
+                  {earned ? badge.icon : '??'}
                 </Text>
                 <Text style={[styles.badgeName, !earned && styles.badgeNameLocked]} numberOfLines={2}>
-                  {badge.title + ' '}
+                  {badge.title}
                 </Text>
               </View>
             );
           })}
         </ScrollView>
 
-        {/* Tab switcher */}
+        <View style={styles.sectionHeadingRow}>
+          <Text style={styles.sectionTitle}>Permanent Missions</Text>
+          <Text style={styles.sectionSubtle}>One-time achievements</Text>
+        </View>
+
         <View style={styles.tabRow}>
           <TouchableOpacity
             style={[styles.tab, tab === 'active' && styles.tabActive]}
             onPress={() => setTab('active')}
           >
             <Text style={[styles.tabText, tab === 'active' && styles.tabTextActive]}>
-              {'Active (' + active.length + ') '}
+              {`Active (${active.length})`}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -142,94 +348,38 @@ export default function MissionsScreen() {
             onPress={() => setTab('completed')}
           >
             <Text style={[styles.tabText, tab === 'completed' && styles.tabTextActive]}>
-              {'Completed (' + completed.length + ') '}
+              {`Completed (${completed.length})`}
             </Text>
           </TouchableOpacity>
         </View>
 
-        {/* Mission list */}
-        {shown.length === 0 && (
+        {shown.length === 0 ? (
           <View style={styles.emptyBox}>
-            <Text style={styles.emptyEmoji}>{tab === 'active' ? '🏆' : '🌱'}</Text>
+            <Text style={styles.emptyEmoji}>{tab === 'active' ? '??' : '??'}</Text>
             <Text style={styles.emptyText}>
               {tab === 'active'
-                ? 'All missions completed! You are a true naturalist.'
-                : 'Complete missions to see them here.'}
+                ? 'All permanent missions are complete. Weekly challenges will keep rotating in.'
+                : 'Permanent missions you claim will show up here.'}
             </Text>
           </View>
-        )}
-
-        {shown.map(({ mission, done, claimable, progress }) => {
-          const pct = Math.min((progress.current / progress.target) * 100, 100);
-          const diffColour = DIFFICULTY_COLOUR[mission.difficultyTier] ?? '#5a7a3a';
-
-          return (
-            <View
+        ) : (
+          shown.map(({ mission, done, claimable, progress }) => (
+            <MissionCard
               key={mission.id}
-              style={[
-                styles.missionCard,
-                claimable && styles.missionCardClaimable,
-                done && styles.missionCardDone,
-              ]}
-            >
-              {/* Top row */}
-              <View style={styles.missionTop}>
-                <View style={[styles.missionIconBox, { backgroundColor: diffColour + '22' }]}>
-                  <Text style={styles.missionIcon}>{mission.emoji}</Text>
-                </View>
-                <View style={styles.missionMeta}>
-                  <Text style={styles.missionTitle}>{mission.title}</Text>
-                  <Text style={styles.missionDesc}>{mission.description + ' '}</Text>
-                </View>
-                <View style={styles.missionPtsBox}>
-                  <Text style={styles.missionPts}>{'+' + mission.rewardPoints}</Text>
-                  <Text style={styles.missionPtsLabel}>pts</Text>
-                </View>
-              </View>
-
-              {/* Difficulty + badge hint */}
-              <View style={styles.missionTagRow}>
-                <Text style={[styles.diffChip, { color: diffColour }]}>
-                  {mission.difficultyTier + ' '}
-                </Text>
-                {mission.rewardBadge && (
-                  <Text style={styles.badgeHint}>
-                    {(badges.find((b) => b.id === mission.rewardBadge)?.icon ?? '🏅') + ' badge '}
-                  </Text>
-                )}
-              </View>
-
-              {/* Progress bar (active only) */}
-              {!done && (
-                <View style={styles.progressSection}>
-                  <View style={styles.progressBar}>
-                    <View style={[styles.progressFill, { width: `${Math.round(pct)}%` }]} />
-                  </View>
-                  <Text style={styles.progressLabel}>
-                    {progress.current + ' / ' + progress.target + ' '}
-                  </Text>
-                </View>
-              )}
-
-              {/* Claim button */}
-              {claimable && (
-                <TouchableOpacity
-                  style={styles.claimButton}
-                  onPress={() => handleClaim(mission)}
-                >
-                  <Text style={styles.claimButtonText}>{'Claim +' + mission.rewardPoints + ' pts! 🎉'}</Text>
-                </TouchableOpacity>
-              )}
-
-              {/* Completed badge */}
-              {done && (
-                <View style={styles.completedRow}>
-                  <Text style={styles.completedLabel}>{'✓ Completed '}</Text>
-                </View>
-              )}
-            </View>
-          );
-        })}
+              mission={mission}
+              progress={progress}
+              claimable={claimable}
+              done={done}
+              pending={claimingMissionIds.includes(mission.id)}
+              onClaim={() => handleClaim(mission)}
+                badgeHint={
+                  mission.rewardBadge
+                  ? `${BADGE_BY_ID[mission.rewardBadge]?.icon ?? '??'} badge`
+                  : null
+              }
+            />
+          ))
+        )}
 
         <View style={styles.bottomPad} />
       </ScrollView>
@@ -241,7 +391,6 @@ const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#f9f6f0' },
   scroll: { flex: 1 },
   content: { padding: 16 },
-
   header: {
     paddingHorizontal: 16,
     paddingTop: 16,
@@ -251,16 +400,21 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: 24, fontWeight: '800', color: '#2d4a1a' },
   subtitle: { fontSize: 13, color: '#5a7a3a', marginTop: 2 },
-
+  weeklySection: { marginBottom: 10 },
+  sectionHeadingRow: {
+    marginBottom: 6,
+  },
+  sectionTitle: { fontSize: 18, fontWeight: '700', color: '#2d4a1a' },
+  sectionSubtle: { fontSize: 12, color: '#8a8a7a', marginTop: 2 },
+  weeklyIntro: { fontSize: 13, color: '#5a7a3a', marginBottom: 12, lineHeight: 18 },
   sectionLabel: {
     fontSize: 13,
     fontWeight: '700',
     color: '#8a8a7a',
+    marginTop: 8,
     marginBottom: 10,
     letterSpacing: 0.5,
   },
-
-  // Badges
   badgeScroll: { flexGrow: 0, marginBottom: 20 },
   badgeScrollContent: { paddingRight: 8 },
   badgeCard: {
@@ -276,10 +430,14 @@ const styles = StyleSheet.create({
   badgeCardLocked: { backgroundColor: '#f4f4ec', borderColor: '#e8e8d8', opacity: 0.6 },
   badgeIcon: { fontSize: 28, marginBottom: 6 },
   badgeIconLocked: { opacity: 0.4 },
-  badgeName: { fontSize: 10, fontWeight: '700', color: '#2d4a1a', textAlign: 'center', lineHeight: 13 },
+  badgeName: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: '#2d4a1a',
+    textAlign: 'center',
+    lineHeight: 13,
+  },
   badgeNameLocked: { color: '#b0b0a0' },
-
-  // Tabs
   tabRow: {
     flexDirection: 'row',
     backgroundColor: '#e8f5d8',
@@ -296,8 +454,6 @@ const styles = StyleSheet.create({
   tabActive: { backgroundColor: '#fff' },
   tabText: { fontSize: 13, fontWeight: '600', color: '#5a7a3a' },
   tabTextActive: { color: '#2d4a1a' },
-
-  // Mission cards
   missionCard: {
     backgroundColor: '#fff',
     borderRadius: 16,
@@ -335,16 +491,15 @@ const styles = StyleSheet.create({
   missionPtsBox: { alignItems: 'center', marginLeft: 8 },
   missionPts: { fontSize: 16, fontWeight: '800', color: '#8b6914' },
   missionPtsLabel: { fontSize: 10, color: '#8b6914', fontWeight: '600' },
-
   missionTagRow: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+    gap: 10,
   },
-  diffChip: { fontSize: 11, fontWeight: '700', marginRight: 10 },
+  diffChip: { fontSize: 11, fontWeight: '700' },
   badgeHint: { fontSize: 11, color: '#8b6914', fontWeight: '600' },
-
-  // Progress
+  repeatableHint: { fontSize: 11, color: '#5a7a3a', fontWeight: '700' },
   progressSection: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -359,22 +514,17 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   progressFill: { height: '100%', backgroundColor: '#5a7a3a', borderRadius: 3 },
-  progressLabel: { fontSize: 12, color: '#5a7a3a', fontWeight: '600', minWidth: 40 },
-
-  // Claim
+  progressLabel: { fontSize: 12, color: '#5a7a3a', fontWeight: '600', minWidth: 44 },
   claimButton: {
     backgroundColor: '#8b6914',
     borderRadius: 12,
     paddingVertical: 12,
     alignItems: 'center',
   },
+  claimButtonDisabled: { opacity: 0.65 },
   claimButtonText: { color: '#fff', fontSize: 15, fontWeight: '700' },
-
-  // Completed
   completedRow: { alignItems: 'flex-start' },
   completedLabel: { fontSize: 13, color: '#5a7a3a', fontWeight: '700' },
-
-  // Empty
   emptyBox: {
     backgroundColor: '#fff',
     borderRadius: 16,
@@ -386,6 +536,5 @@ const styles = StyleSheet.create({
   },
   emptyEmoji: { fontSize: 40, marginBottom: 12 },
   emptyText: { fontSize: 14, color: '#8a8a7a', textAlign: 'center', lineHeight: 20 },
-
   bottomPad: { height: 32 },
 });

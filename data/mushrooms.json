@@ -2419,7 +2419,7 @@
     "rarityTier": "Rare Find",
     "encounterRarity": "Rare; associated with declining elm habitat in Ontario. A very special find worth reporting to iNaturalist",
     "idDifficulty": "Easy",
-    "pointsValue": 100,
+    "pointsValue": 75,
     "missionTags": [
       "gilled",
       "wood-grower",
@@ -5043,10 +5043,10 @@
       "black-morel",
       "false-morel"
     ],
-    "rarityTier": "Special Find",
+    "rarityTier": "Lucky Find",
     "encounterRarity": "Present across Ontario but window is short; success requires knowing the habitat and checking year after year",
     "idDifficulty": "Moderate",
-    "pointsValue": 50,
+    "pointsValue": 150,
     "missionTags": [
       "morel",
       "forest-floor",

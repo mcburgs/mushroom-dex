@@ -1,0 +1,46 @@
+export const CAT_EMOJI: Record<string, string> = {
+  'What Is a Fungus?':         '🧫',
+  'Parts of a Mushroom':       '🔬',
+  'Spores & Life Cycle':       '🌱',
+  'Habitats & Ecology':        '🌲',
+  'Safety First':              '⚠️',
+  'Fun Facts & Records':       '🏆',
+  'Identification Skills':     '🔍',
+  'Fungal Biology':            '🧬',
+  'Ecology':                   '♻️',
+  'Field Skills':              '🎒',
+  'Taxonomy & Classification': '📋',
+  'Ontario Focus':             '🍁',
+  'Research Skills':           '📓',
+  'Fungal Science Frontiers':  '🔭',
+  'Citizen Science':           '🤝',
+  'Conservation':              '🌿',
+  'Synthesis':                 '🎓',
+};
+
+export const CAT_BADGE_COLORS: Record<string, [string, string]> = {
+  'What Is a Fungus?':         ['#E1F5EE', '#085041'],
+  'Parts of a Mushroom':       ['#E1F5EE', '#085041'],
+  'Spores & Life Cycle':       ['#E1F5EE', '#085041'],
+  'Habitats & Ecology':        ['#EAF3DE', '#27500A'],
+  'Safety First':              ['#FCEBEB', '#791F1F'],
+  'Fun Facts & Records':       ['#EEEDFE', '#3C3489'],
+  'Identification Skills':     ['#E6F1FB', '#0C447C'],
+  'Fungal Biology':            ['#E1F5EE', '#085041'],
+  'Ecology':                   ['#EAF3DE', '#27500A'],
+  'Field Skills':              ['#FAEEDA', '#633806'],
+  'Taxonomy & Classification': ['#E6F1FB', '#0C447C'],
+  'Ontario Focus':             ['#EAF3DE', '#27500A'],
+  'Research Skills':           ['#FAEEDA', '#633806'],
+  'Fungal Science Frontiers':  ['#EEEDFE', '#3C3489'],
+  'Citizen Science':           ['#FAECE7', '#712B13'],
+  'Conservation':              ['#EAF3DE', '#27500A'],
+  'Synthesis':                 ['#EEEDFE', '#3C3489'],
+};
+
+export const TIER_META = [
+  { tier: 1 as const, emoji: '🌱', name: 'Curious Beginner',     color: '#1D9E75', light: '#E1F5EE', dark: '#085041', unlockStage: 'Explorer' as const },
+  { tier: 2 as const, emoji: '🔬', name: 'Junior Explorer',      color: '#378ADD', light: '#E6F1FB', dark: '#0C447C', unlockStage: 'Observer' as const },
+  { tier: 3 as const, emoji: '🌲', name: 'Field Naturalist',     color: '#BA7517', light: '#FAEEDA', dark: '#633806', unlockStage: 'Field Expert' as const },
+  { tier: 4 as const, emoji: '🦉', name: 'Advanced Naturalist',  color: '#993556', light: '#FBEAF0', dark: '#4B1528', unlockStage: 'Master Mycologist' as const },
+];

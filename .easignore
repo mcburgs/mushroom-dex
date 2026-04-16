@@ -1,0 +1,17 @@
+node_modules/
+android/
+ios/
+dist-export/
+.claude/
+REFACTOR/
+scripts/
+audit-images.js
+verify-images.js
+*.zip
+
+# Local Expo dev files (not needed for cloud builds)
+.expo/
+
+# Firebase Functions build artifacts (not needed for app build)
+functions/node_modules/
+functions/lib/

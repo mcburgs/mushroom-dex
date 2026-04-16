@@ -9,9 +9,13 @@ import {
   ScrollView,
   Image,
   Alert,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as ImagePicker from 'expo-image-picker';
+import * as Location from 'expo-location';
 import { UserFind } from '../types';
 
 const BIOME_OPTIONS = [
@@ -44,7 +48,10 @@ interface Props {
     biomeTag: string;
     userNotes: string;
     userPhotoPaths: string[];
-  }) => void;
+    lat?: number;
+    lng?: number;
+  }) => Promise<void>;
+  saving?: boolean;
   onClose: () => void;
 }
 
@@ -54,12 +61,73 @@ export default function FindModal({
   pointsValue,
   existingFind,
   onSave,
+  saving = false,
   onClose,
 }: Props) {
   const [locationNote, setLocationNote] = useState(existingFind?.locationNote ?? '');
   const [biomeTag, setBiomeTag] = useState(existingFind?.biomeTag ?? '');
   const [userNotes, setUserNotes] = useState(existingFind?.userNotes ?? '');
   const [photos, setPhotos] = useState<string[]>(existingFind?.userPhotoPaths ?? []);
+  const [coords, setCoords] = useState<{ lat?: number; lng?: number }>({
+    lat: existingFind?.lat,
+    lng: existingFind?.lng,
+  });
+  const [locating, setLocating] = useState(false);
+  const [photoBusy, setPhotoBusy] = useState(false);
+
+  React.useEffect(() => {
+    if (!visible) return;
+    // Reset form fields — no GPS call here so the modal opens instantly
+    setLocationNote(existingFind?.locationNote ?? '');
+    setBiomeTag(existingFind?.biomeTag ?? '');
+    setUserNotes(existingFind?.userNotes ?? '');
+    setPhotos(existingFind?.userPhotoPaths ?? []);
+    setCoords({ lat: existingFind?.lat, lng: existingFind?.lng });
+    setLocating(false);
+    setPhotoBusy(false);
+  }, [visible, existingFind]);
+
+  async function handleUseMyLocation() {
+    if (saving) return;
+    setLocating(true);
+    try {
+      const permission = await Location.requestForegroundPermissionsAsync();
+      if (permission.status !== 'granted') {
+        Alert.alert('Permission needed', 'Allow FungiDex to access your location.', [{ text: 'OK' }]);
+        setLocating(false);
+        return;
+      }
+      const position = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.High,
+      });
+      setCoords({ lat: position.coords.latitude, lng: position.coords.longitude });
+      try {
+        const geoResults = await Location.reverseGeocodeAsync({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+        if (geoResults.length > 0) {
+          const geo = geoResults[0];
+          const parts: string[] = [];
+          if (geo.name && geo.name !== geo.city && geo.name !== geo.street) {
+            parts.push(geo.name);
+          }
+          if (geo.city) parts.push(geo.city);
+          if (geo.region) parts.push(geo.region);
+          const placeName = parts.filter(Boolean).join(', ');
+          if (placeName) {
+            setLocationNote((current) => (current.trim() === '' ? placeName : current));
+          }
+        }
+      } catch {
+        // Reverse geocode failed — locationNote stays as user typed
+      }
+    } catch {
+      Alert.alert('Location unavailable', 'Could not get your current location.', [{ text: 'OK' }]);
+    } finally {
+      setLocating(false);
+    }
+  }
 
   const isNew = !existingFind;
   const dateLabel = existingFind
@@ -67,43 +135,61 @@ export default function FindModal({
     : formatDate(new Date().toISOString());
 
   async function handleAddPhoto() {
-    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (status !== 'granted') {
-      Alert.alert(
-        'Permission needed',
-        'Allow FungiDex to access your photos to attach them to finds.',
-        [{ text: 'OK' }]
-      );
-      return;
-    }
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ['images'],
-      quality: 0.7,
-      allowsEditing: true,
-      aspect: [4, 3],
-    });
-    if (!result.canceled && result.assets[0]) {
-      setPhotos((prev) => [...prev, result.assets[0].uri]);
+    if (photoBusy || saving) return;
+    setPhotoBusy(true);
+    try {
+      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (status !== 'granted') {
+        Alert.alert(
+          'Permission needed',
+          'Allow FungiDex to access your photos to attach them to finds.',
+          [{ text: 'OK' }]
+        );
+        return;
+      }
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
+        quality: 0.7,
+        allowsEditing: true,
+        aspect: [4, 3],
+      });
+      if (!result.canceled && result.assets[0]) {
+        setPhotos((prev) => [...prev, result.assets[0].uri]);
+      }
+    } catch (error) {
+      console.warn('[FindModal] add photo failed:', error);
+      Alert.alert('Could not add photo', 'Please try again.');
+    } finally {
+      setPhotoBusy(false);
     }
   }
 
   async function handleTakePhoto() {
-    const { status } = await ImagePicker.requestCameraPermissionsAsync();
-    if (status !== 'granted') {
-      Alert.alert(
-        'Permission needed',
-        'Allow FungiDex to use your camera to photograph your find.',
-        [{ text: 'OK' }]
-      );
-      return;
-    }
-    const result = await ImagePicker.launchCameraAsync({
-      quality: 0.7,
-      allowsEditing: true,
-      aspect: [4, 3],
-    });
-    if (!result.canceled && result.assets[0]) {
-      setPhotos((prev) => [...prev, result.assets[0].uri]);
+    if (photoBusy || saving) return;
+    setPhotoBusy(true);
+    try {
+      const { status } = await ImagePicker.requestCameraPermissionsAsync();
+      if (status !== 'granted') {
+        Alert.alert(
+          'Permission needed',
+          'Allow FungiDex to use your camera to photograph your find.',
+          [{ text: 'OK' }]
+        );
+        return;
+      }
+      const result = await ImagePicker.launchCameraAsync({
+        quality: 0.7,
+        allowsEditing: true,
+        aspect: [4, 3],
+      });
+      if (!result.canceled && result.assets[0]) {
+        setPhotos((prev) => [...prev, result.assets[0].uri]);
+      }
+    } catch (error) {
+      console.warn('[FindModal] take photo failed:', error);
+      Alert.alert('Could not open camera', 'Please try again.');
+    } finally {
+      setPhotoBusy(false);
     }
   }
 
@@ -111,27 +197,55 @@ export default function FindModal({
     setPhotos((prev) => prev.filter((p) => p !== uri));
   }
 
-  function handleSave() {
-    onSave({ locationNote, biomeTag, userNotes, userPhotoPaths: photos });
+  async function handleSave() {
+    if (saving) return;
+    try {
+      await onSave({
+      locationNote,
+      biomeTag,
+      userNotes,
+      userPhotoPaths: photos,
+      lat: coords.lat,
+      lng: coords.lng,
+      });
+    } catch {
+      // Parent handler surfaces user-facing errors.
+    }
   }
 
   return (
     <Modal visible={visible} animationType="slide" transparent={false}>
       <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
-        {/* Header */}
-        <View style={styles.header}>
-          <TouchableOpacity onPress={onClose} style={styles.cancelBtn}>
-            <Text style={styles.cancelText}>Cancel</Text>
-          </TouchableOpacity>
-          <Text style={styles.headerTitle} numberOfLines={1}>
-            {isNew ? 'Log Your Find' : 'Edit Find'}
-          </Text>
-          <TouchableOpacity onPress={handleSave} style={styles.saveBtn}>
-            <Text style={styles.saveText}>{isNew ? 'Save' : 'Update'}</Text>
-          </TouchableOpacity>
-        </View>
+        <KeyboardAvoidingView
+          style={styles.safe}
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        >
+          {/* Header */}
+          <View style={styles.header}>
+            <TouchableOpacity onPress={onClose} style={styles.cancelBtn} disabled={saving}>
+              <Text style={styles.cancelText}>Cancel</Text>
+            </TouchableOpacity>
+            <Text style={styles.headerTitle} numberOfLines={1}>
+              {isNew ? 'Log Your Find' : 'Edit Find'}
+            </Text>
+            <TouchableOpacity onPress={handleSave} style={styles.saveBtn} disabled={saving}>
+              {saving ? (
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                  <ActivityIndicator size="small" color="#5a7a3a" />
+                  <Text style={[styles.saveText, { fontSize: 12 }]}>Saving…</Text>
+                </View>
+              ) : (
+                <Text style={styles.saveText}>{isNew ? 'Save' : 'Update'}</Text>
+              )}
+            </TouchableOpacity>
+          </View>
 
-        <ScrollView style={styles.scroll} contentContainerStyle={styles.content}>
+          <ScrollView
+            style={styles.scroll}
+            contentContainerStyle={styles.content}
+            keyboardShouldPersistTaps="handled"
+            keyboardDismissMode={Platform.OS === 'ios' ? 'interactive' : 'on-drag'}
+          >
           {/* Mushroom + points */}
           <View style={styles.mushroomRow}>
             <Text style={styles.mushroomEmoji}>🍄</Text>
@@ -153,6 +267,15 @@ export default function FindModal({
             placeholder="e.g. Dundas Valley, old oak grove…"
             placeholderTextColor="#b0b0a0"
           />
+          <TouchableOpacity
+            style={styles.locationButton}
+            onPress={handleUseMyLocation}
+            disabled={locating || saving}
+          >
+            <Text style={styles.locationButtonText}>
+              {locating ? '📡 Getting location…' : coords.lat ? '📍 Location captured ✓' : '📍 Use My Location'}
+            </Text>
+          </TouchableOpacity>
 
           {/* Biome */}
           <Text style={styles.fieldLabel}>Habitat type</Text>
@@ -189,11 +312,11 @@ export default function FindModal({
           {/* Photos */}
           <Text style={styles.fieldLabel}>Photos</Text>
           <View style={styles.photoRow}>
-            <TouchableOpacity style={styles.photoButton} onPress={handleTakePhoto}>
+            <TouchableOpacity style={[styles.photoButton, (photoBusy || saving) && styles.photoButtonDisabled]} onPress={handleTakePhoto} disabled={photoBusy || saving}>
               <Text style={styles.photoButtonEmoji}>📷</Text>
               <Text style={styles.photoButtonText}>Camera</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.photoButton} onPress={handleAddPhoto}>
+            <TouchableOpacity style={[styles.photoButton, (photoBusy || saving) && styles.photoButtonDisabled]} onPress={handleAddPhoto} disabled={photoBusy || saving}>
               <Text style={styles.photoButtonEmoji}>🖼️</Text>
               <Text style={styles.photoButtonText}>Library</Text>
             </TouchableOpacity>
@@ -215,8 +338,9 @@ export default function FindModal({
             </ScrollView>
           )}
 
-          <View style={styles.bottomPad} />
-        </ScrollView>
+            <View style={styles.bottomPad} />
+          </ScrollView>
+        </KeyboardAvoidingView>
       </SafeAreaView>
     </Modal>
   );
@@ -268,6 +392,17 @@ const styles = StyleSheet.create({
     color: '#2d4a1a',
   },
   notesInput: { height: 100, textAlignVertical: 'top' },
+  locationButton: {
+    marginTop: 8,
+    backgroundColor: '#f0f8e8',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#b8d898',
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    alignSelf: 'flex-start',
+  },
+  locationButtonText: { fontSize: 13, color: '#3a6a1a', fontWeight: '600' },
   biomeGrid: { flexDirection: 'row', flexWrap: 'wrap' },
   biomeChip: {
     flexDirection: 'row',
@@ -295,6 +430,7 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     alignItems: 'center',
   },
+  photoButtonDisabled: { opacity: 0.55 },
   photoButtonEmoji: { fontSize: 26, marginBottom: 4 },
   photoButtonText: { fontSize: 13, color: '#5a7a3a', fontWeight: '600' },
   photoScroll: { marginBottom: 8 },
@@ -314,3 +450,4 @@ const styles = StyleSheet.create({
   photoRemoveText: { color: '#fff', fontSize: 11, fontWeight: '700' },
   bottomPad: { height: 32 },
 });
+
